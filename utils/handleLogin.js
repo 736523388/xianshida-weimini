@@ -21,11 +21,13 @@ function login (callback) {
         // 登录成功，获取用户信息
         getUserInfo(res.code, callback)
       } else {
+        wx.hideLoading()
         // 否则弹窗显示，showToast需要封装
         showToast()
       }
     },
     fail () {
+      wx.hideLoading()
       showToast()
     }
   })

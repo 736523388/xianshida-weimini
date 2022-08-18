@@ -6,26 +6,29 @@
   <view class='classify-main'>
     <!-- 左边导航 -->
     <view class='classify-nav'>
-      <view style="background:{{index==num?'#f1f1f1':'#fff'}};" wx:for="{{aleft}}" bindtap='active' data-id="{{item.id}}" data-index="{{index}}" :class="{'active': num === index}">
-        <text>{{item.cate_title}}</text>
-      </view>
+      <block wx:for="{{aleft}}" wx:key="index">
+        <view style="background:{{index==num?'#f1f1f1':'#fff'}};" bindtap='active' data-id="{{item.id}}" data-index="{{index}}" class="">
+          <text>{{item.cate_title}}</text>
+        </view>
+      </block>
     </view>
     <view style='width:20%;'></view>
     <!-- 右边类别 -->
     <view class='classify-right'>
       <view class="cate-container">
-      <view class="active"><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
-      <view><text>猪肉</text></view>
+        <block wx:for="{{aleft}}" wx:key="index">
+        <block wx:if="{{index === num && item.sub.length > 0}}">
+          <view class="active">
+            <text>全部</text>
+          </view>
+          <view wx:for="{{item.sub}}" wx:key="k" wx:for-item="vo">
+            <text>{{vo.cate_title}}</text>
+          </view>
+        </block>
+          
+        </block>
       </view>
-      <view class='classify-cont' wx:for="{{arightData}}" data-id="{{item.id}}" bindtap='skip_details'>
+      <view class='classify-cont' wx:for="{{arightData}}" wx:key="index" data-id="{{item.id}}" bindtap='skip_details'>
         <image src='{{item.goods_logo}}'></image>
         <view>
           <text class='cc_title'>{{item.goods_title}}</text>

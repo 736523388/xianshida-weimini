@@ -16,9 +16,6 @@ Page({
    */
   data: {
 
-    //用户信息
-    userInfo: {},
-
     // 左边导航
     num: 0,
     bg: [
@@ -38,70 +35,23 @@ Page({
     aright: [],
     arightData: [],
     aleft: [],
-    cate_id: ''
+    cate_id: '',
+    loading: false
   },
 
-
-  getUserInfo() {
-    var _this = this;
-
-    // 个人中心通用信息
-    wx.request({
-      url: app.globalData.urlhost + '/api/user.member/index',
-      data: {
-        token: wc.get('token'),
-      },
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log(res)
-        _this.setData({
-          userInfo: res.data.data
-        })
-
-      },
-    })
-  },
 
   // 左边导航点击
   active: function (e) {
-    var that = this;
-    let token = getStorage('token')
-    page = 1
-    var index = e.currentTarget.dataset.index;
-    this.setData({
-      num: index,
-      cate_id: e.currentTarget.dataset.id,
 
+    //商品数据初始化
+    this.setData({
+      page: 1,
+      num: e.currentTarget.dataset.index,
+      cate_id: e.currentTarget.dataset.id,
+      arightData: []
     })
-    wx.request({
-      url: app.globalData.urlhost + '/api/store.goods/allgoods',
-      data: {
-        page: 1,
-        cate_id: that.data.cate_id,
-        token: token
-      },
-      success: function (res) {
-        // console.log(res)
-        if (res.statusCode == 200) {
-          if (res.data.code === 1) {
-            wx.hideLoading()
-            that.setData({
-              aright: res.data.data,
-              arightData: res.data.data.data
-            })
-            console.log("active", res)
-          } else {
-            wx.showToast({
-              title: res.data.msg,
-              icon: 'none',
-            })
-          }
-        }
-      }
-    })
+    wx.showLoading()
+    this.getGoods(e.currentTarget.dataset.id)
 
   },
   //右边图片点击跳转页面
@@ -115,69 +65,182 @@ Page({
       url: '/pages/index/productContent/productContent?id=' + e.currentTarget.dataset.id,
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onShow: function (options) {
-    var that = this;
+  getGoods(cate_id){
     let token = getStorage('token')
-    let pamas = {
-      token: token
-    }
-
-    console.log("token", token)
-    page = 1
     wx.request({
-      url: app.globalData.urlhost + '/api/store.goods_cate/lists',
-      //data: pamas,
-      success: function (res) {
+      url: app.globalData.urlhost + '/api/store.goods/allgoods',
+      data: {
+        page: this.data.page,
+        cate_id,
+        token
+      },
+      success: res => {
         // console.log(res)
         if (res.statusCode == 200) {
           if (res.data.code === 1) {
             wx.hideLoading()
-            that.setData({
+            this.setData({
+              aright: res.data.data,
+              arightData: res.data.data.data,
+              page: this.data.page+1,
+              loading: false
+            })
+            console.log("aright", this.data.aright)
+            console.log("res", res)
+
+          } else {
+            wx.hideLoading()
+            wx.showToast({
+              title: '网络错误，请稍后重试',
+              icon: 'none',
+            })
+            this.setData({
+              loading: false
+            })
+          }
+        } else {
+          wx.hideLoading()
+          wx.showToast({
+            title: '网络错误，请稍后重试',
+            icon: 'none',
+          })
+          this.setData({
+            loading: false
+          })
+        }
+      },
+      fail: error => {
+        wx.hideLoading()
+        wx.showToast({
+          title: error.errMsg,
+          icon: 'none',
+        })
+        this.setData({
+          loading: false
+        })
+      }
+    })
+  },
+  getCate(ref){
+    if(this.data.loading !== false){
+      return false
+    }
+    this.setData({
+      loading: true
+    })
+    if(ref){
+      this.setData({
+        page: 1
+      })
+    }
+    wx.showLoading()
+    wx.request({
+      url: app.globalData.urlhost + '/api/store.goods_cate/lists',
+      success: res => {
+        console.log(res)
+        if (res.statusCode == 200) {
+          if (res.data.code === 1) {
+            this.setData({
               aleft: res.data.data,
               cate_id: res.data.data[0].id
             })
-            wx.request({
-              url: app.globalData.urlhost + '/api/store.goods/allgoods',
-              data: {
-                page: 1,
-                cate_id: res.data.data[0].id,
-                token: token
-              },
-              success: function (res) {
-                // console.log(res)
-                if (res.statusCode == 200) {
-                  if (res.data.code === 1) {
-                    wx.hideLoading()
-                    that.setData({
-                      aright: res.data.data,
-                      arightData: res.data.data.data
-                    })
-                    console.log("aright", that.data.aright)
-                    console.log("res", res)
-
-                    that.getUserInfo();
-
-                  } else {
-                    wx.showToast({
-                      title: res.data.msg,
-                      icon: 'none',
-                    })
-                  }
-                }
-              }
-            })
+            this.getGoods(res.data.data[0].id)
           } else {
+            wx.hideLoading()
             wx.showToast({
               title: res.data.msg,
               icon: 'none',
             })
+            this.setData({
+              loading: false
+            })
           }
+        } else{
+          wx.hideLoading()
+          wx.showToast({
+            title: '网络错误，请稍后重试',
+            icon: 'none',
+          })
+          this.setData({
+            loading: false
+          })
         }
+      },
+      fail: error => {
+        wx.hideLoading()
+        wx.showToast({
+          title: error.errMsg,
+          icon: 'none',
+        })
+        this.setData({
+          loading: false
+        })
       }
     })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onShow: function (options) {
+    console.log(this.data.num)
+    this.getCate(1)
+    // var that = this;
+    // let token = getStorage('token')
+    // let pamas = {
+    //   token: token
+    // }
+
+    // console.log("token", token)
+    // page = 1
+    // wx.request({
+    //   url: app.globalData.urlhost + '/api/store.goods_cate/lists',
+    //   //data: pamas,
+    //   success: function (res) {
+    //     // console.log(res)
+    //     if (res.statusCode == 200) {
+    //       if (res.data.code === 1) {
+    //         wx.hideLoading()
+    //         that.setData({
+    //           aleft: res.data.data,
+    //           cate_id: res.data.data[0].id
+    //         })
+    //         wx.request({
+    //           url: app.globalData.urlhost + '/api/store.goods/allgoods',
+    //           data: {
+    //             page: 1,
+    //             cate_id: res.data.data[0].id,
+    //             token: token
+    //           },
+    //           success: function (res) {
+    //             // console.log(res)
+    //             if (res.statusCode == 200) {
+    //               if (res.data.code === 1) {
+    //                 wx.hideLoading()
+    //                 that.setData({
+    //                   aright: res.data.data,
+    //                   arightData: res.data.data.data
+    //                 })
+    //                 console.log("aright", that.data.aright)
+    //                 console.log("res", res)
+
+    //               } else {
+    //                 wx.showToast({
+    //                   title: res.data.msg,
+    //                   icon: 'none',
+    //                 })
+    //               }
+    //             }
+    //           }
+    //         })
+    //       } else {
+    //         wx.showToast({
+    //           title: res.data.msg,
+    //           icon: 'none',
+    //         })
+    //       }
+    //     }
+    //   }
+    // })
 
   },
 
@@ -192,7 +255,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onLoad: function () {
-
+    //页面create
+    this.getCate()
   },
 
   /**

@@ -1,44 +1,21 @@
 {
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
-        {
-          "id": -1,
-          "name": "会员权益",
-          "pathName": "pages/my/my_equities/my_equities",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "会员权益",
-          "pathName": "pages/my/my_equities/my_equities",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "个人中心",
-          "pathName": "pages/my/my/my",
-          "query": "",
-          "scene": null
-        },
         {
           "name": "分类",
           "pathName": "pages/classify/classify/classify",
           "query": "",
+          "launchMode": "default",
           "scene": null
         }
       ]
     }
-  }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "xianshida-weimini",
+  "setting": {
+    "compileHotReLoad": true
+  },
+  "libVersion": "2.25.2"
 }
