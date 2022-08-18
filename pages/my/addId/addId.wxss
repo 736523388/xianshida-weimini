@@ -1,0 +1,102 @@
+page {
+  background: #f1f1f1;
+  font-size: 27rpx;
+}
+
+form {
+  display: block;
+}
+
+/* 填入资料 */
+
+.addId-top {
+  background: #fff;
+}
+
+.addId-input {
+  padding: 20rpx 0;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.addId-input text {
+  color: #000;
+  width: 30%;
+  font-weight: 500;
+}
+
+.addId-input input {
+  color: #121314;
+}
+
+.id-title {
+  padding: 30rpx 0;
+  color: #000;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.id-title text {
+  color: #c63147;
+}
+
+.id-img {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+
+.id-img image {
+  width: 280rpx;
+  height: 170rpx;
+  margin: 0 40rpx 40rpx 0;
+}
+
+.id-img image:nth-child(2n) {
+  margin-right: 0;
+}
+
+.addId-word {
+  width: 100%;
+}
+
+.word-title {
+  padding: 20rpx 0;
+  color: #000;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.word-content{
+ padding-bottom: 37rpx;
+}
+
+.word-content>view>view {
+  width: 17rpx;
+  height: 17rpx;
+  border-radius: 50%;
+  background: #8d8d8d;
+  float: left;
+  margin:8rpx 8rpx 0 0;
+}
+
+.word-content>view>view>text {
+  font-size: 20rpx;
+  color: #8d8d8d;
+  line-height: 30rpx;
+  letter-spacing: 5rpx;
+}
+.submit{
+  width:690rpx;
+  height: 88rpx;
+  background: #f32c6e;
+  text-align: center;
+  line-height: 88rpx;
+  font-size:30rpx;
+  color: #fff;  
+  margin:30rpx auto;
+  border-radius: 10rpx;
+}

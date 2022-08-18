@@ -1,0 +1,249 @@
+/* pages/index/second/second.wxss */
+.second-time{
+  width: 100vw;
+  /* height: 68rpx;
+  line-height: 68rpx; */
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+}
+.second-time view{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 16rpx 4rpx;
+  font-size: 28rpx;
+  color: #121314;
+  position: relative;
+}
+.second-time view+view{
+  margin-left: 50rpx;
+}
+.second-time view::before{
+  position: absolute;
+  content: "";
+  top: 94%;
+  left: 0;
+  width: 100%;
+  height: 4rpx;
+  background: #fff;
+}
+.second-time view.active{
+  color: #f32e6e;
+}
+.second-time view.active::before{
+  background: #f32e6e;
+}
+/* 倒计时 */
+.second-countDown{
+  width: 100vw;
+  /* height: 136rpx; */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 16rpx solid #f1f1f1;
+  /* background: rgb(136, 134, 134); */
+}
+.second-countDown image{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.second-countDown>.wrap{
+  text-align: center;
+  padding: 56rpx 0 36rpx 0;
+}
+.second-beginTime{
+  font-size: 38rpx;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+.second-beginTime text{
+  font-size: 34rpx;
+  margin-left: 6rpx;
+}
+.second-endTime view,
+.second-endTime text{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 26rpx;
+}
+.second-endTime{
+  color: #fff;
+}
+.second-endTime text{
+  padding: 0rpx 6rpx; 
+  border-radius: 4rpx;
+  background: #f32e6e;
+}
+.second-endTime view{
+  margin-right: 10rpx;
+}
+.second-describe{
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 24rpx;
+  color: #8d8d8d;
+  background: #f1f1f1;
+}
+.second-describe .wrap{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.second-describe navigator image{
+  width: 10rpx;
+  height: 18rpx;
+}
+.second-cont{
+  padding: 38rpx 40rpx;
+  border-bottom: 1px solid #f1f1f1;
+}
+.cont-left{
+  width: 177rpx;
+  height: 174rpx;
+  border-radius: 6px;
+  box-shadow: 0 0 4px #8d8d8d;
+  margin-right: 20rpx;
+  position: relative;
+}
+.cont-left>image{
+  width: 100%;
+  height: 100%;
+}
+.left-active{
+  display: none;
+  position: absolute;
+  top: 34rpx;
+  left: 36rpx;
+  z-index: 10;
+  width: 105rpx;
+  height: 105rpx;
+  line-height: 105rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 50%;
+  background: rgba(0,0,0, 0.6);
+}
+.cont-right{
+  width: 468rpx;
+}
+.right-text1{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  color: #121314;
+}
+.right-text2{
+  width: 350rpx;
+  font-size: 24rpx;
+  color: #949494;
+}
+.right-text3{
+  font-size: 22rpx;
+  color: #bdbdbd;
+}
+.text4-price1{
+  width: 46rpx;
+  height: 18rpx;
+  line-height: 18rpx;
+  text-align: center;
+  font-size: 14rpx;
+  color: #fff;
+  border-radius: 4px;
+  background: #f32e6e;
+  /* margin-bottom: 8rpx; */
+}
+.text4-price2{
+  font-size: 26rpx;
+  color: #f32e6e;
+  margin-right: 18rpx;
+}
+.text4-price3{
+  font-size: 22rpx;
+  color: #8d8d8d;
+  margin-top: 8rpx;
+}
+.text4-price2,
+.text4-price3{
+  line-height: 20rpx;
+}
+.text4-btn{
+  float: right;
+  width: 110rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  border-radius: 4px;
+  background: #f32e6e;
+  margin-left: 80rpx;
+}
+.text4-progress{
+  /* display: none; */
+  line-height: 16rpx;
+}
+.text4-progress,
+.text4-progress .text4-p{
+  font-size: 22rpx;
+  color: #8d8d8d;
+}
+.text4-progress .text4-p{
+  width: 95rpx;
+  height: 10rpx;
+}
+.right-text4 .right{
+  padding-left: 14rpx;
+  margin-bottom: 4rpx;
+}
+.second-cont2 .right-text4 .text4-progress{
+  display: none;
+}
+.second-cont2 .right-text4 .right{
+   margin-bottom: 0;
+}
+.second-cont2 .left-active{
+  display: block;
+}
+.right-text4{
+  overflow: hidden
+}
+.second-list>.active .left-active{
+  display: block
+}
+.second-list>.active .right-text4{
+  margin-top: 10rpx;
+}
+.second-list>.active .right-text4 .right{
+  margin-bottom: 0;
+}
+.second-list>.active .text4-btn{
+  background: #999;
+  margin-bottom: 0;
+  float: none;
+}
+.second-list>.active .text4-progress{
+  display: none;
+}
+.right-text4 .left,
+.right-text4 .right{
+  display: inline-block;
+  vertical-align: bottom;
+}
+.cont-left,
+.cont-right,
+.text4-price1,
+.text4-price2,
+.text4-price3,
+.text4-progress .text4-p{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+

@@ -1,0 +1,139 @@
+<!--pages/index/assembleSuccess/assembleSuccess.wxml-->
+<view class='aSuccess-box borderTop'>
+  <!-- top -->
+  <view class='aSuccess-top'>
+    <!-- 产品信息 -->
+    <view class='top-cont1 wrap'>
+      <view class='list-cont'>      
+        <view class='list-img'><image src="{{groupInfo.goods_logo}}" mode='widthFix'></image></view> 
+        <view class='list-text'>
+          <view class='list-title'>{{groupInfo.goods_title}}</view>
+          <view class='list-text1'>{{groupInfo.goods_desc}}</view>
+          <view class='list-text2'>{{groupInfo.goods_spec == 'default:default' ? '默认规格' : groupInfo.goods_spec}}</view>
+          <view class='list-num clearboth'>
+            <view class='afleft'>        
+              <view class='list-people'>{{groupInfo.complete_num}}人团</view>
+              <view class='list-price1'>¥{{groupInfo.activity_price}}</view>
+              <view class='list-price2'>单买价{{groupInfo.market_price}}元</view>
+            </view>
+          </view>
+        </view>     
+      </view>
+    </view>
+    <!-- 税费补贴 -->
+    <view class='top-cont2'>
+      <view class='wrap'>
+        <view class='tCont2-content' wx:for="{{groupInfo.service_txt}}">
+          <image src='/images/aSuccess-icon1.png'></image>
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 查看我的拼团 -->
+    <view class='top-cont3'>
+      <view class='wrap'>
+        <!-- <image mode='widthFix' src='/images/aSuccess-icon2.png'></image> -->
+       
+        <view class='tCont3-headImg'>
+          <view class='headImg1' wx:for="{{groupInfo.grouping}}" wx:if="{{item.parent_id == 0}}">
+            <image mode='widthFix' src="{{item.headimg}}" ></image>
+            <view>团长</view>
+          </view>
+          <view class='headImg2' wx:for="{{groupInfo.grouping}}" wx:if="{{item.parent_id != 0}}">
+            <image mode='widthFix' src="{{item.headimg}}"></image>
+          </view>
+          <view class='headImg2' wx:for="{{[0,1,2,3]}}" wx:if="{{index < groupInfo.residue}}">
+            <image mode='widthFix' src="/images/bargain-icon7.png"></image>
+          </view>
+          <view class='headImg2' wx:if="{{4 < groupInfo.residue}}">...</view>
+        </view>
+        <!-- 拼团中 -->
+        <view class='aGo-cont'>
+          <image src='/images/aGo-icon1.png'></image>
+          <view>拼团中，还差<view class='aGo-num'>{{groupInfo.residue}}</view>人，{{ahour}}:{{aminute}}:{{asecond}}后结束</view>
+        </view>
+        <!-- 一键参团 btn -->
+        <view bindtap='addShow' wx:if="{{groupInfo.is_ke && groupInfo.residue}}" class='tCont3-btn'>一键参团</view>
+        <!-- <view bindtap='addShow' wx:else class='tCont3-btn'>测试参团</view> -->
+      </view>
+    </view>
+    <!-- 拼团须知 -->
+    <view class="top-cont4">
+      <view class='wrap clearboth'>
+        <view class='afleft'>拼团须知</view>
+        <navigator url='/pages/index/assembleRule/assembleRule' class='afright'>好友拼团 . 人满发货 . 人不满退款</navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 猜你喜欢 -->
+  <view class='aSuccess-bottom'>
+    <view class='wrap'>
+      <view class='bottom-title'>再看看我,猜你喜欢</view>
+      <view class='bottom-list clearboth'>
+        <view class='list-cont afleft' wx:for="{{list}}">
+          <view class='list-img'>
+            <image mode='widthFix' src='{{item.goods_logo}}'></image>
+            <!-- <view>111</view> -->
+          </view>
+          <view class='list-text'>
+            <view class='list-title'>{{item.goods_title}}</view>
+            <view class='list-price1'><text>拼团价 ¥</text>{{item.activity_price}}</view>
+            <view class='list-price2'>单买价 ¥{{item.selling_price}}</view>
+            <navigator url="/pages/index/productContent/productContent?id={{item.id}}" class='list-link'>去拼团</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 选择规格 -->
+    <view class='specifications-box' style="display:{{setClose === true?'block':'none'}}">
+      <view class='sMain'  style="bottom:{{setClose===true?'0':'-855rpx'}}">   
+        <!-- 图片 -->
+        <view class='cont-img'>
+          <view class='wrap'>
+            <view class='left'>
+              <view class='img'>
+                <image mode='widthFix' src='{{groupInfo.goods_logo}}'></image>
+              </view>
+              <!-- 普通产品价格 -->
+              <view class='img-price'>
+                <view wx:if="{{optionFlage === true}}">¥{{groupInfo.activity_price}}</view>
+                <text wx:else>请选择规格</text>
+              </view>
+            </view>
+            <view class='right'>
+              <view bindtap='close'>X</view>
+            </view>
+          </view>
+        </view>
+        <!-- 规格  数量  温馨提示-->
+          <view class='cont-num'>
+            <!-- 规格 -->
+            <view class='specifications' wx:for="{{detail.spec_list}}">
+              <view class='wrap'>
+                <view class='cont-title'>{{item.name}}</view>
+                <view class='cont-option clearobth'>
+                  <view class="{{(value.is_seleted !== false || value.is_elective === false)? value.is_elective === false ? 'afleft disabled' : 'afleft active' : 'afleft'}}" data-key1="{{index}}" data-key2="{{key}}" bindtap='setSpecSeleted' wx:for="{{item.value}}" wx:for-item="value" wx:for-index="key" wx:if="{{value.is_show}}">{{value.spec_title}}</view>
+                  
+                </view>
+              </view>
+            </view>  
+            <view class='num-box'>
+              <view class='wrap clearboth'>
+                <view class='cont-title afleft'>数量</view>
+                <view class='afright'>
+                  <view bindtap='reduce' class='reduce'>-</view>
+                  <view class='num'>{{Num}}</view>
+                  <view bindtap='plus' class='plus'>+</view>
+                </view>
+              </view>
+            </view>    
+          </view>
+          <!-- 规格  数量  温馨提示完 -->
+          <!-- 购买按钮 -->
+          <view class='btn-box'>
+            <view bindtap='confirm' class="{{optionFlage === true?'wrap btn active':'wrap btn'}}">确定</view>
+          </view>
+      </view>
+    </view>
+</view>

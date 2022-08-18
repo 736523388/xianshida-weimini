@@ -1,0 +1,119 @@
+/* pages/search/search.wxss */
+page{
+  background: #fff;
+}
+.search-box{
+  padding-top: 10px;
+}
+.search-box form{
+  display: block;
+}
+.ban-search{
+  /* height: 48rpx; */
+  position: fixed;
+  top: 20rpx;
+  width: 100%;
+  height: auto;
+  margin-bottom: 42rpx;
+  z-index: 100;
+  background: #fff;
+  display: flex;
+}
+.ban-search .left{
+  width: 88%;
+  height: 58rpx;
+  line-height: 58rpx;
+  background: #f1f1f1;
+  border: 1px solid #eee;
+  border-radius: 22px;
+  margin-right: 2%;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:flex-start;
+}
+.ban-search .left,
+.ban-search button{
+  float: left;
+}
+.ban-search button{
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: rgb(143, 142, 142);
+  background: transparent;
+}
+.ban-search image,
+.ban-search input{
+  display: inline-block;
+  vertical-align: middle;
+}
+.ban-search image{
+   width: 23rpx;
+   height: 23rpx;
+   margin: 0 22rpx;
+   order:1;
+   align-self:center;
+}
+.ban-search input{
+  width: 55%;
+  height: 58rpx;
+  line-height: 58rpx;
+  font-size: 28rpx;
+  order:2;
+  flex-grow:2;
+}
+.search-text1{
+  font-family:'LinotypeSyntax';
+  font-weight:bold;
+  font-style:normal;
+  color:#8044EC;
+  font-size: 26rpx;
+  /* line-height: 58rpx; */
+  margin: 0 22rpx;
+}
+.search-text2{
+  font-size: 22rpx;
+  margin-top: -4rpx;
+  color: #A09DA5;
+}
+/* 最近搜索 */
+.near-title{
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+  margin-top: 100rpx;
+}
+.near-title image{
+  width: 27rpx;
+  height: 27rpx;
+}
+.near-cont,
+.hot-cont{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.near-cont view,
+.hot-cont view{
+  padding: 8rpx 14rpx;
+  font-size: 13px;
+  color: #000;
+  border: 1px solid rgb(207, 205, 205);
+  border-radius: 4px;
+  margin: 0 4px 4px 0;
+}
+/* 热门搜索 */
+.hot-title{
+  margin: 42rpx 0 18rpx 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+.hot-cont view{
+  color: #8b053b;
+  border-color: #8b053b;
+}
+
+
+

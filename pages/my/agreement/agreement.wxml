@@ -1,0 +1,28 @@
+<!--pages/agreement/agreement.wxml-->
+<view class='agreement-box'>
+  <view class='wrap'>
+    <view class='agreement-cont' wx:for="{{cont}}" wx:key="item">
+      <view class='titleH2'>{{item[0].titleH2}}</view>
+      <view class='cont' >
+        <view wx:for="{{item[1]}}" wx:for-item="items" wx:key="items" class='text'>{{items.text}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

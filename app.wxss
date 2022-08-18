@@ -1,0 +1,123 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+page{
+  font-size: 24rpx;
+}
+
+button{
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+button::after{
+  border: 0;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height:0;
+  color: transparent;
+}
+input{
+outline:none;
+border:none;
+list-style: none;
+}
+/* 版心 */
+.wrap{
+  width: 710rpx;
+  margin: 0 auto;
+}
+/*浮动  清楚浮动 */
+.afleft{
+  float: left;
+}
+.afright{
+  float: right;
+}
+.clearboth::before,
+.clearboth::after{
+	content: "";
+	height: 0;
+	line-height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+.amiddle{
+  display: inline-block;
+  vertical-align: middle;
+}
+.atop{
+  display: inline-block;
+  vertical-align: top;
+}
+.marginR6{
+  margin-right: 6rpx;
+}
+.c999{
+  color: #999
+}
+.cmain{
+  color:#ea5514;
+}
+/* 底部logo */
+.bottom-logo{
+  position: fixed;
+  left: 0;
+  bottom: 4%;
+  width: 100vw;
+  height: 76rpx;
+  text-align: center;
+}
+.bottom-logo image{
+  width: 210rpx;
+  height: 82rpx;
+}
+/* 顶部border */
+.borderTop{
+  border-top: 1px solid #f1f1f1;
+}
+/* 提交按钮 */
+.submit{
+  width:690rpx;
+  height: 88rpx;
+  background: #f32c6e;
+  text-align: center;
+  line-height: 88rpx;
+  font-size:30rpx;
+  color: #fff;  
+  margin:30rpx auto;
+  border-radius: 10rpx;
+}
+/* 文字超出 */
+.textOverflow{
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* loadend */
+.load-end{
+  width: 100vw;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-bottom: 20rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: rgb(161, 159, 159);
+}
+.footer_text{
+  margin-top: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  color: rgb(161, 159, 159);
+}

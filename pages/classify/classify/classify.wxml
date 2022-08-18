@@ -1,0 +1,43 @@
+<!--pages/classify/classify.wxml-->
+<view class='classify-box'>
+  <!-- title -->
+
+  <!-- 分类主体 -->
+  <view class='classify-main'>
+    <!-- 左边导航 -->
+    <view class='classify-nav'>
+      <view style="background:{{index==num?'#f1f1f1':'#fff'}};" wx:for="{{aleft}}" bindtap='active' data-id="{{item.id}}" data-index="{{index}}" :class="{'active': num === index}">
+        <text>{{item.cate_title}}</text>
+      </view>
+    </view>
+    <view style='width:20%;'></view>
+    <!-- 右边类别 -->
+    <view class='classify-right'>
+      <view class="cate-container">
+      <view class="active"><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      <view><text>猪肉</text></view>
+      </view>
+      <view class='classify-cont' wx:for="{{arightData}}" data-id="{{item.id}}" bindtap='skip_details'>
+        <image src='{{item.goods_logo}}'></image>
+        <view>
+          <text class='cc_title'>{{item.goods_title}}</text>
+          <view>
+            <view class='amiddle cmain' wx:if="{{aright.show_price === 'market_price'}}">零售价:{{item.market_price}} </view>
+            <view class='amiddle marginR6 cmain' wx:if="{{aright.show_price === 'selling_price'}}">批发价:{{item.selling_price}}</view>
+            <view class='amiddle c999'>
+              原价:{{item.huaxian_price}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

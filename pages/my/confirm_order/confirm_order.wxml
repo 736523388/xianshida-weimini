@@ -1,0 +1,159 @@
+
+
+<!--pages/settlement/settlement.wxml-->
+<!-- 添加地址，实名认证 -->
+<view class='settlment-top'>
+  <!-- 添加地址 -->
+  <navigator class='top-cont top-icon1' wx:if="{{!address_bool}}" url='/pages/my/addAddress/addAddress'>
+    <view class='wrap'>
+      <view class='top-left'>
+        <image src='/images/settlement-icon1.png'></image>
+        <text>添加地址</text>
+      </view>
+      <view class='top-right'>
+        <image src='/images/settlement-icon3.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <!-- 地址信息 -->
+  <navigator class='top-cont top-text1' wx:if="{{address_bool}}" url='/pages/my/my_address/my_address'>
+    <view class='wrap'>
+      <view class='text1-left'>
+        <view>{{address.username}} {{address.phone}}</view>
+        <text>{{address.address}}</text>
+      </view>
+      <view class='text1-right'>
+        <image src='/images/settlement-icon7.png'></image>
+      </view>
+    </view>
+  </navigator>
+   <!-- 实名认证 -->
+  <block wx:if="{{is_idcard}}">
+    <navigator class='top-cont top-text2' wx:if="{{id_card_bool}}" url='/pages/my/my_idcard_list/my_idcard_list'>
+      <view class='wrap'>
+        <view class='text2-left'>
+          <view>{{id_card.username}} {{id_card.id_card}}</view>
+          <view>
+            <image src='{{id_card.image_front}}'></image>
+            <image src='{{id_card.image_other}}'></image>
+          </view>
+        </view>
+        <view class='text2-right'>
+          <image src='/images/settlement-icon7.png'></image>
+        </view>
+      </view>
+    </navigator>
+    <!-- 添加实名认证 -->
+    <navigator class='top-cont top-icon2' wx:if="{{!id_card_bool}}" url='/pages/my/addId/addId'>
+      <view class='wrap'>
+        <view class='top-left'>
+          <image src='/images/settlement-icon2.png'></image>
+          <text>添加实名认证</text>
+        </view>
+        <view class='top-right'>
+          <image src='/images/settlement-icon3.png'></image>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view>
+<!-- 结算的产品 -->
+<view class='settlement-product'>
+  <navigator class='product-cont' wx:for="{{goods_list}}">
+    <view class='wrap'>
+      <view class='product-left'>
+        <image src='{{item.goods_logo}}'></image>
+      </view>
+      <view class='product-right'>
+        <view class='product-title'>{{item.goods_title}}</view>
+        <view class='product-text1'>{{item.goods_spec_alias}}</view>
+         <view class='product-text2'>{{item.desc}}</view>
+        <view class='product-text3'>
+          <view class='product-price'>￥{{item.price_field =='selling_price'?item.selling_price:item.market_price}}</view>
+          <view class='product-num'>x{{item.number}}</view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+<!-- 配送方式.. -->
+<view class='settlement-messages'>
+  <view class='wrap'>
+    <!-- <view class='messages-cont cont1'>
+      <view class='messages-left'>配送方式</view>
+      <view class='messages-right'>{{all_pay_msg.}}</view>
+    </view> -->
+    <view class='cont2' wx:if="{{coupon_len}}">
+      <view class='afleft'>优惠券</view>
+      <picker class='afright' bindchange="change_coupon" value="{{index}}" range="{{coupon_name}}">
+        <view>
+          <view class='cont2-text1'>{{sel_coupon}}</view>
+        </view>
+      </picker>
+       <image src='/images/settlement-icon4.png'></image>
+    </view>
+    <view class='messages-cont cont5'>
+      <view class='messages-left'>商品总额</view>
+      <view class='messages-right'>￥{{all_pay_msg.goods_price}}</view>
+    </view>
+    <view class='messages-cont cont5' wx:if="{{all_pay_msg.freight_price>0}}">
+      <view class='messages-left'>快递费</view>
+      <view class='messages-right'>￥{{all_pay_msg.freight_price}}</view>
+    </view>
+    <view  wx:if="{{all_pay_msg.manjian.length==0}}">
+    </view>
+    <view class='messages-cont cont5' wx:else>
+      <view class='messages-left'>{{all_pay_msg.manjian.activity_name}}</view>
+      <view class='messages-right'>-￥{{all_pay_msg.manjian.discount}}</view>
+    </view>
+
+    <!-- <view class='cont6 clearboth'>
+      <view class='afleft'>
+        <view>可用{{available_integral}}积分抵减 </view>
+        <text>现有{{total_integral}}积分</text>
+      </view>
+      <view class='afright'>
+        <text>￥{{discount_amount}}</text>
+       <image src='{{use_integral?"/images/settlement-icon5.png":"/images/settlement-icon6.png"}}' bindtap='use_integral'></image>
+      </view>
+    </view> -->
+  </view>
+</view>
+<!--底部 -->
+<view class='settlement-bottom'>
+  <form>
+    <!--  备注信息 -->
+    <view class=' remarks'>
+      <view class='wrap'>
+        <text>备注</text>
+        <input bindblur='order_tips' placeholder='有什么特殊需求可以在这里填写'></input>
+      </view>
+          <!-- <text>需要开具发票的用户请在备注信息栏中填写开票资料（个人发票须填写姓名及电子邮箱，公司发票须填写公司名称、电子邮箱及纳税人识别号），如有疑问请与客服联系。</text> -->
+    </view>
+    <!-- 退货规则 用户协议 -->
+    <!-- <view class='rule'>
+      <view class='wrap'>
+        <image src='{{rule_bool1?"/images/settlement-icon5.png":"/images/settlement-icon6.png"}}' bindtap='rule_bool1'></image>
+        <text bindtap='rule_bool1'>我接受了乐视眼镜的</text>
+        <navigator url='/pages/my/article/article?id=61'>《退换货规则》</navigator>
+      </view>
+      <view class='wrap'>
+        <image src='{{rule_bool2?"/images/settlement-icon5.png":"/images/settlement-icon6.png"}}' bindtap='rule_bool2'></image>
+        <text bindtap='rule_bool2'>我接受了乐视眼镜的</text>
+        <navigator url='/pages/my/article/article?id=62'>《商城用户协议》</navigator>
+      </view>
+    </view> -->
+    <!-- 付款 -->
+    <view style='height:98rpx;'></view>
+    <view class='payment'>
+      <view class='footer_box'>
+        <view class='payment-left'>
+          <text class='payment-text1'>合计：</text>
+          <text class='payment-text2'>¥{{real_price}}</text>
+          <text class='payment-text3'>共{{pay_amount}}件商品</text>
+        </view>
+        <button class='payment-btn' disabled='{{disabled}}' bindtap='pay'>付款</button>
+      </view>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,238 @@
+/* pages/index/coupon/coupon.wxss */
+page{
+  background: #f1f1f1;
+}
+.coupon-title{
+  height: 92rpx;
+  line-height: 92rpx;
+  background: #fff;
+}
+.coupon-title .wrap{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.coupon-title .left image{
+  width: 36rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+.coupon-title .left text{
+  font-size: 26rpx;
+  color: #121314;
+}
+.coupon-title .right image{
+  width: 10rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+.coupon-title .right text{
+  font-size: 24rpx;
+  color: #8d8d8d;
+}
+/* 主体 */
+.coupon-mian{
+  padding-top: 20rpx; 
+}
+.coupon-cont{
+  width: 634rpx;
+  border-radius: 6px;
+  background: #fff;
+  margin: 0 auto 20rpx auto;
+}
+.cont-border{
+  width: 100%;
+  height: 20rpx;
+  background: #f32e6e;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.cont-text{
+  width: 606rpx;
+  border-bottom: 1px dashed #f32e6e;
+  margin: 0 auto;
+}
+.cont-text .cont-wrap{
+   padding: 32rpx 20rpx 26rpx 20rpx;
+}
+.text-money{
+  width: 140rpx;
+  margin-right: 42rpx;
+}
+.money1{
+  font-size: 32rpx;
+  color: #4c4c4c;
+}
+.money1 text{
+  font-size: 68rpx;
+}
+.money2{
+  font-size: 22rpx;
+  color: #4c4c4c;
+}
+.money3{
+  width: 100rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  border-radius: 4px;
+  background: #f32e6e;
+  margin-top: 10rpx;
+}
+.cont-name{
+  width: 256rpx;
+   color: #f32e6e;
+  margin-right: 6rpx;
+}
+.name1{
+  font-size: 36rpx;
+}
+.name2{
+  font-size: 24rpx;
+  margin-bottom: 46rpx;
+}
+.name3{
+  font-size: 24rpx;
+}
+.cont-btn{
+  font-size: 22rpx;
+  color: #fff;
+  width: 116rpx;
+  height: 33rpx;
+  line-height: 33rpx;
+  text-align: center;
+  border-radius: 4px;
+  background: #f32e6e;
+}
+.cont-day{
+  height: 62rpx;
+  line-height: 62rpx;
+  padding: 0 20rpx;
+  font-size: 22rpx;
+  color: #f32e6e;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+/* 使用说明 */
+.coupon-explain{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0, 0.6)
+}
+.explain-main{
+  width: 664rpx;
+  border-radius: 6px;
+  background: #fff;
+  padding-top: 30rpx;
+  margin: 224rpx auto 0 auto; 
+  position: relative;
+}
+.explain-padding{
+  height: 676rpx;
+  padding: 0 30rpx 30rpx 30rpx;
+  overflow: auto;
+}
+.explain-title{
+  /* padding: 30rpx 0 11rpx 0; */
+  font-size: 36rpx;
+  color: #393939;
+  text-align: center;
+}
+.explain-cont{
+  padding: 0 30rpx;
+}
+.explain-cont view{
+  font-size: 24rpx;
+  color: #8d8d8d;
+  /* margin-bottom: 10rpx; */
+}
+.explain-cont .explain-title2{
+  font-size: 28rpx;
+  color: #121314;
+  padding: 20rpx 0;
+  margin-bottom: 0;
+}
+.explain-cont .explain-title2 view{
+  width: 6rpx;
+  height: 24rpx;
+  background: #000;
+  margin-right: 20rpx;
+}
+.explain-close{
+  position: absolute;
+  top: 104%;
+  left: 304rpx;
+  width: 55rpx;
+  height: 55rpx;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  line-height: 55rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+}
+/* 领取成功 */
+.coupon-receive{
+  position: fixed;
+  top: 404rpx;
+  left: 220rpx;
+  width: 300rpx;
+  height: 266rp;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  background: rgba(0,0,0, 0.8);
+  border-radius: 8px;
+}
+.coupon-receive image{
+  display: block;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  margin: 52rpx auto 32rpx auto;
+}
+.coupon-receive view{
+  margin-bottom: 52rpx;
+}
+.coupon-mian>.active .cont-border,
+.coupon-mian>.active .money3,
+.coupon-mian>.active .cont-btn{
+  background: #8d8d8d;
+}
+.coupon-mian>.active .cont-name,
+.coupon-mian>.active .cont-day{
+  color: #4a4a4a;
+}
+.coupon-mian>.active .cont-text{
+  border-color: #8d8d8d;
+}
+
+
+.coupon-title .left image,
+.coupon-title .left text,
+.coupon-title .right image,
+.coupon-title .right text,
+.cont-text .cont-wrap>view,
+.explain-title2 view,
+.explain-title2 text{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+

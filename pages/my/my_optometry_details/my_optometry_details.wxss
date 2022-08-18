@@ -1,0 +1,255 @@
+page {
+  background: #f8f9f9;
+}
+
+/* --------------------------顶部个人信息------------------------- */
+
+.header {
+  height: 230rpx;
+  border-radius: 20rpx;
+  margin-top: 21rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.h_top {
+  width: 100%;
+  height: 230rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.h_top>.hrader_img {
+  width: 120rpx;
+  height: 120rpx;
+  background: #000;
+  border-radius: 50%;
+  margin: 0 20rpx;
+}
+
+.h_top>.h_right {
+  width: 17rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 40rpx;
+}
+
+.h_top>view {
+  width: 70%;
+  /* height:100%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.h_name {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.h_id {
+  color: #fff;
+}
+
+.h_top>view>view {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 7rpx 0;
+  border-radius: 5rpx;
+  font-size: 27rpx;
+  color: #fff;
+}
+
+.h_top>view>view>image {
+  width: 23rpx;
+  height: 30rpx;
+  margin: 6rpx 20rpx;
+}
+
+.h_top>view>view>text {
+  font-size: 22rpx;
+  color: #fff;
+  margin-right: 20rpx;
+}
+
+/* --------------------底部菜单---------------------- */
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20rpx 0;
+}
+
+.kuai {
+  width: 640rpx;
+  border-right: 25rpx solid #fff;
+  border-left: 25rpx solid #fff;
+}
+
+.f_list {
+  width: 730rpx;
+  height: auto;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+  position: relative;
+  top: -2rpx;
+}
+
+.fl_box {
+  width: 100%;
+  height: 150rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fl_box>view {
+  width: 200rpx;
+  height: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.flb_name {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10rpx;
+  font-size: 28rpx;
+  color: #c9934d;
+}
+
+.flb_name_ac {
+  background: #a20e46;
+  color: #fff;
+}
+
+.flb_num {
+  display: block;
+  width: 100%;
+  height: 26%;
+  white-space: nowrap;
+  overflow: auto;
+  color: #fff;
+  background: #757575;
+  text-align: center;
+  line-height: 28rpx;
+}
+
+.flb_num_ac {
+  background: #4a0620;
+  color: #fff;
+}
+
+.fl_tabel {
+  width: 681rpx;
+  height: auto;
+  position: relative;
+  top: -27rpx;
+  border-radius: 10rpx;
+  border: 0.5rpx solid #e3e3e3;
+  background: #fff;
+  padding-bottom: 15rpx;
+}
+
+.point1 {
+  width: 17rpx;
+  height: 17rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 8rpx;
+  left: 20rpx;
+}
+
+.point2 {
+  width: 17rpx;
+  height: 17rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 8rpx;
+  right: 20rpx;
+}
+
+.flt_center {
+  width: 80%;
+  margin: 0 auto;
+  overflow: auto;
+  display: none;
+}
+
+.flt_center_show {
+  display: block;
+}
+
+.flt_center>view {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 0.5rpx solid #e3e3e3;
+}
+
+.flt_center>view>text {
+  /* float: left; */
+  display: block;
+  width: 30%;
+  text-align: center;
+  padding: 20rpx 0 10rpx 0;
+  font-size: 26rpx;
+  color: #797979;
+}
+
+.other_data_box {
+  width:100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.other_data_box>view{
+  width: 100%;
+  height:auto;
+   box-sizing: border-box;
+    border-radius: 10rpx;
+  border: 0.5rpx solid #e3e3e3;
+  background: #fff;
+  padding:25rpx;
+}
+.other_data_box>.odb_title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #c9934d;
+  border:none;
+}
+.odb_content>view{
+width: 100%;
+box-sizing: border-box;
+display: flex;
+justify-content: space-between;
+padding:20rpx;
+border-bottom: 1rpx solid #eee;
+}
+.odb_content>view>text:nth-of-type(1){
+  font-size: 27rpx;
+  color: #121314;
+}
+.odb_content>view>text:nth-of-type(2){
+  font-size: 27rpx;
+  color: #121314;
+}

@@ -1,0 +1,46 @@
+
+page{
+  background: #f1f1f1;
+}
+.cGS-box{
+  padding: 50rpx 0;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #f1f1f1;
+}
+.cGS-title image{
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 4px;
+}
+.cGS-title text{
+  font-size: 16px;
+  font-weight: 500;
+  color: #c93564;
+}
+.cGS-text{
+  margin: 20rpx 0;
+}
+.cGS-text,
+.cGS-link{
+  font-size: 14px;
+  color: #858585;
+}
+.cGS-link view,
+.cGS-link navigator{ 
+  width: 150rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  border: 1px solid #d2d2d2;
+  border-radius: 22px;
+}
+.cGS-link view{
+  margin-right: 40rpx;
+}
+.cGS-link navigator,
+.cGS-link view,
+.cGS-title image,
+.cGS-title text{
+  display: inline-block;
+  vertical-align: middle;
+}

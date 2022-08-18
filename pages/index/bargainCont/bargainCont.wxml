@@ -1,0 +1,226 @@
+<!--pages/index/bargin/bargin.wxml-->
+<import src="../../../wxParse/wxParse.wxml"/> 
+<view class='bargain-box'>
+  <!-- top -->
+  <view class='bargain-top'>
+    <!-- <image src='https://cdn.xhzsm.com/bargain-top.png'></image> -->
+    <!-- logo -->
+    <view class='top-logo'>
+      <image src='/images/bargain-icon5.png'></image>
+      <view class='wrap'>
+        <view>
+          <!-- <view class='logo'><image mode='widthFix' src='{{web_logo}}'></image></view> -->
+          <navigator bindtap='gotoHome'>
+            <text>首页</text>
+          </navigator>
+          <navigator url='/pages/index/bargainList2/bargainList2'>
+            <image src='/images/bargain-icon1.png'></image>
+            <text>快斧榜</text>
+          </navigator>
+          
+        </view>
+      </view>  
+    </view>
+    <view class='top-cont wrap'>
+      <view class='top-padding'>
+          <image mode='widthFix' class='bargain-icon bargain-icon1' src="/images/bargain-icon.png"></image>
+           <image mode='widthFix' class='bargain-icon bargain-icon2' src="/images/bargain-icon2.png"></image>
+           <image mode='widthFix' class='bargain-icon bargain-icon3' src="/images/bargain-icon3.png"></image>
+      <!-- 用户信息 -->
+        <view class='top-information'>
+          <view class='iHead'>
+            <image src='{{bargainCont.author.headimg}}'></image>
+          </view>
+          <view class='iNickname'>{{bargainCont.author.nickname}}</view>
+          <view class='iText'>"我发现一件进口好货 来一起砍价{{bargainCont.goods_info.low_price}}元拿吧"</view>
+          <view bindtap='ruleShow' class='iRule'>活动规则</view>
+        </view>
+      <!-- 砍价的产品 -->
+        <view class='top-product clearboth'>      
+          <view class='afleft'><image src='{{bargainCont.goods_info.goods_logo}}'></image></view>
+          <view class='afright'>
+            <view class='product-text1'>{{bargainCont.goods_info.goods_title}}</view>
+            <view class='product-text2'>{{bargainCont.goods_info.goods_spec}}</view>
+            <view class='product-text3'>
+            <text>价值{{bargainCont.goods_info.selling_price}}元</text>
+            <block wx:if="{{bargainCont.total_success > 0}}">{{bargainCont.total_success}}人已{{bargainCont.goods_info.low_price}}元拿</block>
+            <block wx:else>砍价{{bargainCont.goods_info.low_price}}元拿</block>
+            </view>
+            <view class='product-text4' wx:if="{{bargainCont.goods_info.success_time >= 0 && bargainCont.goods_info.order_no == ''}}">
+              <view class='product-hour'>{{aday}}</view>:
+              <view class='product-hour'>{{ahour}}</view>:
+              <view class='product-minute'>{{aminute}}</view>:
+              <view class='product-second'>{{asecond}}</view>
+              <text>后结束</text>
+            </view>
+          </view>
+        </view>
+        <!-- 砍价的进度条 -->
+        <view class='top-progress'>
+          <view class='progress-past' style='left:{{width}}%;'>
+            <view id='demo' class='price-text' >已砍{{bargainCont.goods_info.a_value}}元</view>
+          </view>
+          <progress percent="{{progress}}" activeColor='#F32E6E' backgroundColor='#fff' border-radius="22"/>
+          <!-- 按价格砍 -->
+          <view class='progress-price' style="display:flex">
+            <view class='original'>￥{{bargainCont.goods_info.start_price}}</view>
+            <view class='now'>¥{{bargainCont.goods_info.low_price}}</view>
+          </view>
+        </view>
+        <!-- 分享按钮 -->
+        <button class='top-share' open-type='share' wx:if="{{bargainCont.goods_info.success_time == 0}}">
+          <image mode='widthFix' src='https://cdn.xhzsm.com/bargain-btn.png'></image>
+        </button> 
+        <!-- 下单按钮 -->
+        <button class='bargainCont-order' type="warn" size="default" plain="" wx:elif="{{bargainCont.goods_info.order_no == ''}}" bindtap='goToOrder'>砍价成功，点击去支付</button> 
+      </view>
+       <!-- 斧头帮 -->
+        <view class='top-list'>
+          <view class='list-title'>
+            <image mode='widthFix' src='/images/bargain-icon4.png'></image>
+          </view>
+          <view class='list-mian bList-move'>
+            <view class='cont-box ban-text'animation="{{animationData}}" >
+              <view class='list-cont' wx:for="{{bargainCont.bargain_log}}">
+                <view class='cont-left'>
+                  <view class='left-num'>{{index+1}}</view>
+                  <view class='left-head-box'>
+                    <view class='left-head'><image src='{{item.headimg}}' mode='widthFix'></image></view>
+                    <view class='left-name'>
+                      <view>{{item.nickname}}</view>
+                      <view>{{item.desc}}</view>
+                    </view>
+                  </view>               
+                </view>
+                <view class='cont-right'>
+                  <image src='https://cdn.xhzsm.com/bargain-icon3.png'></image>
+                  <view>砍掉<text>{{item.price}}</text>元</view>
+                </view>
+              </view>          
+            </view>
+
+
+
+
+          </view>
+        </view>
+    </view>
+  </view>
+  <!-- top完 -->
+  <!-- 猜你喜欢 -->
+  <view class='bargain-bottom'>
+      <view class='wrap'>
+        <view class='bottom-title'>猜你喜欢</view>
+        <view class='bottom-product clearboth'>
+          <view class='bottom-cont afleft'  bindtap='addShow' data-i="{{index}}" data-goods_id="{{item.goods_id}}" wx:for="{{getLike}}">
+            <view class='bottom-img'><image src='{{item.goods_logo}}' mode='widthFix'></image></view>
+            <view class='bottom-text-box'>
+              <view class='bottom-text1'>{{item.goods_title}}</view>
+              <view class='bottom-text2' wx:if="{{item.total_success > 0}}">{{item.total_success}}人已{{item.low_price}}元拿</view>
+              <view class='bottom-text2' wx:else>砍价{{item.low_price}}元拿</view>
+              <view class='bottom-text3'>价值{{item.selling_price}}元</view>
+              <view class='bottom-btn'>点击{{item.low_price}}元拿</view>
+            </view>
+          </view>
+        </view>
+      </view>
+  </view>
+  <!-- 活动规则 -->
+  <view class='bargain-rule'style="display:{{ruleFlage===true?'block':'none'}}">
+    <view class='rule-box'>
+      <view class='rule-text' >
+        <view class='rule-cont'>
+          <view class='rule-title'>活动规则</view>
+          <view class='rule-font'  >
+            <view class='wxParse-cont'>
+              <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view bindtap='ruleClose' class='rule-close'>X</view>
+    </view>
+  </view>
+  <!-- 砍价弹出层 -->
+  <view class='bargain-img' style="display:{{eFlage==false ?'none':'block'}}">
+    <view class='img-box'>
+      <image mode='widthFix' src='{{eImg}}'></image>
+      <!-- <view bindtap='eClose' class='eClose'>X</view> -->
+    </view>
+  </view>
+  <!-- 砍价弹出层--第一次分享给好友 -->
+  <view class='bargain-share' style="display:{{shareFlage==true?'block':'none'}}">
+   <view class='bargainShare-main' bindtap='share1'></view>
+    <view class='share-box'>
+      <view class='share-img'><image mode='widthFix' src='{{shareImg}}'></image></view>
+      <view class='share-cont'>
+      <view class='share-padding'>
+        <view class='share-text1'>
+          你已砍了<text>{{dadao_price ? dadao_price : bargainCont.dadao_price}}元</text>
+        </view>
+        <view class='share-text2'>分享给好友</view>
+        <view>
+          <button open-type='share' class='share-icon'>
+            <image src='https://cdn.xhzsm.com/bargain-icon4.png' mode='widthFix'></image>
+          </button>
+        </view>
+        <view class='share-text3'>发给好友</view>
+      </view>
+      </view>
+    </view>
+  </view>
+  <!-- 选择规格 -->
+    <view class='specifications-box' style="display:{{setClose === true?'block':'none'}}">
+      <view class='sMain'  style="bottom:{{setClose===true?'0':'-855rpx'}}">   
+        <!-- 图片 -->
+        <view class='cont-img'>
+          <view class='wrap'>
+            <view class='left'>
+              <view class='img'>
+                <image mode='widthFix' src='{{getLike[checkListI].goods_logo}}'></image>
+              </view>
+              <!-- 普通产品价格 -->
+              <view class='img-price' style="display:inline-block">
+                <view wx:if="{{optionFlage === true}}">¥{{getLike[checkListI].low_price}}</view>
+                <text wx:else>请选择规格</text>
+              </view>
+            </view>
+            <view class='right'>
+              <view bindtap='close'>X</view>
+            </view>
+          </view>
+        </view>
+        <!-- 规格  数量  温馨提示-->
+          <view class='cont-num'>
+            <!-- 规格 -->
+            <view class='specifications' wx:for="{{detail.spec_list}}">
+              <view class='wrap'>
+                <view class='cont-title'>{{item.name}}</view>
+                <view class='cont-option clearobth'>
+                  <view class="{{(value.is_seleted !== false || value.is_elective === false)? value.is_elective === false ? 'afleft disabled' : 'afleft active' : 'afleft'}}" data-key1="{{index}}" data-key2="{{key}}" bindtap='setSpecSeleted' wx:for="{{item.value}}" wx:for-item="value" wx:for-index="key" wx:if="{{value.is_show}}">{{value.spec_title}}</view>
+                  
+                </view>
+              </view>
+            </view>     
+          </view>
+          <!-- 规格  数量  温馨提示完 -->
+          <!-- 购买按钮 -->
+          <view class='btn-box'>
+            <view bindtap='confirm' class="{{optionFlage === true?'wrap btn active':'wrap btn'}}">确定</view>
+          </view>
+      </view>
+    </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+

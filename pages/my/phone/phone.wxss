@@ -1,0 +1,130 @@
+page {
+  height: 100%;
+  background: #f1f1f1;
+}
+
+.form-box {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+
+.row-wrap {
+  width: 720rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  font-size: 28rpx;
+  /*justify-content: space-between;*/
+}
+
+.row-wrap .label {
+  width: 160rpx;
+  color: #000;
+}
+
+.row-wrap .label-right {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+
+.row-wrap .label-right input {
+  height: 100%;
+  font-size: 28rpx;
+  padding-right: 30rpx;
+}
+
+.row-wrap .label-right .message{
+  width:60%;
+}
+
+.button{
+  width:30%;
+  height:70%;
+  background:#f32c6e;
+  font-size: 26rpx;
+  text-align: center;
+  line-height:60rpx;
+  border-radius: 30rpx;
+  color: #fff;
+}
+
+.row-wrap .right-box {
+  margin-right: 30rpx;
+}
+
+.arrow-right {
+  width: 15rpx;
+  height: 24rpx;
+}
+
+
+.default {
+  width: 92%;
+  height: 88rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.default>text{
+  font-size: 28rpx;
+ color: #121314;
+}
+.default .label {
+  width: 450rpx;
+  height: 100rpx;
+  margin-left: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.default .label .active {
+  background: #00b7ee;
+  color:#fff;
+}
+.default .label view {
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 30rpx;
+  border: 1px solid #fff;
+  text-align: center;
+  line-height: 50rpx;
+  color: #000;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+
+.save-btn{
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  border-radius:20rpx;
+  box-sizing: border-box;
+   background:#f32c6e;
+  color: #fff;
+}
+
+button[type="default"] {
+  background: #fff;
+  color: #000;
+}
+
+.addr-details {
+  height: auto;
+  padding: 30rpx 0;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  font-size: 28rpx;
+}
+

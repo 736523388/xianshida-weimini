@@ -1,0 +1,45 @@
+<!-- ----------------------顶部个人信息展示--------------------- -->
+<view class='header wrap' >
+  <view class='h_top'>
+    <image class='hrader_img' src='{{person_msg.headimg}}'></image>
+    <view>{{person_msg.nickname}}</view>
+  </view>
+</view>
+
+
+<!-- -----------------     底部菜单   ---------------- -->
+<view class='footer'>
+  <view class='f_list' >
+    <view class="f_list_order">
+      <view class='fo_title' bindtap='skip_order'>
+        <text style='color:{{person_msg.ColorPlan.font_color_menu_h}}'>我的订单</text>
+        <view>
+          <text style='color:{{person_msg.ColorPlan.font_color_menu_h}}'>全部订单</text>
+          <image src='../../../images/my/tm_right.png'></image>
+        </view>
+      </view>
+      <view class='fo_content'>
+        <navigator wx:for="{{my_order}}" url='{{item.url}}' hover-class='none' style="position: relative;">
+          <!-- <view class="tp_cart_info" wx:if="{{item.orderCount > 0}}">{{item.orderCount}}</view> -->
+          <image src='{{item.img}}' mode='widthFix'></image>
+          <text>{{item.name}}</text>
+          <view class="orderCount" wx:if="{{item.orderCount != 0}}">{{item.orderCount}}</view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class='f_list_menu'>
+      <view class='fm_top'>
+        <navigator wx:for="{{my_menu}}" hover-class='none' url="{{item.url}}">
+          <image src='{{item.img}}' mode='widthFix'></image>
+          <text style='color:{{person_msg.ColorPlan.font_color_menu_p}}'>{{item.name}}</text>
+        </navigator>
+      </view>
+    </view>
+
+    <button open-type='contact' class='f_service' style='background:#8044ec'>
+      <image src='../../../images/my/service.png'></image>
+      <text>联系客服</text>
+    </button>
+  </view>
+</view>

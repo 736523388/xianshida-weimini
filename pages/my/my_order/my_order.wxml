@@ -1,0 +1,92 @@
+<!-- ------------------------tab栏------------------ -->
+<scroll-view scroll-x="true" class="tab" scroll-left="{{scrollLeft}}">
+  <view class='tabitem {{current1?"active":""}}' bindtap='changenav1'>全部</view>
+  <view class='tabitem {{current2?"active":""}}' bindtap='changenav2'>待付款</view>
+  <view class='tabitem {{current3?"active":""}}' bindtap='changenav3'>待发货</view>
+  <view class='tabitem {{current4?"active":""}}' bindtap='changenav4'>待收货</view>
+  <view class='tabitem {{current5?"active":""}}' bindtap='changenav5'>待评价</view>
+</scroll-view>
+<view style='height:100rpx;'></view>
+
+<!-- ---------------------tab栏以下--------------- -->
+<view class='mall_content'>
+  <!-- --------------------具体内容---------------- -->
+  <scroll-view scroll-x="true" scroll-into-view="{{con}}" class='main'>
+    <view class="conitem" id="con1">
+      <!------------- ---tab栏1买家已付款------------- -->
+      <view wx:if="{{is_all}}" class="con_c">
+        <view style='height:2rpx;background:#eee;'></view>
+        <view class="con_con" wx:for="{{contents}}" wx:for-index="groupind">
+          <view class="con-top">
+            <text class='supplier_name'>订单号:{{item.order_no}}
+            </text>
+            <text wx:if="{{item.type == 2}}">
+             <block wx:if="{{item.success_time < 0}}">拼团失败</block>
+             <block wx:elif="{{item.success_time > 0}}">已成团</block>
+             <block wx:else>未成团</block>
+             </text>
+            <text>{{status_list[item.status]}}</text>
+          </view>
+          <block wx:for="{{item.goods}}" wx:for-item="val">
+            <view class="con_item">
+              <view>
+                <image src='{{val.goods_logo}}' data-orderid="{{item.id}}" bindtap='orderdetails'></image>
+              </view>
+              <view class="con_nav"  data-orderid="{{item.id}}" bindtap='orderdetails'>
+                <view class='con_right'>
+                  <text>{{val.goods_title}}</text>
+                  <text>{{val.goods_spec_alias}}</text>
+                  <!-- <text>{{item.desc}}</text> -->
+                </view>
+                <view class='con_pn'>
+                  <text class='price'>￥{{val.price_field == 'selling_price' ? val.selling_price : val.market_price}}</text>
+                  <text class='number'>x{{val.number}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+
+          <view class='con_bottom'>
+            <view>
+              <text>实付:￥{{item.real_price}}</text>
+            </view>
+
+            <view>
+              <block wx:if="{{item.status == 1}}">
+                <text data-orderid="{{item.id}}" bindtap='cancelorder'>取消订单</text>
+                <text style='background:#f32c6e;color:#fff'  data-order_no="{{item.order_no}}" bindtap='pay' wx:if="{{item.type == 1 || (item.type == 2 && item.success_time >= 0)}}">立即支付</text>
+              </block>
+
+              <!-- <block wx:if="{{item.order_status == 2}}">
+                <text data-orderid="{{item.id}}" data-groupind="{{groupind}}" bindtap='deleteorder'>删除订单</text>
+              </block> -->
+
+              <!-- <block wx:if="{{item.status == 2 && (item.type ==1 || (item.type == 2 && item.success_time > 0))}}">
+                <text data-is_press="{{item.is_press}}" data-orderid="{{item.id}}" bindtap='urge'>催发货</text>
+              </block> -->
+
+              <block wx:if="{{item.status == 3}}">
+                <text data-order_no="{{item.order_no}}" data-way="{{item.express.way}}" data-order_index="{{groupind}}" bindtap='skip_logistic'>{{item.express.way==1?'查看物流':'到店自取'}}</text>
+                <text style='background:#f32c6e;color:#fff' data-orderid="{{item.id}}" bindtap='receive'>确认收货</text>
+              </block>
+
+              <block wx:if="{{(item.status == 4 || item.status == 5) && item.is_comment == 0}}">
+                <text style='background:#f32c6e;color:#fff' data-orderid="{{item.id}}" data-order_index="{{groupind}}" bindtap='appraise'>去评价</text>
+              </block>
+              
+              <block wx:if="{{(item.status == 2 && (item.type == 1 || (item.type == 2 && item.success_time != 0) || item.type == 3)) || item.status ==3 || item.status ==4 }}">
+                <text data-order_num="{{item.order_no}}" data-order_id="{{item.id}}" bindtap='refund'>申请退款</text>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='cart-no-data' wx:else>
+        <image src='/images/null_cart.png' mode='widthFix'></image>
+        <view>啊哦，您还没有相关订单哦</view>
+      </view>
+      <!-- tab栏1最大盒子的结束标签 -->
+    </view>
+  </scroll-view>
+</view>

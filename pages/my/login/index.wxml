@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+  <view class='login-logo'>
+    <image  src="{{web_logo}}" mode='widthFix'></image>
+  </view>
+    <view class='login-fonts'>
+      <view class='login-title'>授权登录，获得更多体验</view>
+      <view class='login-text'>
+        <text>• </text><text>获取你的公开信息（昵称、头像等）</text>
+      </view>
+    </view>
+    <button class='login-btn' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登录 </button>
+  </view>
+</view>

@@ -1,0 +1,162 @@
+page{
+  background:#f1f1f1;
+}
+.header{
+  width:100%;
+  height:80rpx;
+  background: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header>image{
+  width:44rpx;
+  height:44rpx;
+  margin:0 25rpx;
+}
+.header>text{
+  font-size: 30rpx;
+  color: #121314;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+}
+
+.main .address {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.main .address .address_item {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+}
+
+.address_item .top {
+  width: 93%;
+  margin: 0 auto;
+   padding: 10rpx 0;
+}
+
+.address_item .top>text {
+  font-size: 30rpx;
+  color: #121314;
+  margin-right: 40rpx;
+}
+
+.address_item .center {
+  width: 93%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.address_item .center>image{
+  padding: 20rpx 0;
+}
+
+.address_item .bottom {
+  width: 93%;
+  margin: 0 auto;
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.address_item .bottom text{
+ font-size: 28rpx;
+  color: #121314;
+}
+.address_item .bottom>view {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.address_item .bottom>view:nth-of-type(2)>view {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  margin-left: 40rpx;
+}
+
+.address_item .bottom>view:nth-of-type(2)>view>image {
+  width: 31rpx;
+  height: 31rpx;
+   margin-right: 20rpx;
+}
+
+.address_item .bottom>view>image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right:20rpx;
+}
+
+.null{
+  width:200rpx;
+  height:220rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:370rpx;
+  margin-left:275rpx;
+}
+.null>image{
+  width:132rpx;
+  height:154rpx;
+  margin-bottom: 25rpx;
+}
+.null>text{
+  font-size: 30rpx;
+  color: #9b9b9b;
+}
+.center .changID-img,
+.center .changID-btn{
+  display: inline-block;
+  vertical-align: middle;
+}
+.center .changID-img{
+  width: 300rpx;
+  height: 260rpx;
+  text-align: center;
+  background: #eee;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.center .changID-img image{
+  width: 100%;
+  height: 100%;
+}
+.center .changID-img text{
+  display: block;
+  margin-top: 38%;
+}
+.changID-btn button{
+  padding: 0 10rpx;
+  height: 46rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #000;
+  border: 2rpx solid #666;
+  background: transparent;
+  border-radius: 8rpx;
+}
+.bot_right{
+  text-align: right;
+}
+.bot_right image:first-child{
+  width: 30rpx;
+  height: 15rpx;
+}
+
+
+
+

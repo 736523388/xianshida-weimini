@@ -1,0 +1,5 @@
+/* pages/index/single/single.wxss */
+@import "../../../wxParse/wxParse.wxss";
+image{
+  width: 100vw !important;
+}

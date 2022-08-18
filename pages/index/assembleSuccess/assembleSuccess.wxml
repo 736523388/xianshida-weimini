@@ -1,0 +1,77 @@
+<!--pages/index/assembleSuccess/assembleSuccess.wxml-->
+<view class='aSuccess-box borderTop'>
+  <!-- top -->
+  <view class='aSuccess-top'>
+    <!-- 产品信息 -->
+    <view class='top-cont1 wrap'>
+      <view class='list-cont'>      
+        <view class='list-img'><image src='/images/settlement-img1.png' mode='widthFix'></image></view> 
+        <view class='list-text'>
+          <view class='list-title'>日本 防晒防水清爽不油腻</view>
+          <view class='list-text1'>资生堂(SHISEIDO) 安热沙ANESS小金瓶防晒乳 60ml/瓶</view>
+          <view class='list-text2'>1瓶装</view>
+          <view class='list-num clearboth'>
+            <view class='afleft'>        
+              <view class='list-people'>2人团</view>
+              <view class='list-price1'>¥230</view>
+              <view class='list-price2'>拼团省30元</view>
+            </view>
+          </view>
+        </view>     
+      </view>
+    </view>
+    <!-- 税费补贴 -->
+    <view class='top-cont2'>
+      <view class='wrap'>
+        <view class='tCont2-content' wx:for="{{tCont2}}">
+          <image src='{{item.img}}'></image>
+          <text>{{item.text}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 查看我的拼团 -->
+    <view class='top-cont3'>
+      <view class='wrap'>
+        <image mode='widthFix' src='https://cdn.xhzsm.com/aSuccess-icon2.png'></image>
+        <view class='tCont3-headImg'>
+          <view class='headImg1'>
+            <image mode='widthFix' src='https://cdn.xhzsm.com/bargain-head.png'></image>
+            <view>团长</view>
+          </view>
+          <view class='headImg2'>
+            <image mode='widthFix' src='https://cdn.xhzsm.com/aSuccess-icon3.png'></image>
+          </view>
+        </view>
+        <!-- 查看我的拼团 btn -->
+        <navigator url='' class='tCont3-btn'>查看我的拼团</navigator>
+      </view>
+    </view>
+    <!-- 拼团须知 -->
+    <view class="top-cont4">
+      <view class='wrap clearboth'>
+        <view class='afleft'>拼团须知</view>
+        <navigator url='/pages/index/assembleRule/assembleRule' class='afright'>好友拼团 . 人满发货 . 人不满退货</navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 猜你喜欢 -->
+  <view class='aSuccess-bottom'>
+    <view class='wrap'>
+      <view class='bottom-title'>再看看我,猜你喜欢</view>
+      <view class='bottom-list clearboth'>
+        <view class='list-cont afleft' wx:for="{{list}}">
+          <view class='list-img'>
+            <image mode='widthFix' src='{{item.img}}'></image>
+            <view>{{item.num}}</view>
+          </view>
+          <view class='list-text'>
+            <view class='list-title'>{{item.title}}</view>
+            <view class='list-price1'><text>拼团价 ¥</text>{{item.price1}}</view>
+            <view class='list-price2'>单买价 ¥{{item.price2}}</view>
+            <navigator url='/pages/index/assembleContent/assembleContent' class='list-link'>去拼团</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

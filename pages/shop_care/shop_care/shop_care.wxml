@@ -1,0 +1,70 @@
+<view class="main">
+  <view wx:if="{{hasList}}">
+
+    <!-- ----------------购物车具体模块-------------- -->
+    <view class="cart-box">
+      <view class='shop' wx:for="{{carts}}" wx:for-index="groupind">
+        <view class='shop_title warp'>
+          <image class='gou' src='{{item.shop_selected?"../../../images/shop_care/gou-red.png":"../../../images/shop_care/gou.png"}}' bindtap="select_shop_All" data-groupind="{{groupind}}"></image>
+          <text bindtap="select_shop_All" data-groupind="{{groupind}}"> {{item.brand_title}}</text>
+        </view>
+        <view class="cart-list" wx:for="{{item.list}}" wx:for-item="val" wx:key="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" data-groupind="{{groupind}}" style="{{val.left}}">
+          <view class='cl_left'>
+            <image class='gou' bindtap="selectList" data-groupind="{{groupind}}" data-index="{{index}}" src="{{val.selected?'../../../images/shop_care/gou-red.png':'../../../images/shop_care/gou.png'}}"></image>
+            <navigator url="/pages/index/productContent/productContent?id={{val.goods_id}}">
+              <image class="cart-thumb" src="{{val.goods_logo}}"></image>
+            </navigator>
+            <view class='cart-right'>
+              <view class="cart-pro-name">
+                <text>{{val.goods_title}}</text>
+                <text>{{val.goods_spec_alias}}</text>
+                <text>{{val.desc}}</text>
+              </view>
+              <view class='cart-num' wx:if="{{val.status}}">
+                <view class="cart-pro-price">
+                  <text>￥{{val.show_price}}</text>
+        
+                </view>
+                <view class="cart-count-box">
+                  <text class="cart-count-down" bindtap="minusCount" data-groupind="{{groupind}}" data-index="{{index}}">-</text>
+                  <text class="cart-count-num">{{val.number}}</text>
+                  <text class="cart-count-add" bindtap="addCount" data-groupind="{{groupind}}" data-index="{{index}}">+</text>
+                </view>
+              </view>
+              <block wx:else>
+                <view wx:if="{{val.goods_status == 0}}">商品已下架</view>
+                <view wx:elif="{{val.spec_status == 0}}">请重新选择规格</view>
+                <view wx:else>库存不足</view>
+              </block>
+            </view>
+          </view>
+          <view class="delete-btn" catchtap="deleteList" data-id="{{val.id}}" data-groupind="{{groupind}}" data-index="{{index}}">
+            删除
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- -----------------底部结算模块-------------------- -->
+    <view style='height:98rpx;'></view>
+    <view class="cart-footer">
+      <!-- -------------------顶部全选模块------------------ -->
+      <view class='allselect'>
+        <view>
+          <image class='gou' src='{{selectAllStatus?"../../../images/shop_care/gou-red.png":"../../../images/shop_care/gou.png"}}' bindtap="selectAll"></image>
+          <text bindtap='selectAll'>全选</text>
+        </view>
+      </view>
+      <view class='allprice'>
+        <text class='allprice_text'>合计:</text>
+        <text class="cart-toatl-price">￥{{totalPrice}}</text>
+      </view>
+      <view class="order-icon" data-buyid="1" data-selectAttrid="{{selectAttrid}}" bindtap='topay'>
+        <text>结算</text>
+      </view>
+    </view>
+  </view>
+  <view class='cart-no-data' wx:else>
+    <image src="https://cdn.xhzsm.com/null_cart.png" mode='widthFix'></image>
+    <view>啊哦，购物车还没有商品哦</view>
+  </view>
+</view>

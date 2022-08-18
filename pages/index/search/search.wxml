@@ -1,0 +1,44 @@
+<!--pages/search/search.wxml-->
+<view class='search-box borderTop'>
+  <!-- 搜索框 -->
+    <form bindsubmit='search'>
+      <view class='ban-search'> 
+      <view class='wrap clearboth'>
+        <view class='left'>
+          <!-- <text class='search-text1'>ne's</text>
+          <text class='search-text2'>|</text> -->
+          <image src='/images/search-icon.png'></image>
+          <input confirm-type='search' bindconfirm='resignFocus' bindfocus="activeFocus"   auto-focus="true" placeholder='耗儿鱼、雪花牛肉' name="keyword" value='{{searchValue}}'></input>
+        </view>
+          <button form-type='submit'>搜索</button>
+      </view>
+      </view> 
+    </form>
+  <view class='wrap'>
+    
+      <!-- 最近搜索 -->
+      <view class='search-near'>
+        <view class='near-title clearboth'>
+          <text class='afleft'>最近搜索</text>
+          <image bindtap='nearDelete' style="display:{{closeFlage==true?'block':'none'}}" class='afright'
+          src='/images/search-icon2.png'></image>
+        </view>
+        <view class='near-cont'>
+          <view bindtap='searchLink' data-title="{{item}}"  wx:for="{{searchData}}">{{item}}</view>
+        </view>
+      </view>
+      <!-- 热门搜索 -->
+      <view class='search-hot'>
+        <view class='hot-title clearboth'>
+          <text >热门搜索</text>
+        </view>
+        <view class='hot-cont'>
+           <view bindtap='searchLink' data-title="{{item.title}}" wx:for="{{hotCont}}">{{item.title}}</view>
+        </view>
+      </view>
+  </view>
+</view>
+
+
+
+

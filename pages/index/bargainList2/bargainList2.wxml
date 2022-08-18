@@ -1,0 +1,32 @@
+<!--pages/index/bargainList2/bargainList2.wxml-->
+<view class='bList2-box'>
+  <!-- title -->
+  <view class='bList2-title'>
+    <image mode='widthFix' src='https://cdn.xhzsm.com/bList2-title.png'></image>
+  </view>
+  <!-- 主体 -->
+  <scroll-view class='wrap' scroll-y>
+    <view class='bList2-main'>
+      <view class='bList2-cont' wx:for="{{list}}" >
+        <view class='left'>
+          <view class='bList2-num'>
+          <!--  -->
+            <image class='bList2-numImg' src='{{item.numImg}}'></image>
+            <text>{{index+1}}</text>
+          </view>
+          <view class='bList2-headImg'>
+            <image src='{{item.headimg}}'></image>           
+          </view>
+          <view class='bList2-text'>
+            <view>{{item.nickname}}</view>
+            <view>{{item.goods_title}}</view>
+          </view>
+        </view>
+        <view class='right'>
+          <view>{{item.bargain_number}}刀</view>
+          <text>砍成</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

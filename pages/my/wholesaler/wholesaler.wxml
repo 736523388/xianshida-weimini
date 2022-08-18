@@ -1,0 +1,102 @@
+<view class="containers" wx:if="{{user_level == 0}}">
+
+    <!-- 上传营业执照 -->
+    <view class='form_input_list_card'>
+        <text class='form_label'>上传营业执照</text>
+        <text class='form_desc'>请上传清晰的营业执照图片</text>
+        <view class='Photo_box'>
+            <view class='Photo_des' bindtap="uploaderThree">
+                <image wx:if="{{imagesListThree==''}}" class='Photo_img' src='../../../images/xiangji_ico.png'></image>
+                <image wx:else class='Photo_imgs' src='{{imagesListThree}}'></image>
+                <text wx:if="{{imagesListThree==''}}">上传营业执照</text>
+            </view>
+
+        </view>
+    </view>
+    <!-- 上传营业执照 end-->
+
+
+    <!-- 表单 -->
+    <view class="form_box" v-if="{{user_level == 0}}">
+        <view class="form_list_box">
+            <text>单位名称：</text>
+            <input value="{{wholesalerData[0]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>地址：</text>
+            <input value="{{wholesalerData[1]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>成立日期：</text>
+            <input value="{{wholesalerData[2]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>有效期：</text>
+            <input value="{{wholesalerData[3]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>法人：</text>
+            <input value="{{wholesalerData[4]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>注册资本：</text>
+            <input value="{{wholesalerData[5]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>社会信用代码：</text>
+            <input value="{{wholesalerData[6]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>类型：</text>
+            <input value="{{wholesalerData[7]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>组成形式：</text>
+            <input value="{{wholesalerData[8]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>经营范围：</text>
+            <input value="{{wholesalerData[9]}}"></input>
+        </view>
+        <view class="form_list_box">
+            <text>证件编号：</text>
+            <input value="{{wholesalerData[10]}}"></input>
+        </view>
+        <view bindtap="apply" class="apply_btn">申请成为批发商</view>
+    </view>
+
+</view>
+
+<view class="containers" wx:else>
+    <view class="form_box">
+        <view class="form_list_box">
+            <text>营业执照：</text>
+            <image class="yinyeimg" wx:for="{{imglist}}" src="{{item}}" data-src="{{item}}" bindtap="previewImage"></image>
+        </view>
+        <view class="form_list_box">
+            <text>单位名称：</text>
+            <text>{{wholesalerInfo.title}}</text>
+        </view>
+        <view class="form_list_box">
+            <text>地址：</text>
+            <text>{{wholesalerInfo.address}}</text>
+        </view>
+        <view class="form_list_box">
+            <text>有效期：</text>
+            <text>{{wholesalerInfo.validtime}}</text>
+        </view>
+        <view class="form_list_box">
+            <text>法人：</text>
+            <text>{{wholesalerInfo.name}}</text>
+        </view>
+        <view class="form_list_box">
+            <text>社会信用代码：</text>
+            <text>{{wholesalerInfo.credit_code}}</text>
+        </view>
+        <view class="form_list_box">
+            <text>证件编号：</text>
+            <text>{{wholesalerInfo.id_num}}</text>
+        </view>
+    </view>
+
+</view>

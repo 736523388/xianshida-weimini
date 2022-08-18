@@ -1,0 +1,18 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<!--pages/returnGoods/returnGoods.wxml-->
+<view class='rGoods-box'>
+  <view class='wrap'>
+    <view class='rGood-main'>
+      <view class='title-h2'>{{help_title}}</view>
+      <view class='cont' wx:for="{{replyTemArray}}">
+        <view class='title-h3'>
+          <image src='/images/returnGoods-icon.png'></image>
+          <text>{{content[index].title}}</text>
+        </view>
+        <view class='cont-text'>
+          <template is="wxParse" data="{{wxParseData:item}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

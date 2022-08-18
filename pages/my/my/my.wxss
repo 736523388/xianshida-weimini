@@ -1,0 +1,365 @@
+page {
+  background: #f8f9f9;
+}
+
+/* --------------------------顶部个人信息------------------------- */
+
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  padding:20rpx 40rpx;
+  height: auto;
+  border-radius: 20rpx;
+  margin-top:2rpx;
+ 
+}
+
+.h_top {
+  width: 100%;
+  height: 168rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  padding: 25rpx 0;
+   border-radius: 20rpx;
+   background: #fff;
+   /* background:linear-gradient(#8044ec,#ae8fe6 ); */
+}
+
+.h_top>.hrader_img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.h_top>view{
+  font-size: 26rpx;
+  color: #121314;
+}
+
+/* ----------------------------积分---------------------- */
+
+.jf_box {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  height: 57rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f2ddff;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+  padding: 0 50rpx;
+  position: relative;
+}
+
+.jf_box>view {
+  font-size: 22rpx;
+}
+
+.jf_box>view>text {
+  font-size: 22rpx;
+  color: #470e68;
+}
+
+.jf_box>image {
+  width: 32rpx;
+  height: 39rpx;
+  position: absolute;
+  top: -10rpx;
+  left: -8rpx;
+}
+
+.manager_box {
+  width: 587rpx;
+  height: 65rpx;
+  margin: 10rpx auto;
+  background: #8b2c99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30rpx;
+  position: relative;
+  animation: scale1 2s linear infinite;
+  transition: all ease 1s;
+}
+@keyframes scale1 {
+  0% {
+    transform: scale(1); /*开始为原始大小*/
+  }
+  25% {
+    transform: scale(1.05); /*放大1.1倍*/
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+}
+
+.manager_box>image {
+  width: 32rpx;
+  height: 34rpx;
+}
+
+.manager_box>text {
+  color: #fff;
+  margin-left: 10rpx;
+}
+
+.manager_box>.tm_right {
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 30rpx;
+  top:20rpx;
+}
+
+/* --------------------开通会元------------------------ */
+
+.equity_box {
+  width: 750rpx;
+  /* height:150rpx;  */
+  box-sizing: border-box;
+  padding: 22rpx 30rpx 0 30rpx;
+}
+
+.equity_box scroll-view {
+  display: flex;
+  white-space: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.equity_box view {
+  width: 287rpx;
+  height: 150rpx;
+  display: inline-block;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+
+.eb_view {
+  position: relative;
+}
+
+.eb_view>text:nth-of-type(1) {
+  position: absolute;
+  top: 30rpx;
+  left: 20rpx;
+  font-size: 30rpx;
+}
+
+.eb_view>text:nth-of-type(2) {
+  position: absolute;
+  top: 68rpx;
+  left: 20rpx;
+  font-size: 20rpx;
+  display: block;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eb_view>text:nth-of-type(3) {
+  position: absolute;
+  top: 105rpx;
+  right: 11rpx;
+  font-size: 20rpx;
+  padding: 3rpx 15rpx;
+  border-radius: 20rpx;
+  border: 0.1rpx solid #fff;
+}
+
+/* --------------------底部菜单---------------------- */
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20rpx 0;
+}
+
+.f_advertisement {
+  width: 583rpx;
+  height: 58rpx;
+  border-radius: 15rpx 15rpx 0 0;
+}
+
+.kuai {
+  width: 580rpx;
+  border-right: 54.5rpx solid #f8f9f9;
+  border-left: 54.5rpx solid #f8f9f9;
+}
+
+.f_list {
+  width:100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.f_list_order {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 18rpx 22rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.fo_title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 43rpx 0;
+}
+
+.fo_title>text {
+  font-size: 30rpx;
+  /* font-weight: 600; */
+}
+
+.fo_title>view {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.fo_title>view>image {
+  width: 10rpx;
+  height: 18rpx;
+  margin-left: 18rpx;
+}
+
+.fo_content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fo_content>navigator {
+  width: 119rpx;
+  height: 113rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10rpx;
+  position: relative;
+}
+
+.fo_content>navigator>image {
+  width: 52rpx;
+  height: 42rpx;
+}
+
+.fo_content>navigator>text {
+  display: block;
+  width: 100%;
+  color: #616161;
+  white-space: nowrap;
+  overflow: auto;
+  text-align: center;
+}
+
+.f_list_menu {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 18rpx 22rpx;
+   background: #fff;
+}
+
+.fm_top {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.fm_top>navigator {
+  width: 119rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 25rpx;
+  margin-left: 26rpx;
+  margin-right: 26rpx;
+}
+
+.fm_top>navigator>image {
+  width: 83rpx;
+  height: 80rpx;
+  border-radius:20rpx;
+}
+
+.fm_top>navigator>text {
+  display: block;
+  width: 100%;
+  font-size: 23rpx;
+  color: #121314;
+  white-space: nowrap;
+  overflow: auto;
+  text-align: center;
+}
+
+.f_service {
+  width: 607rpx;
+  height: 97rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40rpx auto;
+  margin-bottom: 40rpx;
+  border-radius: 50rpx;
+}
+
+.f_service>image {
+  width: 31rpx;
+  height: 33rpx;
+  margin-right: 10rpx;
+}
+
+.f_service>text {
+  font-size: 28rpx;
+  color: #fff;
+}
+.tp_cart_info{
+    background-color: rgba(242,48,48,0.9);
+    border-radius: 50%;
+    font-size: 26rpx;
+    width: 32rpx;
+    height: 32rpx;
+    display: block;
+    line-height: 32rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    left: 75%;
+    top: 0;
+    color: white;
+    text-align: center;
+}
+
+
+.orderCount{
+  position: absolute;
+  top: -5rpx;
+  right: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border: #5a5b5c 1px solid;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 35rpx;
+  background-color: #fff;
+  font-size: 18rpx;
+  color: red;
+}

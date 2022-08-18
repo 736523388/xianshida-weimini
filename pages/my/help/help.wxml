@@ -1,0 +1,10 @@
+<view class='box'>
+  <view>
+    <navigator wx:for="{{help_list}}" hover-class='none' url='/pages/my/help_details/help_details?id={{item.id}}&help_title={{item.title}}'>
+      <text>{{item.title}}</text>
+      <image src='../../../images/my/tm_right.png'></image>
+    </navigator>
+  </view>
+</view>
+
+<button class='submit' open-type='contact'>联系客服</button>

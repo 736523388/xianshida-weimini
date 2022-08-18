@@ -1,0 +1,16 @@
+<!--pages/putForwardSuccess/putForwardSuccess.wxml-->
+<view class='pFS-box borderTop'>
+  <view class='wrap'>
+    <image src='/images/pFS-icon.png'></image>
+    <view class='pFS-title'>转出成功</view>
+    <view class='pFS-text'>成功提现{{num}}元到支付宝账户。</view>
+  </view>
+</view>
+<!-- 底部logo -->
+<view class='bottom-logo'>
+  <image src='/images/two_code.png'></image>
+</view>
+
+
+
+

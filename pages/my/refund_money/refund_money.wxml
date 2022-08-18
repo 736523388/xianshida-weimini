@@ -1,0 +1,4 @@
+<view class='box'>
+  <image src='/images/refund1.png' data-is_back_goods='0' bindtap='money_return'></image>
+  <image src='/images/refund2.png'  data-is_back_goods='1' bindtap='sales_return' ></image>
+</view>

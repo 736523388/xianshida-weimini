@@ -1,0 +1,45 @@
+<view class='header'>
+  <image src='../../../images/my/address_add.png' bindtap='skip_newaddress'></image>
+  <text>收货地址</text>
+</view>
+
+<view class='main'>
+  <!-- ----------------地址----------------- -->
+  <view class="address" wx:if="{{bool}}">
+    <block wx:for="{{address}}">
+      <view style='height:30rpx '></view>
+      <view class="address_item">
+        <view class="top">
+          <text>{{item.username}}</text>
+          <text>{{item.phone}}</text>
+        </view>
+        <view class='center'>
+          <text>{{item.province}}{{item.city}}{{item.area}}{{item.address}}</text>
+        </view>
+        <view class='bottom'>
+          <view bindtap='setdefault' data-addressid='{{item.id}}' data-index="{{index}}">
+            <image src='{{item.is_default==1?"../../../images/my/selectc.png":"../../../images/my/selecth.png"}}' bindtap='changedefault'></image>
+            <text>设置默认</text>
+          </view>
+          <view class='bot_right'>
+            <view bindtap='redact' data-addressid='{{item.id}}' data-index="{{index}}">
+              <image src='../../../images/my/xiugai.png'></image>
+              <text>编辑</text>
+            </view>
+            <view bindtap='deleteaddress' data-index="{{index}}"  data-addressid='{{item.id}}'>
+              <image src='../../../images/my/shanchu.png'></image>
+              <text>删除</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+
+  <!-- -------------没有收货地址时显示-------------- -->
+  <view class='null' wx:else>
+    <!-- <image src='../../../img/mine/null_address.png'></image> -->
+    <text>当前没有地址</text>
+  </view>
+</view>

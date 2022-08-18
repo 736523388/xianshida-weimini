@@ -1,0 +1,47 @@
+/**index.wxss**/
+page{
+  background: #fff;
+}
+.container{
+  padding-top: 20rpx;
+}
+.userinfo{
+  width: 100vw;
+}
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.login-logo image{
+  display: block;
+  width: 500rpx;
+  margin: 0 auto;
+}
+.login-fonts{
+  width: 90vw;
+  margin: 0 auto;
+  text-align: left;
+  border-top: 1px solid #f1f1f1;
+}
+.login-title{
+  padding-top: 50rpx;
+  color: #000;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+.login-text{
+  font-size: 28rpx;
+  color: #aaa;
+}
+.login-btn{
+  width: 90vw;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+  border-radius: 6px;
+  background: #1cac19;
+  margin: 60rpx auto;
+}
+

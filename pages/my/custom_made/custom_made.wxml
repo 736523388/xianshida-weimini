@@ -1,0 +1,15 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<view class='made_box'>
+  <view>-私人订制说明-</view>
+  <view>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  <view>
+    *详细了解请咨询客服小姐姐
+  </view>
+
+  <button open-type='contact' class='f_service' style='background:#a92a5a'>
+    <image src='../../../images/my/service.png'></image>
+    <text>联系客服</text>
+  </button>
+</view>

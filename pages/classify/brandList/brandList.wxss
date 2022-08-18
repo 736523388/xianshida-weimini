@@ -1,0 +1,74 @@
+/* pages/classify/brandList/brandList.wxss */
+page{
+  background: #f5f5f5;
+}
+.blist-top{
+   background: #fff;
+}
+.menu-tab{
+  width: 100xw;
+  padding-top: 34rpx;
+  font-size: 32rpx;
+  color: #3a3d40;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  text-align: left;
+}
+.menu-tab view{
+  display: inline-block;
+  vertical-align: middle;
+  width: 7.143%;
+  flex: 0 0 7.143%;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.item-tab{
+  font-size:28rpx;
+  /* padding:8rpx; */
+}
+.cont-box{
+  border-top: 1px solid #f1f1f1;
+  box-sizing: border-box;
+}
+.item-act{
+  /* background: linear-gradient(to bottom right, #6C53B1 , #8B2EDF); */
+  color: #E82164;
+  /* border-radius: 100px; */
+}
+/* 列表 */
+.brandList-title{
+  font-size: 14px;
+  font-weight: bold;
+  color: #3a3d40;
+  height: 65rpx;
+  line-height: 65rpx;
+  background: #eee;
+}
+.brandList-list{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+}
+.brandList-list image{
+  width: 106rpx;
+  height: 106rpx;
+  border: 2px solid #e5e5e5;
+  margin-right: 4px
+}
+.brandList-list text{
+  font-size: 16px;
+  font-weight: bold;
+  color: #3a3d40;
+}
+.brandList-list image,
+.brandList-list text{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+
+

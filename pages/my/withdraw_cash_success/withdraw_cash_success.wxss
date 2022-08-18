@@ -1,0 +1,35 @@
+
+page{
+  background: #f1f1f1;
+}
+.pFS-box{
+    background: #fff;
+}
+.pFS-box>.wrap{
+  padding: 66rpx 0;
+  text-align: center; 
+}
+.pFS-box>.wrap>image{
+  width: 88rpx;
+  height: 88rpx;
+}
+.pFS-box>.wrap .pFS-title{
+  font-size: 16px;
+  color: #0190ff;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.pFS-box>.wrap .pFS-text{
+  font-size: 14px;
+  color: #949494;
+}
+
+
+
+
+
+
+
+
+
+

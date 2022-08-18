@@ -1,0 +1,53 @@
+<!--pages/index/shop/shop.wxml-->
+<view class='shop-box'>
+ <!-- banner -->
+ <view class='shop-top'>
+  <image src='{{special_cover}}'></image>
+  <view class='top-text wrap'>
+    <view class='top-title'>{{special_title}}</view>
+    <view class='top-font'>品质生活 简单拥有</view>
+  </view>
+ </view>
+ <!-- 主体 -->
+ <view class='shop-main'>
+  <!-- <image src='{{special_cover}}'></image> -->
+  <view class='shop-cont wrap'>
+    <view class='cont-font'>
+        {{special_desc}}
+    </view>
+    <!-- 产品 -->
+    <view class='shop-product'>
+      <view class='shop-product clearboth' wx:for="{{product}}">
+        <!-- title -->
+        <view class='cont-text'>
+          <view class='cont-title'>
+            <image src='/images/shop-icon1.png'></image>
+            <text>{{item.special_cate_title}}</text>
+            <image src='/images/shop-icon1.png'></image>
+          </view>
+      </view>
+
+      <navigator class='product-box' data-id="{{items.id}}" 
+       bindtap='shopLink' wx:for="{{item.goods}}" wx:for-item="items">
+        <image mode='widthFix' src='{{items.goods_logo}}'></image>
+        <view class='product-text'>
+          <view class='product-title textOverflow'>{{items.goods_title}}</view>
+          <view class='product-price clearboth'>
+            <view class='afleft'>￥{{show_price === 'market_price' ? items.market_price : items.selling_price}}</view>
+            
+            <view class='afright'>
+              <view class='price-icon'>{{hide_price_txt}}</view>
+              <view class='price-num'>
+              ￥{{show_price === 'market_price' ? items.selling_price :items.market_price}}
+              </view>
+            </view>
+          </view>
+          <view class='product-btn'>立即购买</view>
+        </view>
+      </navigator>
+
+    </view>
+    </view>
+  </view>
+ </view>
+</view>

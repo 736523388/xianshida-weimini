@@ -1,0 +1,73 @@
+
+
+<view class='main'>
+  <!-- 发表评价，最上方商品 -->
+  <block wx:for="{{goodslist}}">
+    <view>
+      <view class='goods_list'>
+        <view class='gl_top'>
+          <image src='{{item.goods_logo}}'></image>
+          <view>
+            <text>{{item.goods_title}}</text>
+            <text>{{item.goods_spec_alias}}</text>
+            <text class='price'>￥{{item.market_price}}</text>
+          </view>
+        </view>
+        <view class='gl_bottom'>
+          <text>数量：{{pj_list_length}}</text>
+          <text>总价：{{pj_list.real_price}}</text>
+        </view>
+      </view>
+
+      <!-- 文字评论 -->
+      <view class='word'>
+        <view class='textarea'>
+          <textarea class='mytest' bindblur='change_goods_evalution' adjust-position data-goods_id="{{item.goods_id}}" data-index="{{index}}" placeholder='宝贝满足你的期待吗？说说它的优点和美中不足的地方吧' placeholder-style='color:#8d8d8d'>
+          </textarea>
+        </view>
+        <view class='photo'>
+          <view wx:for="{{tempFilePaths[index]}}">
+            <image src="{{item}}" catchTap="chooseImageTap" mode="aspectFit" style="width: 100%; height:100%"></image>
+          </view>
+
+          <view bindtap="chooseimage" data-index="{{index}}" data-goods_id="{{item.goods_id}}">
+            <image src='../../../images/my/camre.png'></image>
+            <text>添加照片</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 星级评论 -->
+      <view class="comment1-description">
+        <view class="star-pos">
+          <view class='description'>商品描述</view>
+
+          <view wx:for="{{score_arr}}" wx:for-item="score_item" wx:for-index="score_key" class="stars  {{goods_score[index]>=score_item? 'on': ''}}" data-score="{{score_item}}" data-goods_id="{{item.goods_id}}" bindtap='change_goods_score' data-index="{{index}}">
+          </view>
+          <view class='description'>{{goods_score[index]}}分</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="comment1-description" style='border-top:10rpx solid #f1f1f1;'>
+    <!-- 物流描述 -->
+    <view class="star-pos">
+      <view class='description'>物流描述</view>
+      <view wx:for="{{score_arr}}" wx:for-item="score_item" wx:for-index="score_key" class="stars  {{logistics_score>=score_item? 'on': ''}}" data-score="{{score_item}}" bindtap='change_logistics_score'>
+      </view>
+      <view class='description'>{{logistics_score}}分</view>
+    </view>
+    <!-- 物流描述完毕 -->
+    <!-- 服务态度 -->
+    <view class="star-pos">
+      <view class='description'>服务态度</view>
+      <view wx:for="{{score_arr}}" wx:for-item="score_item" wx:for-index="score_key" class="stars  {{service_score>=score_item? 'on': ''}}" data-score="{{score_item}}" bindtap='change_service_score'>
+      </view>
+      <view class='description'>{{service_score}}分</view>
+    </view>
+    <!-- 服务态度完毕 -->
+  </view>
+</view>
+
+<button class="submit" bindtap='publish'>发布</button>

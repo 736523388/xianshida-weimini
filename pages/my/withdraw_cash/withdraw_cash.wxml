@@ -1,0 +1,97 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
+<view class='way_box' style='display:none;'>
+  <view bindtap='zfb_wc' style='background:#0068b7;'>支付宝</view>
+  <view bindtap='yhk_wc' style='background:#ff6233'>银行卡</view>
+  <view bindtap='wx_wc' style='background:#009c45;'>微信</view>
+</view>
+<view class='pF-box {{zfb_bool?"show":""}}'>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>支付宝账户</view>
+      <input bindblur='get_zfb_number' placeholder='请输入支付宝账户'></input>
+    </view>
+  </view>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>支付宝姓名</view>
+      <input bindblur='get_zfb_name' placeholder='请输入支付宝姓名'></input>
+    </view>
+  </view>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>提现积分数量</view>
+      <input bindinput='get_money' value='{{get_money}}' placeholder='积分/人民币 比例为{{wc_details.integral_exchange_ratio}}'></input>
+    </view>
+  </view>
+</view>
+<view class='pF-box {{yhk_bool?"show":""}}'>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>银行卡开户行</view>
+      <input bindblur='get_yhk_name' placeholder='请输入银行卡开户行'></input>
+    </view>
+  </view>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>银行卡账户</view>
+      <input bindblur='get_yhk_number' placeholder='请输入银行卡账户'></input>
+    </view>
+  </view>
+    <view class='pF-text'>
+    <view class='wrap'>
+      <view>银行卡开户地</view>
+      <input bindblur='get_yhk_address' placeholder='请输入银行卡开户地'></input>
+    </view>
+  </view>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>网点</view>
+      <input bindblur='get_yhk_dot' placeholder='请输入网点'></input>
+    </view>
+  </view>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>持卡人姓名</view>
+      <input bindblur='get_yhk_username' placeholder='请输入持卡人姓名'></input>
+    </view>
+  </view>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>电话号码</view>
+      <input bindblur='get_yhk_tel' maxlength='11' placeholder='请输入电话号码'></input>
+    </view>
+  </view>
+ 
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>提现积分数量</view>
+      <input bindinput='get_money' value='{{get_money}}' placeholder='积分/人民币 比例为{{wc_details.integral_exchange_ratio}}'></input>
+    </view>
+  </view>
+</view>
+<view class='pF-box {{wx_bool?"show":""}}'>
+  <view class='pF-text'>
+    <view class='wrap'>
+      <view>提现积分数量</view>
+      <input bindinput='get_money' value='{{get_money}}' placeholder='积分/人民币 比例为{{wc_details.integral_exchange_ratio}}'></input>
+    </view>
+  </view>
+</view>
+<!-- 按钮 -->
+<view class='wc_all'>
+  <text>可用积分数量{{money}}</text>
+  <text bindtap='get_all'>全部提现</text>
+</view>
+
+<view class='submit' bindtap='submit'>确认提现</view>
+<view class='footer_word2'>
+  <text>tips:提现24小时到账</text>
+</view>
+<view class='footer_word2'>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>
+<!-- 底部logo -->
+<!-- <view class='bottom-logo'>
+  <image src='/images/two_code.png'></image>
+</view> -->

@@ -1,0 +1,15 @@
+<view class='header'>
+  <image src='https://cdn.xhzsm.com/my/jf_bac.jpg'></image>
+  <view class='h_word'>
+    <text>验光记录列表</text>
+  </view>
+</view>
+
+<view class='jf_list wrap'>
+  <view wx:for="{{jf_list}}" data-id="{{item.id}}" bindtap='skip_details'>
+    <view>
+      <text>{{item.yanguangshi}}</text>
+    </view>
+    <text>{{item.test_time}}</text>
+  </view>
+</view>

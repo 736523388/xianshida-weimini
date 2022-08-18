@@ -1,0 +1,31 @@
+<view class='box'>
+  <view>
+    <navigator hover-class='none' url='/pages/my/set_person_msg/set_person_msg'>
+      <text>个人信息</text>
+      <image src='../../../images/my/tm_right.png'></image>
+    </navigator>
+    <button open-type='contact'>
+      <text>联系客服</text>
+      <image src='../../../images/my/tm_right.png'></image>
+    </button>
+  </view>
+
+  <view>
+    <navigator hover-class='none' url='/pages/my/set_feedback/set_feedback'>
+      <text>意见反馈</text>
+      <image src='../../../images/my/tm_right.png'></image>
+    </navigator>
+    <navigator url='/pages/my/about/about'>
+      <text>关于我们</text>
+      <image src='../../../images/my/tm_right.png'></image>
+    </navigator>
+  </view>
+
+  <view>
+    <navigator hover-class='none' bindtap='logout'>
+      <text>注销登陆</text>
+      <image src='../../../images/my/tm_right.png'></image>
+    </navigator>
+  </view>
+
+</view>

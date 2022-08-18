@@ -1,0 +1,4 @@
+<view>
+  <image mode='widthFix' class='two_code' src='{{img}}'></image>
+  <!-- <image mode='widthFix' style='width:154rpx' class='header_img' src='{{header_img}}'></image> -->
+</view>

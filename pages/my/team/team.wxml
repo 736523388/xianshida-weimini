@@ -1,0 +1,59 @@
+<!-- ----------------------顶部个人信息展示--------------------- -->
+<view class='header wrap' style='background:#2e2e2e;'>
+  <view class='h_top'>
+    <image class='hrader_img' src='{{top_msg.headimg}}'></image>
+    <view>
+      <text class='h_name'>{{top_msg.nickname}}</text>
+      <view style='background:linear-gradient(to right,#b21b51,#fc547f)'>
+        <image src='../../../images/my/v_icon.png'></image>
+        <text>{{top_msg.level_title}}</text>
+      </view>
+      <text class='h_id'>ID:{{top_msg.id}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- -----------------     底部菜单   ---------------- -->
+<view class='footer'>
+  <view class='kuai' style='border-bottom:30rpx solid #890939'></view>
+  <view class='f_list' style='background:#bb205a;'>
+    <view class='fl_box'>
+      <view wx:for="{{team}}" data-index="{{index}}" bindtap='change_color'>
+        <view class='flb_name {{index==current?"flb_name_ac":""}}'>{{item.level_title}}</view>
+        <text class='flb_num {{index==current?"flb_num_ac":""}}'>{{item.number}}人</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='fl_tabel'>
+  <!-- --------------会员----------------- -->
+    <!-- <view class='flt_center' wx:for="{{team[current]}}">
+      <view  wx:for="{{item.show}}" wx:for-item="val">
+        <text style='text-align:left'>ID</text>
+        <text>会员</text>
+        <text>总消费额</text>
+        <text>剩余天数</text>
+      </view>
+      <view wx:for="{{item_details}}">
+       <text>ID:{{item.id}}</text>
+        <text>{{item.num}}</text>
+        <text>{{item.money}}</text>
+        <text>{{item.day}}</text>
+      </view>
+    </view> -->
+   <view class='flt_center'>
+      <view  wx:for="{{team[current].show}}">
+        <text  wx:for="{{item}}" wx:for-item="val">{{val}}</text>
+      </view>
+      <!-- <view wx:for="{{item_details}}">
+       <text>ID:{{item.id}}</text>
+        <text>{{item.num}}</text>
+        <text>{{item.money}}</text>
+        <text>{{item.day}}</text>
+      </view> -->
+    </view>
+    <view class='point1' style='background: #860536;'></view>
+     <view class='point2' style='background: #860536;'></view>
+  </view>
+
+</view>

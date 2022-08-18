@@ -1,0 +1,46 @@
+
+<view class='mall_content'>
+  <!-- --------------------具体内容---------------- -->
+  <scroll-view scroll-x="true" scroll-into-view="{{con}}" class='main'>
+    <view class="conitem" id="con1">
+      <!------------- ---退款列表------------- -->
+      <view wx:if="{{is_all}}" class="con_c">
+        <view style='height:2rpx;background:#eee;'></view>
+        <view class="con_con" wx:for="{{contents}}" wx:for-index="groupind">
+          <view class="con-top">
+            <text class='supplier_name'>订单号:{{item.order_no}}</text>
+            <text>{{status_list[item.status]}}</text>
+          </view>
+          <block wx:for="{{item.goods}}" wx:for-item="val">
+            <view class="con_item">
+              <view>
+                <image src='{{val.goods_logo}}' data-orderid="{{item.id}}" bindtap='orderdetails'></image>
+              </view>
+              <view class="con_nav"  data-orderid="{{item.id}}" bindtap='orderdetails'>
+                <view class='con_right'>
+                  <text>{{val.goods_title}}</text>
+                  <text>{{val.goods_spec_alias}}</text>
+                  <!-- <text>{{val.goods_attr}}</text> -->
+                </view>
+                <view class='con_pn'>
+                  <text class='price'>￥{{val.market_price}}</text>
+                  <text class='number'>x{{val.number}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+
+          <view class='con_bottom'>
+            <view>
+              <text>实付:￥{{item.real_price}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='cart-no-data' wx:else>
+        <view>啊哦，您还没有退款订单哦</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

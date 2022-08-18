@@ -1,0 +1,41 @@
+<!--pages/order/order_wl.wxml-->
+<view class='top'>
+  <view class='t_img'>
+    <image mode='widthFix' style='width:123rpx;' src='{{img}}'></image>
+  </view>
+
+  <view class='top_message'>
+    <view>
+      <text>物流状态</text>
+      <text style='color:#c93264'>  {{wl_status[message.State-2]}}</text>
+    </view>
+    <view>
+      <text>{{message.Shipper}} {{message.LogisticCode}}</text>
+      <text bindtap='click'>复制</text>
+    </view>
+  </view>
+</view>
+
+
+<view class='content'>
+  <block wx:for="{{wuliu}}" wx:key="index">
+    <view class='order'>
+      <view class='order_top'>
+        <view>
+          <text>{{item.AcceptTime}}</text>
+        </view>
+        <view class='state {{0==index?"color":""}}'>
+        </view>
+      </view>
+      <view class='details {{0==index?"in":"no_in"}}'>
+        <text class='details_text {{0==index?"details_text_f":""}}'>{{item.AcceptStation}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view wx:if="{{store}}" class='store'>
+  <view>{{store.title}}</view>
+  <view>{{store.address}}</view>
+  <view>{{store.phone}}</view>
+</view>

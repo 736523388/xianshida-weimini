@@ -1,0 +1,71 @@
+<view class='cause_box'>
+  <text>退款原因</text>
+  <picker bindchange='change_cause' value='{{index}}' range='{{cause_list}}'>
+    <input value="{{cause}}" placeholder='请选择退款原因' placeholder-style='color:#8d8d8d' disabled="disabled"></input>
+  </picker>
+  <image src='/images/my/tm_down.png'></image>
+</view>
+
+<view class='money_box'  wx:if="{{money_return != '0.00'}}">
+  <text>退款金额</text>
+  <input value="￥{{money_return}}" disabled="disabled" style='color:#f32c6e'></input>
+  <text style='color:#8d8d8d;text-align:right;'>最多￥{{money_return}}</text>
+</view>
+
+<view class='money_box' wx:if="{{jf_return}}">
+  <text>退积分</text>
+  <input value="{{jf_return}}" disabled="disabled" style='color:#f32c6e'></input>
+  <text style='color:#8d8d8d;text-align:right;'>最多{{jf_return}}</text>
+</view>
+
+<view class='explain_box'>
+  <view>
+    <text>申请说明</text>
+    <text style='color:#8d8d8d;font-size:24rpx;'>您可以输入170个字</text>
+  </view>
+  <textarea name="{{explain}}" bindblur='get_explain' placeholder='请输入退款说明' placeholder-style='color:#8d8d8d' maxlength='170'></textarea>
+</view>
+
+<view class='address_box'>
+  <view>
+    <text>联系电话</text>
+    <text>{{address.phone}}</text>
+  </view>
+  <view>
+    <text>退货地址</text>
+    <text>{{address.province}} {{address.city}} {{address.district}}</text>
+  </view>
+  <view>
+    <text>详细地址</text>
+    <text>{{address.address}}</text>
+  </view>
+</view>
+
+<view class='express_box'>
+  <view>
+    <text>快递名称</text>
+    <picker bindchange='get_ex_name' value='{{index}}' range='{{express_company_name}}'>
+      <input value="{{ex_name}}" placeholder='请选择快递名称' style='font-size:30rpx;color:#747272' placeholder-style='color:#8d8d8d' disabled="disabled"></input>
+    </picker>
+  </view>
+  <view>
+    <text>快递单号</text>
+    <input bindblur='get_ex_num' placeholder='请输入快递单号' placeholder-class='color:#8d8d8d'></input>
+  </view>
+</view>
+
+<view class='photo_box'>
+  <text>上传凭证</text>
+  <view class='photo'>
+    <view wx:for="{{tempFilePaths}}">
+      <image src="{{item}}" catchTap="chooseImageTap" mode="aspectFit" style="width: 100%; height:100%"></image>
+    </view>
+
+    <view bindtap="chooseimage">
+      <image src='../../../images/my/camre.png'></image>
+      <text>添加照片</text>
+    </view>
+  </view>
+</view>
+
+<button class='submit' bindtap='submit'>提交申请</button>

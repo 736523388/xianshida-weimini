@@ -1,0 +1,82 @@
+<!--pages/order/order.wxml-->
+<view class='order-box'>
+  <!-- 个人信息 -->
+  <!-- <image mode='widthFix' class='order-img1' src='https://cdn.xhzsm.com/order-img1.png'></image>  -->
+  <view class='order-information'>
+      <view class='information-main'>
+        <view class='wrap'>
+          <view class='left'>收货地址：{{order_desc.express.express_username}} {{order_desc.express.express_phone}}</view>
+          <view class='right'>
+            <text>{{order_desc.express.express_address}}</text>
+          </view>
+        </view>
+      </view>
+  </view>
+  <!-- 结算的产品 -->
+  <view class='settlement-product'>
+    <navigator class='product-cont' wx:for="{{goods}}">
+      <view class='wrap'>
+        <view class='product-left'>
+          <image src='{{item.goods_logo}}'></image>
+        </view>
+        <view class='product-right'>
+          <view class='product-title'>{{item.goods_title}}</view>
+          <view class='product-text1'>{{item.goods_spec_alias}}</view>
+          <view class='product-text3'>
+            <view class='product-price'>￥{{item.selling_price}}</view>
+            <view class='product-num'>x{{item.number}}</view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 价格信息 -->
+  <view class='information-price'>
+    <view class='wrap'>
+      <view class='price-text'>
+        <text class='left'>商品总价</text><text class='right'>￥{{order_desc.goods_price}}</text>
+      </view>
+      <view class='price-text' wx:if="{{order_desc.freight_price>0}}">
+        <text class='left'>快递费</text><text class='right'>￥{{order_desc.freight_price}}</text>
+      </view>
+      <!-- <view class='price-text'>
+        <text class='left'>积分抵减</text><text class='right'>￥{{order_desc.goods_price}}</text>
+      </view>
+      <view class='price-text'>
+        <text class='left'>优惠券抵用</text><text class='right'>￥{{order_desc.goods_price}}</text>
+      </view> -->
+      <view class='price-text'>
+        <text class='left'>优惠金额</text><text class='right'>￥{{order_desc.discount_amount}}</text>
+      </view>
+      <view class='price-text'>
+        <text class='left'>满减</text><text class='right'>￥{{order_desc.manjian_money}}</text>
+      </view>
+      <view class='price-text'>
+        <text class='left'>实付金额</text><text class='right'>￥{{order_desc.pay_price}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 底部订单信息 -->
+  <view class='order-bottom'>
+    <view class='wrap'>
+      <view class='bottom-cont'>
+        <text>订单备注：</text><text>{{order_desc.desc}}</text>
+      </view>
+       <view class='bottom-cont bottom-click'>
+        <view>
+          <text>订单编号：</text><text class='bottomNum' selectable='true'>{{order_desc.order_no}}</text>
+        </view>
+        <view bindtap='click' class='bottom-btn'>复制</view>
+      </view>
+       <view class='bottom-cont'>
+        <text>支付方式：</text><text>{{order_desc.pay_type}}</text>
+      </view>
+       <!-- <view class='bottom-cont'>
+        <text>支付状态：</text><text>{{order_desc.pay_price}}</text>
+      </view> -->
+       <view class='bottom-cont'>
+        <text>下单时间：</text><text>{{order_desc.create_at}}</text>
+      </view>
+    </view>
+  </view>
+</view>

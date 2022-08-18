@@ -1,0 +1,162 @@
+page {
+  width: 100%;
+  height: 100%;
+  background: #f1f1f1;
+}
+
+.cause_box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.cause_box>text {
+  display: inline-block;
+  width: 24.36%;
+  font-size: 30rpx;
+  color: #747272;
+}
+
+picker {
+  width: 70%;
+}
+
+.cause_box input {
+  display: inline-block;
+  font-size: 30rpx;
+  color: #747272;
+}
+
+.cause_box image {
+  display: inline-block;
+  width: 19rpx;
+  height: 10rpx;
+}
+
+.money_box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.money_box>text {
+  display: inline-block;
+  width: 24.36%;
+  font-size: 30rpx;
+  color: #747272;
+}
+
+.money_box input {
+  display: inline-block;
+  font-size: 30rpx;
+  color: #747272;
+}
+
+.explain_box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.explain_box>view {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.explain_box>view>text {
+  display:inline-block;
+  font-size: 30rpx;
+  color: #747272;
+}
+
+.explain_box textarea {
+  display: inline-block;
+  width: 100%;
+  height:150rpx;
+  color: #121314;
+}
+
+.address_box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.address_box>view {
+  width: 100%;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  padding: 15rpx 0;
+}
+
+.address_box>view>text:nth-of-type(1) {
+  display:inline-block;
+   width: 24.36%; 
+  font-size: 30rpx;
+  color: #747272;
+}
+.address_box>view>text:nth-of-type(2) {
+  font-size: 30rpx;
+  color: #747272;
+}
+
+
+.photo_box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.photo_box>text{
+  font-size: 30rpx;
+  color: #747272;
+}
+.photo {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.photo>view {
+  width: 130rpx;
+  height: 130rpx;
+  border: 2rpx dashed #8d8d8d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:20rpx 20rpx 20rpx 0;
+}
+
+.photo>view>image {
+  width: 47rpx;
+  height: 40rpx;
+  margin-bottom: 15rpx;
+}
+
+.photo>view>text {
+  font-size: 20rpx;
+  color: #8d8d8d;
+}
+

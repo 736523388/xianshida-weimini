@@ -1,0 +1,68 @@
+<block wx:for="{{footprint}}">
+  <view class='footprint_date'>{{index}}</view>
+  <view class="cart-list" wx:for="{{footprint[index]}}" wx:for-item="val">
+    <view class='cl_left'>
+      <navigator url="/pages/index/productContent/productContent?id={{val.id}}">
+        <image class="cart-thumb" src="{{val.goods_logo}}"></image>
+      </navigator>
+      <view class='cart-right'>
+        <view class="cart-pro-name">
+          <text>{{val.goods_title}}</text>
+          <text>{{val.goods_spec_alias}}</text>
+        </view>
+        <view class='cart-num'>
+          <view class="cart-pro-price">
+            <text>￥{{val.selling_price}}</text>
+            <text>{{hide_price_txt}}</text>
+            <text>￥{{val.market_price}}</text>
+          </view>
+           <image data-foot_id="{{val.foot_id}}" bindtap='del'  src='/images/my/shanchu.png' ></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<!-- <view class='footprint_date'>2018年12月20日</view>
+<view class="cart-list">
+  <view class='cl_left'>
+    <navigator url="../details/details?id={{val.id}}">
+      <image class="cart-thumb" src="https://ser.xhzsm.com/static/upload/0404b2e3a039c079/f03308533864c9c9.jpg"></image>
+    </navigator>
+    <view class='cart-right'>
+      <view class="cart-pro-name">
+        <text>蒂佳婷Dr.Jart药丸面膜 孕妇敏感肌肤可用 急救补水蚕丝面膜5片/盒</text>
+        <text>产品: 绿色（舒缓补水5片）</text>
+      </view>
+      <view class='cart-num'>
+        <view class="cart-pro-price">
+          <text>￥75.00</text>
+          <text>会员价</text>
+          <text>￥66.00</text>
+        </view>
+        <image src='/images/my/shanchu.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cart-list">
+  <view class='cl_left'>
+    <navigator url="../details/details?id={{val.id}}">
+      <image class="cart-thumb" src="https://ser.xhzsm.com/static/upload/0404b2e3a039c079/f03308533864c9c9.jpg"></image>
+    </navigator>
+    <view class='cart-right'>
+      <view class="cart-pro-name">
+        <text>蒂佳婷Dr.Jart药丸面膜 孕妇敏感肌肤可用 急救补水蚕丝面膜5片/盒</text>
+        <text>产品: 绿色（舒缓补水5片）</text>
+      </view>
+      <view class='cart-num'>
+        <view class="cart-pro-price">
+          <text>￥75.00</text>
+          <text>会员价</text>
+          <text>￥66.00</text>
+        </view>
+        <image src='/images/my/shanchu.png'></image>
+      </view>
+    </view>
+  </view>
+</view> -->

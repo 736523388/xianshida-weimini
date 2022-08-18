@@ -1,0 +1,44 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "会员权益",
+          "pathName": "pages/my/my_equities/my_equities",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "会员权益",
+          "pathName": "pages/my/my_equities/my_equities",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "个人中心",
+          "pathName": "pages/my/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "分类",
+          "pathName": "pages/classify/classify/classify",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

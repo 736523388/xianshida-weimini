@@ -1,0 +1,815 @@
+/* pages/index/bargin/bargin.wxss */
+page{
+  background: linear-gradient(#ED2C6B,#DD2563,#af114d);
+}
+/* top */
+.bargain-top{
+  position: relative;
+  width: 100vw;
+  /* height: 890rpx; */
+}
+.bargain-top>image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.top-logo{
+  padding-top: 32rpx;
+  position: relative;
+}
+.top-logo>image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.top-logo .wrap>view{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+}
+.top-logo .logo{
+  width: 121rpx;
+  height: 58rpx;
+}
+.top-logo .logo image{
+  width: 100%;
+  height: 100%;
+}
+.top-logo navigator{
+  width: 133rpx;
+  height: 39rpx;
+  position: relative;
+  /* border: 1px solid rgb(196, 192, 192); */
+  border-radius: 22rpx;
+  box-shadow: 0 0 4px #fff;
+}
+.top-logo navigator image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+.top-logo navigator text{
+  position: relative;
+  font-size: 24rpx;
+  color: #fff;
+  left: 44rpx;
+  top: 0rpx;
+}
+/* 用户信息 */
+.top-information{
+  text-align: center;
+  position: relative;
+}
+.iNickname{
+  padding-top: 46rpx;
+  font-size: 24rpx;
+  color: #8d8d8d;
+}
+.iHead{
+  position: absolute;
+  top: -34rpx;
+  width: 74rpx;
+  height: 74rpx;
+  border: 2px solid #fff2fc;
+  border-radius: 50%;
+  left: 44%;
+}
+.iHead image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.iText{
+  font-size: 30rpx;
+  color: #000;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.iRule{
+  position: absolute;
+  top: 22rpx;
+  right: 0;
+  width: 118rpx;
+  height: 34rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #8d8d8d;
+  border: 1px solid #A0A0A0;
+  border-radius: 22px;
+}
+/* 砍价的产品 */
+.top-padding{
+  padding: 0 20rpx 10px 20rpx;
+  position: relative;
+  background: #fff;
+  border-top-left-radius: 14rpx;
+  border-top-right-radius: 14rpx;
+  margin-top: 32rpx;
+}
+.top-product{
+  margin: 19rpx 0;
+  padding: 28rpx 16rpx;
+  background: #eee;
+  border-radius: 6px;
+}
+.top-product .afleft{
+  width: 170rpx;
+  height: 162rpx;
+}
+.top-product .afleft image{
+  width: 100%;
+  height: 100%;
+}
+.top-product .afright{
+  width: 438rpx;
+}
+.product-text1{
+  font-size: 26rpx;
+  color: #121314;
+}
+.product-text1,
+.product-text2{
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.product-text2,
+.product-text3{
+  font-size: 22rpx;
+  color: #949494;
+}
+.product-text3{
+  margin: 8rpx 0;
+}
+.product-text3 text{
+  font-size: 36rpx;
+  color: #f32c6e;
+}
+.product-text4{
+  color: #000;
+}
+.product-text4>view{
+  width: 34rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  background: #000;
+}
+.product-text4>text{
+  font-size: 22rpx;
+  color: #949494;
+  margin-left: 4rpx;
+}
+.bargain-icon{
+  position: absolute;
+}
+.bargain-icon1{
+  left:-14rpx;
+  top:22rpx;
+  width: 76rpx;
+}
+.bargain-icon2{
+  right:-18rpx;
+  top:68rpx;
+  width:36rpx;
+}
+.bargain-icon3{
+  right:-18rpx;
+  top:228rpx;
+  width:36rpx;
+}
+/* 砍价的进度 */
+.top-progress{
+  padding: 22rpx 0;
+  /* height: 90rpx; */
+  position: relative;
+}
+.progress-past{
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width: auto; */
+  height: 30rpx;
+  line-height: 30rpx;
+  border-radius: 22px;
+  background: #ffb641;
+}
+.progress-past view{
+  width: 110rpx;
+  /* padding: 0 6rpx; */
+  font-size: 18rpx;
+  color: #f32c6e;
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+}
+.price-text::before{
+  position: absolute;
+  top: 100%;
+  right: 12%;
+  content: "";
+  border: 8rpx solid transparent;
+  border-top: 8rpx solid #ffb641 ;
+}
+.top-progress progress{
+  border-radius: 22px;
+  border: 1px solid #F32E6E;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.progress-price{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #8d8d8d;
+}
+.progress-price .original{
+  text-decoration: line-through;
+}
+/* 分享按钮 */
+.top-share{
+  width: 90%;
+  height: 70rpx;
+  margin: 0 auto;
+}
+.top-share image{
+  width: 100%;
+  height: 100%;
+}
+/* 分享按钮 */
+.top-share{
+  animation: scale1 1.5s linear infinite;
+  transition: all ease 0.8s;
+  /* box-shadow: 0 0 6px #333; */
+}
+@keyframes scale1{
+  0%{
+                transform: scale(1);  /*开始为原始大小*/
+            }
+            25%{
+                transform: scale(1.05); /*放大1.1倍*/
+            }
+            50%{
+                transform: scale(1);
+            }
+            75%{
+                transform: scale(1.05);
+            }
+
+}
+/* 斧头帮 */
+.top-list{
+  padding: 0 20rpx 20rpx 20rpx;
+  background: #FEDEDE;
+  border-bottom-left-radius: 14rpx;
+  border-bottom-right-radius: 14rpx;
+  overflow: hidden;
+}
+.list-title{
+  font-size: 26rpx;
+  color: #121314;
+  text-align: center;
+  /* padding-top: 52rpx; */
+}
+.list-title image{
+  width: 100%;
+  height: 70rpx;
+}
+.list-mian{
+  /* margin-top: 12rpx; */
+}
+.bList-move{
+   height: auto;
+   overflow: hidden;
+}
+.ban-text{
+  height: auto;
+}
+.list-cont{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  /* margin-bottom: 16rpx; */
+}
+.left-num{
+  width: 30rpx;
+  font-size: 26rpx;
+  color: #121314;
+  /* margin-bottom: 16rpx; */
+}
+.left-head-box{
+  width: 400rpx;
+}
+.left-head{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.left-head image{
+  width: 100%;
+  border-radius: 50%;
+}
+.left-name{
+  width: 300rpx;
+}
+.left-name view{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.left-name view:first-child{
+  font-size: 24rpx;
+  color: #000;
+}
+.left-name view:last-child{
+  font-size: 26rpx;
+  color: #8d8d8d;
+}
+.cont-right{
+  text-align: right;
+}
+.cont-right image{
+  width: 54rpx;
+  height: 54rpx;
+}
+.cont-right view{
+  font-size: 26rpx;
+  color: #121314;
+}
+.cont-right view text{
+  color: #f32e6e;
+}
+/* 猜你喜欢 */
+.bargain-bottom{
+  background: #CB1D5A;
+}
+.bottom-cont{
+  width: 223rpx;
+  background: #fff;
+  border-radius: 8px;
+  margin: 0 20rpx 20rpx 0;
+}
+.bottom-cont:nth-child(3n){
+  margin-right: 0;
+}
+.bottom-title{
+  padding: 32rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #fff;
+}
+.bottom-img{
+  width: 223rpx;
+  height: 206rpx;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.bottom-img image{
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.bottom-text-box{
+  padding: 0 12rpx 12rpx 12rpx;
+}
+.bottom-text1{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 23rpx;
+  color: #3d4043;
+}
+.bottom-text2{
+  font-size: 26rpx;
+  color: #f32c6e;
+  margin-top: 12rpx;
+}
+.bottom-text3{
+  font-size: 22rpx;
+  color: #8d8d8d;
+  margin-bottom: 8rpx;
+}
+.bottom-btn{
+  font-size: 22rpx;
+  color: #fff;
+  height: 35rpx;
+  line-height: 35rpx;
+  text-align: center;
+  border-radius: 4px;
+  background: #f32e6e;
+}
+/* 活动规则 */
+.bargain-rule,
+.bargain-img{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0, 0.6);
+}
+.rule-box{
+  padding-top: 328rpx;
+  width: 574rpx;
+  margin: 0 auto;
+}
+.rule-text{
+  width: 100%;
+  height: 600rpx;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 6px;
+}
+.rule-cont{
+  padding: 32rpx 22rpx;
+  color: #4e5256;
+}
+.rule-title{
+  font-size: 30rpx;
+  text-align: center;
+  margin-bottom: 44rpx;
+}
+.rule-font{
+  font-size: 24rpx;
+  margin-bottom: 36rpx;
+}
+.rule-close{
+  width: 55rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  margin: 20rpx auto 0 auto;
+}
+/* 弹出层 */
+.img-box{
+  margin: 330rpx auto 0 auto;
+  width: 670rpx;
+  height: 600rpx;
+  border-radius: 6px;
+  position: relative;
+}
+.img-box>image{
+  width: 100%;
+  height: 100%;
+}
+.eClose{
+  position: absolute;
+  top: -16rpx;
+  right: -16rpx;
+  width: 54rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #3d4043;
+  border: 1px solid #333;
+  border-radius: 50%;
+  background: #fff;
+}
+/* 分享弹出层  第一次分享给好友*/
+.bargain-share,
+.bargainShare-main,
+.share1Return-main{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0, 0.8)
+}
+.bargainShare-main,
+.share1Return-main{
+  background: transparent;
+}
+.share-box{
+  padding-top: 136rpx;
+  position: relative;
+  z-index: 10;
+}
+.share-img{
+  width: 508rpx;
+  height: 332rpx;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+.share-img image{
+  width: 100%;
+  height: 100%;
+}
+.share-cont{
+  width: 608rpx;
+  height: 420rpx;
+  /* width: 536rpx;
+  height: 408rpx; */
+  text-align: center;
+  border-radius: 8px;
+  background: #fff;
+  margin: -20px auto 0 auto;
+}
+.share-padding{
+   padding: 36rpx;
+}
+.share-text1{
+  font-size: 30rpx;
+  color: #121314;
+  padding-top: 32rpx;
+}
+.share-text1 text{
+  font-size: 44rpx;
+  color: #d51a27;
+}
+.share-text2{
+  font-size: 30rpx;
+  color: #d51a27;
+  margin: 28rpx 0 36rpx 0;
+}
+.share-icon,
+.share1Return-icon{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.share-icon image,
+.share1Return-icon image{
+  width: 100%;
+  height: 100%;
+}
+.share-text3,
+.share1Return-text3{
+  font-size: 24rpx;
+  color: #121314;
+  margin-top: 14rpx;
+}
+/* 第一次分享给好友回到小程序界面 */
+.bargain-share1Return{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  background: rgba(0,0,0, 0.8)
+}
+.share1Return-box{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.share1Return-text1{
+  font-size: 36rpx;
+  color: #fff;
+  margin-bottom: 32rpx;
+}
+.share1Return-cont{
+  width: 100vw;
+  /* height: 318rpx; */
+  background: #fff;
+}
+.share1Return-text2{
+  padding: 34rpx 0;
+  font-size: 36rpx;
+}
+.share1Return-text2 text:first-child{
+  color: #be1b1b;
+}
+.share1Return-text2 text:nth-child(2){
+  color:#ff961b;
+}
+.share1Return-text4{
+  font-size: 24rpx;
+  color: #121314;
+  padding-bottom: 12rpx;
+  margin-top: 28rpx;
+}
+
+
+/* 选择规格 */
+.specifications-box{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0, 0.6);
+  z-index: 200;
+}
+.sMain{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 855rpx;
+  background: #fff;
+  transition: all 2s ease;
+}
+.cont-img{
+  height: 146rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+.cont-img .wrap{
+   display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.cont-img .left{
+  margin-top: -48rpx;
+}
+.cont-img .left .img{
+  width: 180rpx;
+  height: 173rpx;
+  line-height: 173rpx;
+  border-radius: 6px;
+  box-shadow: 1px 1px 6px #44464e;
+  margin-right: 20rpx;
+  background: #fff;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+.cont-img .left .img image{
+  width: 100%;
+  border-radius: 6px;
+}
+.cont-img .left .img-price{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 44rpx;
+}
+.cont-img .left .img-price view{
+  font-size: 38rpx;
+  color: #f32c6e;
+  line-height: 24rpx;
+}
+.cont-img .left .img-price text{
+  font-size: 26rpx;
+  color: #8d8d8d;
+}
+.cont-img .right view{
+  padding-top: 10rpx;
+  font-size: 36rpx;
+  color: #464647;
+}
+/* 规格  数量  温馨提示 */
+/* 规格 */
+.cont-num{
+  height: 600rpx;
+  overflow: auto;
+}
+.specifications{
+  overflow: hidden;
+  padding-top: 18rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+.cont-title{
+  font-size: 26rpx;
+  color: #000;
+  margin-top: 4rpx;
+}
+.specifications .cont-title{
+  margin-bottom: 14rpx;
+}
+.cont-option{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.cont-option view{
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0 36rpx;
+  font-size: 24rpx;
+  color: #000;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  margin: 0 14rpx 14rpx 0;
+}
+.cont-option view.active,
+.btn-box view.active{
+  color: #fff;
+  border-color: #f32e6e;
+  background: #f32e6e;
+}
+.cont-option view.disabled,
+.btn-box view.disabled{
+  color: #121314;
+  border-color: #e5e5e5;
+  background: #e5e5e5;
+}
+/* 数量 */
+.num-box{
+  padding: 20rpx 0;
+   border-bottom: 1px solid #e5e5e5;
+}
+.num-box .afright view{
+  font-size: 24rpx;
+  height: 34rpx;
+  line-height: 32rpx;
+  text-align: center;
+  border-radius: 4px;
+}
+.plus,
+.reduce{
+  padding: 0 16rpx;
+}
+.reduce{
+  color: #96999c;
+  background: #e5e5e5;
+  margin-right: 10rpx;
+}
+.plus{
+  color: #36383a;
+  background: #b5b5b5;
+}
+.num-box .afright .num{
+  padding: 0 34rpx;
+  color: #36383a;
+  background: #e5e5e5;
+  margin-right: 10rpx;
+}
+/* 温馨提示 */
+.tips view{
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 26rpx;
+  color: #474950;
+  background: #ffedd2;
+  border: 1px solid #f29b76;
+  margin: 80rpx auto;
+}
+.tips view .red{
+  color: #ff0000;
+  margin: 0 20rpx;
+}
+/* 购买按钮 */
+.btn-box{
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  bottom: 26rpx;
+}
+.btn-box .btn{
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #a9a8a8;
+  border-radius: 6px;
+  background: #dcdcdc;
+}
+/* 下单按钮 */
+.bargain-box .bargainCont-order{
+  border-radius: 12rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  background: #F32E6E;
+}
+
+
+
+.product-text4 view,
+.product-text4 text,
+.left-num,
+.left-head-box,
+.cont-right image,
+.cont-right view{
+  display: inline-block;
+  vertical-align: middle;
+}
+.left-head,
+.left-name{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+
+

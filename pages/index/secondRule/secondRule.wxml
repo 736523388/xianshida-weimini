@@ -1,0 +1,13 @@
+<!--pages/index/assembleRule/assembleRule.wxml-->
+<import src="../../../wxParse/wxParse.wxml"/> 
+<view class='aRule-box borderTop'>
+  <view class='wrap'>
+    <view class='aRule-cont'>
+      <view class="wxParse">
+            <view class='wxParse-cont'>
+              <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+    </view>
+  </view>
+</view>

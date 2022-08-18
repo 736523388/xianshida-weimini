@@ -1,0 +1,95 @@
+<!--pages/index/bargainMy/bargainMy.wxml-->
+<view class='bargainMy-box'>
+<!-- 正在砍价 -->
+<view class='now-list'>
+    <view class='bList-list' wx:for="{{bargainList}}" data-id="{{item.activity_id}}" data-bargainid="{{item.order_bargain_id}}" data-successtime="{{item.success_time}}" bindtap='nowClick'>
+        <view class='list-cont clearboth'> 
+          <view class='afleft'>
+            <image mode='widthFix' src='{{item.goods_logo}}'></image>
+            <view class='left-active' wx:if="{{item.success_time < 0}}">砍价失败</view>
+          </view>
+          <view class='afright'>
+            <view class='list-text1'>{{item.goods_title}}</view>
+            <view class='product-text4' wx:if="{{item.success_time == 0}}">
+              <view class='product-hour'>{{item.day}}</view>:
+              <view class='product-hour'>{{item.hour}}</view>:
+              <view class='product-minute'>{{item.minute}}</view>:
+              <view class='product-second'>{{item.second}}</view>
+              <text>后结束</text>
+            </view>
+            <view class='list-text4'>
+              <view class='left' wx:if="{{item.success_time == 0}}">
+                <text>离砍价成功</text>
+                <view>还差{{item.d_value}}元</view>
+              </view>
+              <view class='left' wx:else>
+                <view wx:if="{{item.success_time > 0}}">砍价成功</view>
+                <view wx:else>砍价失败</view>
+              </view>
+              <view class='right' wx:if="{{item.success_time==0}}">
+                继续砍价
+              </view>
+              <view class='right' wx:elif="{{item.success_time>0}}">查看详情</view>
+              <view class='right' wx:else>重砍一个</view>
+            </view>
+          </view>
+        </view>
+      </view>
+  </view>
+    <!-- 砍价成功 -->
+  <!-- <view class='success-list'>
+    <view class='bList-list' wx:for="{{bargainList}}" bindtap='successClick'>
+      <view class='list-cont clearboth'> 
+        <view class='afleft'>
+          <image mode='widthFix' src='{{item.goods_logo}}'></image>
+        </view>
+        <view class='afright'>
+          <view class='list-text1'>{{item.goods_title}}</view>
+          <view class='list-text4'>
+            <view class='left'>
+              <view>砍价成功</view>
+            </view>
+            <view class='right'>
+              点击查看详情
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+    <!-- 砍价失败 -->
+  <!-- <view class='fail-list'>
+    <navigator url='/pages/index/bargainList/bargainList' class='bList-list ' wx:for="{{bargainList}}" >
+      <view class='list-cont clearboth'> 
+        <view class='afleft'>
+          <image mode='widthFix' src='{{item.goods_logo}}'></image>
+          <view class='left-active'>砍价失败</view>
+        </view>
+        <view class='afright'>
+          <view class='list-text1'>{{item.goods_title}}</view>
+          <view class='list-text4'>
+            <view class='left'>      
+              <view>砍价失败</view>
+            </view>
+            <view class='right'>
+              重砍一个
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view> -->
+  <!-- 底部 -->
+  <view class='bargainBottom'>
+      <navigator url='/pages/index/bargainList/bargainList'>
+        <image class='bargainBottom-icon' src='/images/bargain-icon6.png'></image>
+        <image class='bargainBottom-active' src='/images/bargain-icon6b.png'></image>
+        <text>砍价商品</text> 
+      </navigator>
+      <navigator class="active" url='/pages/index/bargainMy/bargainMy'>
+        <image class='bargainBottom-icon' src='/images/bargain-icon7.png'></image>
+        <image class='bargainBottom-active' src='/images/bargain-icon7b.png'></image>
+        <text>我的砍价</text>
+      </navigator>
+  </view>
+</view>

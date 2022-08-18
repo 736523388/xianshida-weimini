@@ -1,0 +1,12 @@
+
+.box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+image{
+  width: 692rpx;
+  height:350rpx;
+  margin-top: 30rpx;
+}

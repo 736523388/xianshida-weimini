@@ -1,0 +1,199 @@
+<!-- ----------------------顶部个人信息展示--------------------- -->
+<view class='header wrap' style='background:#2e2e2e;'>
+  <view class='h_top'>
+    <image class='hrader_img' src='{{headimg}}'></image>
+    <view>
+      <view>姓名：
+        <text>{{optometry_details.name}}</text>
+      </view>
+      <view>性别：
+        <text>{{optometry_details.sex}}</text>
+      </view>
+      <view>生日：
+        <text>{{optometry_details.birthday}}</text>
+      </view>
+      <view>手机号码：
+        <text>{{optometry_details.mobile}}</text>
+      </view>
+      <view>职业：
+        <text>{{optometry_details.zhiye}}</text>
+      </view>
+      <view>验光师：
+        <text>{{optometry_details.yanguangshi}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='footer'>
+  <view class='kuai' style='border-bottom:30rpx solid #890939'></view>
+  <view class='f_list' style='background:#bb205a;'>
+    <view class='fl_box'>
+      <view data-index="{{index}}" bindtap='change_color'>
+        <view class='flb_name {{yg_bool?"flb_name_ac":""}}' bindtap='change_yg'>验光处方</view>
+      </view>
+      <view data-index="{{index}}" bindtap='change_color'>
+        <view class='flb_name {{pj_bool?"flb_name_ac":""}}' bindtap='change_pj'>配镜处方</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='fl_tabel'>
+    <!-- -------------验光处方----------------- -->
+    <view class='flt_center {{yg_bool?"flt_center_show":""}}'>
+
+      <view>
+        <text> </text>
+        <text>左眼</text>
+        <text>右眼</text>
+      </view>
+      <view>
+        <text>球镜</text>
+        <text>{{optometry_details.yanguangchufang.l.sph}}</text>
+        <text>{{optometry_details.yanguangchufang.r.sph}}</text>
+      </view>
+      <view>
+        <text>轴位</text>
+        <text>{{optometry_details.yanguangchufang.l.ax}}</text>
+        <text>{{optometry_details.yanguangchufang.r.ax}}</text>
+      </view>
+      <view>
+        <text>裸视力</text>
+        <text>{{optometry_details.yanguangchufang.l.nv}}</text>
+        <text>{{optometry_details.yanguangchufang.r.nv}}</text>
+      </view>
+      <view>
+        <text>矫视力</text>
+        <text>{{optometry_details.yanguangchufang.l.va}}</text>
+        <text>{{optometry_details.yanguangchufang.r.va}}</text>
+      </view>
+      <view>
+        <text>半瞳距</text>
+        <text>{{optometry_details.yanguangchufang.l.half_pd}}</text>
+        <text>{{optometry_details.yanguangchufang.r.half_pd}}</text>
+      </view>
+      <view>
+        <text>棱镜</text>
+        <text>{{optometry_details.yanguangchufang.l.prism}}</text>
+        <text>{{optometry_details.yanguangchufang.r.prism}}</text>
+      </view>
+      <view>
+        <text>基底</text>
+        <text>{{optometry_details.yanguangchufang.l.base}}</text>
+        <text>{{optometry_details.yanguangchufang.r.base}}</text>
+      </view>
+      <view>
+        <text>角膜曲率</text>
+        <text>{{optometry_details.yanguangchufang.l.kc}}</text>
+        <text>{{optometry_details.yanguangchufang.r.kc}}</text>
+      </view>
+      <view>
+        <text>下加光</text>
+        <text>{{optometry_details.yanguangchufang.l.add}}</text>
+        <text>{{optometry_details.yanguangchufang.r.add}}</text>
+      </view>
+
+    </view>
+    <!-- -------------配镜处方----------------- -->
+    <view class='flt_center {{pj_bool?"flt_center_show":""}}'>
+      <view>
+        <text> </text>
+        <text>左眼</text>
+        <text>右眼</text>
+      </view>
+      <view>
+        <text>球镜</text>
+        <text>{{optometry_details.peijingchufang.l.sph}}</text>
+        <text>{{optometry_details.peijingchufang.r.sph}}</text>
+      </view>
+      <view>
+        <text>轴位</text>
+        <text>{{optometry_details.peijingchufang.l.ax}}</text>
+        <text>{{optometry_details.peijingchufang.r.ax}}</text>
+      </view>
+      <view>
+        <text>裸视力</text>
+        <text>{{optometry_details.peijingchufang.l.nv}}</text>
+        <text>{{optometry_details.peijingchufang.r.nv}}</text>
+      </view>
+      <view>
+        <text>矫视力</text>
+        <text>{{optometry_details.peijingchufang.l.va}}</text>
+        <text>{{optometry_details.peijingchufang.r.va}}</text>
+      </view>
+      <view>
+        <text>半瞳距</text>
+        <text>{{optometry_details.peijingchufang.l.half_pd}}</text>
+        <text>{{optometry_details.peijingchufang.r.half_pd}}</text>
+      </view>
+      <view>
+        <text>棱镜</text>
+        <text>{{optometry_details.peijingchufang.l.prism}}</text>
+        <text>{{optometry_details.peijingchufang.r.prism}}</text>
+      </view>
+      <view>
+        <text>基底</text>
+        <text>{{optometry_details.peijingchufang.l.base}}</text>
+        <text>{{optometry_details.peijingchufang.r.base}}</text>
+      </view>
+      <view>
+        <text>角膜曲率</text>
+        <text>{{optometry_details.peijingchufang.l.kc}}</text>
+        <text>{{optometry_details.peijingchufang.r.kc}}</text>
+      </view>
+      <view>
+        <text>下加光</text>
+        <text>{{optometry_details.peijingchufang.l.add}}</text>
+        <text>{{optometry_details.peijingchufang.r.add}}</text>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+<view class='other_data_box'>
+  <view class='odb_title'>其他数据</view>
+  <view class='odb_content'>
+    <view>
+      <text>总瞳距</text>
+      <text>{{optometry_details.zongtongju}}</text>
+    </view>
+    <view>
+      <text>建议光心距</text>
+      <text>{{optometry_details.jianyiguangxinju}}</text>
+    </view>
+    <view>
+      <text>下光瞳距</text>
+      <text>{{optometry_details.xiaguangtongju}}</text>
+    </view>
+    <view>
+      <text>瞳高</text>
+      <text>{{optometry_details.tonggao}}</text>
+    </view>
+    <view>
+      <text>复查日期</text>
+      <text>{{optometry_details.review_time}}</text>
+    </view>
+    <view>
+      <text>验光日期</text>
+      <text>{{optometry_details.test_time}}</text>
+    </view>
+    <view>
+      <text>	K.卡</text>
+      <text>{{optometry_details.k_ka}}</text>
+    </view>
+    <view>
+      <text>用途</text>
+      <text>{{optometry_details.yongtu}}</text>
+    </view>
+    <view>
+      <text>参数来源</text>
+      <text>{{optometry_details.canshulaiyuan}}</text>
+    </view>
+    <view>
+      <text>配镜目的</text>
+      <text>{{optometry_details.peijingmudi}}</text>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,121 @@
+  
+  <view class='second-time'>
+   
+   <!-- <view class='tiele-box'>
+   <view class="{{timesTitle.tabId == 1?'active':''}}" bindtap='timeActive' data-index="1" >会员</view>
+   </view>
+      <view class='tiele-box'>
+   <view class="{{timesTitle.tabId == 2?'active':''}}" bindtap='timeActive' data-index="2" >代言人</view>
+   </view>
+      <view class='tiele-box'>
+   <view class="{{timesTitle.tabId == 3?'active':''}}" bindtap='timeActive' data-index="3" >签约代言人</view>
+   </view> -->
+  
+  </view>
+
+<!-- <view class='header'>
+  <swiper current='{{current}}' previous-margin="50rpx" next-margin="50rpx" bindchange="change_current">
+    <swiper-item wx:for="{{equities_msg}}" style="width:640rpx !important;">
+      <view class='h_item {{index==current?"":"no_ac"}}'>
+        <image mode='widthFix' style='width:600rpx;background:#eee' src='{{item.level_logo}}'></image>
+        <view class='item_box'>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view> -->
+
+<view class='content_banner'>
+  <swiper current='{{current}}' style="height:{{swiper_height+'px'}}" bindchange="change_current">
+    <swiper-item wx:for="{{equities_msg}}">
+      <view class="cb_item  {{'view_h'+index}}">
+
+
+      <image mode='widthFix' style='width:712rpx;' src='{{item.level_logo}}'></image>
+      <image mode='widthFix' style='width:712rpx;' src='{{item.level_image}}'></image> 
+      
+        <!-- <view class="cb_item1" wx:if="{{item.open_purchase}}" style='background:{{item.background_color_button}}' bindtap='pay_member'>￥{{item.purchase_price}} 立即升级</view>
+        <form class='cb_item3' wx:if="{{item.open_apply}}" bindsubmit='submit'>
+          <view class='form'>
+            <text>提交申请</text>
+            <view>
+              <text>姓名</text>
+              <input name="name"></input>
+            </view>
+            <view>
+              <text>电话</text>
+              <input name="phone"></input>
+            </view>
+            <view>
+              <text>地址</text>
+              <input name="address"></input>
+            </view>
+            <view class='f_textarea'>
+              <view>
+                <text>申请条件</text>
+                <text>限{{cursor}}/400字</text>
+              </view>
+              <textarea maxlength='400' name="condition" bindinput='word_num'></textarea>
+            </view>
+          </view>
+          <button form-type='submit' class='submit'>提交</button>
+        </form> -->
+
+
+
+      <view wx:if="{{item.id == 2}}">
+
+
+        <radio-group class="radio-group" bindchange="radioChange">    
+          <label class="radio" wx:for="{{item.activeTime}}" wx:for-item="activeTimeItem">
+          
+          <view class='radio-item'>         
+              <text class='radio-item-title'>{{activeTimeItem.level_title}}</text>
+              <text class='radio-item-price'>¥{{activeTimeItem.purchase_price}}</text>
+              <radio class='radio-item-radio' value="{{activeTimeItem.id}}" checked="{{item.id == activeTimeItem.id}}"  /> 
+            </view>      
+          </label>
+        </radio-group>
+      
+      
+      
+      
+      </view>
+
+
+      <view class='hello'>
+        <view class='world'>
+          <image src='/images/my/logo.png'></image>
+          <view>加入可优猫会员,立享特权</view>
+        </view>
+
+
+        <view wx:if="{{item.is_pay_bottom}}"  class='now-join'>
+          <image src='/images/my/now-join.png'></image>
+          
+          <view bindtap='pay_member' >立即加入</view>
+        
+        </view>
+      </view>
+
+
+
+
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+<!-- <view class='content1' wx:if="{{equ_name=='会员用户'}}">
+  <image mode='widthFix' src='{{equ_img}}'></image>
+  <view bindtap='pay_member'>￥69/年 立即升级</view>
+</view>
+
+<view class='content2' wx:if="{{equ_name=='代言人'}}">
+  <image mode='widthFix' src='{{equ_img}}'></image>
+  <view bindtap='pay_member'>￥199/年 立即升级</view>
+</view>
+
+<view class='content3' wx:if="{{equ_name=='签约代言人'}}">
+  <image mode='widthFix' src='{{equ_img}}'></image>
+  
+</view> -->

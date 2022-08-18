@@ -1,0 +1,48 @@
+
+
+<!--pages/addId/addId.wxml-->
+<view class='addId-box borderTop'>
+  <form bindsubmit='submit'>
+    <!-- 资料填写 -->
+    <view class='addId-top'>
+      <view class='wrap'>
+        <view class='addId-input'>
+          <text>姓名</text>
+          <input name="username" value='{{username}}' placeholder='请输入姓名'  ></input>
+        </view>
+        <view class='addId-input'>
+          <text>身份证号</text>
+          <input name="id_card" value='{{id_card_num}}' placeholder='请输入身份证号码'  ></input>
+        </view>
+        <view class='addId-id'>
+          <view class='id-title'>
+            请上传身份证照片
+            <text>（身份证号码会加密处理，不会泄露您的信息）</text>
+          </view>
+          <view class='id-img'>
+            <image bindtap='chooseimage1' src='{{idImg1}}'></image>
+            <image bindtap='chooseimage2' src='{{idImg2}}'></image>
+            <image src='https://cdn.xhzsm.com/addId-img1.png'></image>
+            <image src='https://cdn.xhzsm.com/addId-img2.png'></image>
+          </view>
+        </view>
+        <view class='addId-word'>
+          <view class='word-title'>
+            为什么需要实名认证
+          </view>
+          <view class='word-content'>
+            <view>
+              <view></view>
+              <text>你购买的商品包括保税、跨境商品；</text>
+            </view>
+            <view>
+              <view></view>
+              <text>根据海关清关新快件政策规定，必须提供收货人身份证正反面照片，为避免清关受到影响，请上传真实有效的收货人身份证反面照片可优猫保证此照片用于清关，保护资料安全。</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class='submit' formType='submit'>保存</button>
+  </form>
+</view>

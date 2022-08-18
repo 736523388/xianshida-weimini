@@ -1,0 +1,394 @@
+<!--pages/index/productContent/productContent.wxml-->
+<import src="../../../wxParse/wxParse.wxml"/> 
+<view class='pCont-box borderTop'>
+  <!-- 轮播图 -->
+  <swiper class='pCont-ban' indicator-dots='true' indicator-active-color='#f32e6e' indicator-color='#d2d2d2' autoplay='true' circular='true'>
+   <block wx:for="{{detail.goods_image}}">
+    <swiper-item>
+      <image mode='widthFix' src="{{item}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+  </swiper>
+  <!-- 秒杀倒计时 -->
+  <view class='secondCont-time' style="display:{{activityKey == 'spike'?'block':'none'}}">
+    <image mode='widthFix' src='https://cdn.xhzsm.com/aCont-img1.png'></image>
+    <view class='wrap'>
+      <view class='left'>
+        <text>¥{{detail.activity_info.activity.activity_price}}</text>
+        <view>{{activity_name}}</view>
+      </view>
+      <view class='right'>
+        <view>距结束</view>
+        <view class='right-cont'>
+          <view>{{aday}}</view>天<view>{{ahour}}</view>时<view>{{aminute}}</view>分<view>{{asecond}}</view>秒
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 拼团 -->
+  <view class='secondCont-time' style="display:{{activityKey == 'group'?'block':'none'}}">
+    <image mode='widthFix' src='https://cdn.xhzsm.com/aCont-img1.png'></image>
+    <view class='groupwrap'>
+      <view class='left'>
+        <text>¥{{detail.activity_info.activity.activity_price}}</text>
+        <view >单买价 ¥{{show_price === 'market_price' ? detail.spec[0].market_price : detail.spec[0].selling_price}}</view>
+      </view>
+      <view class='right'>{{detail.activity_info.group_number}}人正在拼</view>
+    </view>
+  </view>
+  <!-- 文字 -->
+  <view class='pCont-text'>
+    <!-- 价格 -->
+    <view class='pCont-price'>
+      <view class='wrap'>
+        <view class='left'>
+          <view class='price1'  style="display:{{activityKey == 'spike' || activityKey == 'group'?'none':'block'}}">
+            <!-- <view class='price1-text1'>￥{{show_price === 'market_price' ? detail.spec[0].market_price : detail.spec[0].selling_price}}</view> -->
+
+
+
+            <view class='price1-text1'>
+            <view wx:if="{{show_price === 'selling_price'}}">批发价:{{detail.spec[0].selling_price}}</view>
+            <view wx:if="{{show_price === 'market_price'}}">零售价:{{detail.spec[0].market_price}}</view>
+              <view class="text4">原价:{{detail.spec[0].huaxian_price}}</view>
+                   
+            <!-- ￥{{show_price === 'market_price' ? detail.spec[0].market_price : detail.spec[0].selling_price}} -->
+            </view>
+            <!-- <view class='price1-text3'>
+              <view wx:if="{{show_price === 'market_price'}}">零售价:{{detail.spec[0].market_price}}     </view>
+              <view>原价:{{detail.spec[0].huaxian_price}}</view>     
+            
+            </view> -->
+          </view>
+
+           <!-- 分享赚钱 -->
+          <view class='pCont-save' wx:if="{{show_price === 'selling_price'}}" style="display:{{detail.share_earn <= 0 ?'none':'block'}};" >
+            <view class='wrap'>
+              <view>             
+                  <!-- <text>分享赚{{detail.share_earn}}元~</text>                -->
+              </view>
+            </view>
+          </view>
+          
+          <view class='price2'>
+            {{detail.goods_title}} 
+          </view>
+          <view class='price3'>
+            {{detail.goods_desc}}
+          </view>
+        </view>
+
+         <view class='right' bindtap='shareShow' style="top:{{activityKey == 'spike' || activityKey == 'group'?'67%':'63%'}}">
+          <image src='/images/share.png'></image>
+        </view>
+
+
+      </view>
+    </view>
+     <!-- 还差1人成团 -->
+    <view class='aCont-lack'  style="display:{{activityKey == 'group'?'block':'none'}}">
+      <!-- 已拼 -->
+      <!-- <view class='aCont-lack1'>
+        <view class='wrap clearboth'>
+          <view class='afleft'>
+            <image mode='widthFix' src='/images/aCont-icon1.png'></image>
+            <text>已拼646件</text>
+            <text> | </text>
+          </view>
+          <swiper  class='lack1-move afright' autoplay='true' duration='2000' circular='true' vertical='true'>
+            <block >
+              <swiper-item>
+                <text>xxxx拼团成功</text>
+              </swiper-item>
+            </block>
+            <block >
+              <swiper-item>
+                <text>xxxx拼团成功</text>
+              </swiper-item>
+            </block>
+            <block >
+              <swiper-item>
+                <text>xxxx拼团成功</text>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view> -->
+      <!-- 还差1人成团 -->
+      <view class='aCont-lack2' wx:for="{{detail.activity_info.grouping}}">
+        <view class='wrap'>
+          <view class='left'>
+            <view class='left-img'><image src='/images/aCont-icon1.png' mode='widthFix'></image></view>
+            <view class='left-text'>
+              <view>{{item.nickname}}</view>
+              <!-- <view>临沂市</view> -->
+            </view>
+          </view>
+          <view class='right'>
+            <view class='right-text'>
+              <view>还差{{item.residue}}人成团</view>
+              <view>剩余{{item.hour}}:{{item.minute}}:{{item.second}}</view>
+            </view>
+            <!-- url="/pages/index/assembleGo/assembleGo?id={{item.id}}" -->
+            <view data-id="{{item.id}}" bindtap='getGroup' class='right-btn'>
+              <block wx:if="{{item.mid == sceneUserId}}">查看详情</block>
+              <block wx:else>去参团 ></block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 优惠券 -->
+    <view class='pCont-discount'>
+      <view class='wrap'>
+        <view class='left'>优惠券</view>
+        <navigator url='/pages/index/coupon/coupon?goods_id={{aid}}' class='right' >
+          <text>我要领券</text><image src='/images/productContent-icon2.png'></image>
+        </navigator>
+      </view>
+    </view>
+
+    <!-- 拼团玩法 -->
+    <view class='aCont-play' style="display:{{activityKey == 'group'?'block':'none'}}">
+      <view class='play-title'>
+        <view class='wrap clearboth'>
+          <view class='afleft'>拼团玩法</view>
+          <navigator url='/pages/index/assembleRule/assembleRule' class='afright'>
+            <text>详细规则</text><image mode='widthFix' src='/images/aCont-icon2.png'></image>
+          </navigator>
+        </view>
+      </view>
+      <view class='play-cont'>
+        <view class='wrap'>
+          <view class='play-text'>
+            <text>① 开团/参团</text>
+            <image mode='widthFix' src='/images/aCont-icon2.png'></image>
+          </view>
+          <view class='play-text'>
+            <text>② 开团/参团</text>
+            <image mode='widthFix' src='/images/aCont-icon2.png'></image>
+          </view>
+          <view class='play-text'>
+            <text>③满员发货</text>
+            <view>不满自动退款</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详情 评价-->
+    <view class='pCont-details'>
+      <!-- title -->
+      <view class='details-title'>
+        <view class='wrap'>
+          <view bindtap='id1' class="left" id="{{id==flage?'details':''}}">商品详情</view>
+          <view bindtap='id2' class="right" id="{{id2==flage?'details':''}}">
+            <view>商品评价</view>
+            <!-- <view>（好评<text>{{detail.favorablerate}}</text>）</view> -->
+          </view>
+        </view>
+      </view>
+      <!-- 商品详情 -->
+      <view class='details1' style="display:{{id==true?'block':'none'}};">
+        <view class="wxParse">
+            <view class='wxParse-cont'>
+              <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+      </view>
+      <!-- 商品评价 -->
+      <view class='evaluate' style="display:{{id2==true?'block':'none'}}">
+        <!-- tab切换 -->
+        <view class='evaluate-tab'>
+          <view class='wrap'>
+            <view bindtap='bindGetComment' data-id="0" class="{{goodsCommentType==0?'active': ''}}">全部({{goodsCommentCount.quanbu}})</view>
+            <view bindtap='bindGetComment' data-id="1" class="{{goodsCommentType==1?'active': ''}}">好评({{goodsCommentCount.haoping}})</view>
+            <view bindtap='bindGetComment' data-id="2" class="{{goodsCommentType==2?'active': ''}}">有图({{goodsCommentCount.youtu}})</view>
+          </view>
+        </view>
+        <!-- 评论列表 全部-->
+        <scroll-view class='{{commentHeight}}' scroll-y="true" bindscrolltolower="comment" >
+          <view class='list-cont' wx:for="{{goodsComment}}">
+            <view class='wrap'>
+              <!-- 昵称 -->
+              <view class='list-nickname'>
+                <view class='left'>
+                  <view class='img'><image src='{{item.member.headimg}}'></image></view>
+                  <text>{{item.member.nickName}}</text>
+                </view>
+                <view class='right'>{{item.member.create_at}}</view>
+              </view>
+              <!-- 评论 -->
+              <view class='list-text'>{{item.describe}}</view>
+              <!-- 图片 -->
+              <view class='list-img clearboth'>
+                <image bindtap='showImg' data-father="{{item}}" data-src="{{items}}" data-index="{{index}}"  wx:for="{{item.image}}" wx:for-item="items" class='afleft' mode='widthFix' src='{{items}}'></image>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+
+      </view>
+    </view>
+    <!-- 禁用词说明 -->
+    <!-- <view class='pCont-prohibit'>
+      <view class='wrap'>
+        <view>
+          <view class='prihibit-title'>关于禁用词的说明</view>
+          <view class='prihibit-text'>
+            本店严格遵守《中华人民共和国广告法》等相关规定，并已尽最大注意义务及审查义务，
+            竭力避免出现相关禁用词（如“顶级”、“最佳”等极限化词汇。）
+          </view>
+          <view class='prihibit-text'>
+            本店严格遵守《中华人民共和国广告法》等相关规定，并已尽最大注意义务及审查义务，
+            竭力避免出现相关禁用词（如“顶级”、“最佳”等极限化词汇。）
+          </view>
+        </view>
+      </view>
+      <view class='prihibit-bottom'>
+        <view>到底了哦~</view>
+      </view>
+    </view> -->
+    <!-- tabar -->
+    <view class='pCont-tabar clearboth'>
+      <view class='afleft'>
+        <view bindtap='indexLink'>
+          <image src='/images/pCont-tabar1.png'></image>
+          <view>首页</view>
+        </view>
+        <view>
+          <button open-type='contact'>
+          <image src='/images/pCont-tabar2.png'></image>
+          <view>客服</view>
+          </button>
+        </view>
+        <view bindtap='shop' class='tabar3'>
+          <image src='/images/pCont-tabar3.png'></image>
+          <view>购物车</view>
+          <view class='tabar3-num'>{{goodsNum}}</view>
+        </view>
+      </view>
+      <view class='afright clearboth'>
+        <view bindtap='Readytobuy' data-status="1" class='afleft'>{{activityKey == 'group' ? '单独购买' : '加入购物车'}}</view>
+        <view bindtap='Readytobuy' data-status="2" class='afright'>{{activityKey == 'group' ? '发起拼团' : '立即购买'}}</view>
+      </view>
+    </view>
+    <!-- 选择规格 -->
+    <view class='specifications-box' style="display:{{close === true?'block':'none'}}">
+      <view class='sMain'  style="bottom:{{close===true?'0':'-855rpx'}}">   
+        <!-- 图片 -->
+        <view class='cont-img'>
+          <view class='wrap'>
+            <view class='left'>
+              <view class='img'>
+                <image mode='widthFix' src='{{detail.goods_logo}}'></image>
+              </view>
+               <!-- 秒杀 拼团价格显示 -->
+              <view class='img-price' wx:if="{{activityKey == 'spike' || activityKey == 'group'}}">
+                <view wx:if="{{optionFlage === true}}">
+                  <block wx:if="{{ activityKey == 'group' && alone_pay }}">
+                    ¥{{show_price === 'market_price' ? checkspec.market_price : checkspec.selling_price}}
+                  </block>
+                  <block wx:else>¥{{detail.activity_info.activity.activity_price}}</block>
+                </view>
+                <text wx:else>请选择规格</text>
+              </view>
+              <!-- 普通产品价格 -->
+              <view class='img-price' wx:else>
+                <view wx:if="{{optionFlage === true}}">¥{{show_price === 'market_price' ? checkspec.market_price : checkspec.selling_price}}</view>
+                <!-- <text wx:if="{{optionFlage === true}}">库存{{checkspec.goods_stock - checkspec.goods_sale}}件</text> -->
+                <text wx:else>请选择规格</text>
+              </view>
+             
+            </view>
+            <view class='right'>
+              <view bindtap='close'>X</view>
+            </view>
+          </view>
+        </view>
+        <!-- 规格  数量  温馨提示-->
+          <view class='cont-num'>
+            <!-- 规格 -->
+            <view class='specifications' wx:for="{{detail.spec_list}}">
+              <view class='wrap'>
+                <view class='cont-title'>{{item.name}}</view>
+                <view class='cont-option clearobth'>
+                  <view class="{{(value.is_seleted !== false || value.is_elective === false)? value.is_elective === false ? 'afleft disabled' : 'afleft active' : 'afleft'}}" data-key1="{{index}}" data-key2="{{key}}" bindtap='setSpecSeleted' wx:for="{{item.value}}" wx:for-item="value" wx:for-index="key" wx:if="{{value.is_show}}">{{value.spec_title}}</view>
+                  
+                </view>
+              </view>
+            </view>
+            <!-- 数量 -->
+            <view class='num-box'>
+              <view class='wrap clearboth'>
+                <view class='cont-title afleft'>数量</view>
+                <view class='afright'>
+                  <view bindtap='reduce' class='reduce'>-</view>
+                  <view class='num'>{{Num}}</view>
+                  <view bindtap='plus' class='plus'>+</view>
+                </view>
+              </view>
+            </view>
+            <!--温馨提示 -->
+            <view class='tips' wx:if="{{0}}">
+              <view class='wrap'>
+                <text class='red'>温馨提示：</text>
+                <text>该商品属于易碎商品，购买时请注意</text>
+              </view>
+            </view>
+          </view>
+          <!-- 规格  数量  温馨提示完 -->
+          <!-- 购买按钮 -->
+          <view class='btn-box'>
+            <view bindtap='ConfirmOperation' class="{{optionFlage?'wrap btn active':'wrap btn'}}">确定</view>
+            
+          </view>
+      </view>
+    </view>
+
+    
+
+    <!-- 分享弹出层 -->
+    <view class='productContent-share' style="display:{{shareFlage===true?'block':'none'}}">
+      <view class='share-box'>
+        <view class='share-cont'>
+          <view class='share-icon'>
+            <button open-type='share' class='share-img'>
+              <image mode='widthFix' src='/images/wechat.png'></image>
+            </button>
+            <view class='share-text'>发给好友</view>
+          </view>
+          <view class='share-icon'>
+            <view class='share-img' bindtap='imgShare'>
+              <image src='/images/pic.png' mode='widthFix'></image>
+            </view>
+            <view class='share-text'>保存图片</view>
+          </view>
+          <view class='share-close' bindtap='shareHide'><image src='/images/productContent-icon8.png' mode='widthFix'></image></view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 分享图片 -->
+    <view class='imgShare-box' bindtap='imgHide' style="display:{{imgFlage===true?'block':'none'}}">
+      <view class='imgShare-cont'>
+        <image mode='widthFix' src='{{qr_code}}'></image>
+      </view>
+    </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

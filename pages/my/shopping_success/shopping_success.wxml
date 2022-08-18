@@ -1,0 +1,19 @@
+<!--pages/collectGoodsSuccess/collectGoodsSuccess.wxml-->
+<view class='cGS-box'>
+  <view class='wrap'>
+    <view class='cGS-title'>
+      <image src='/images/cGS-icon.png'></image>
+      <text>交易成功</text>
+    </view>
+    <view class='cGS-text'>去评价一下本次的购物体验吧</view>
+    <view class='cGS-link'>
+      <view bindtap='link'>返回首页</view>
+      <navigator url='../index/index'>立即评论</navigator>
+    </view>
+  </view>
+</view>
+
+ <!-- 底部logo -->
+  <view class='bottom-logo'>
+    <image src='/images/two_code.png'></image>
+  </view>

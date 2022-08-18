@@ -1,0 +1,58 @@
+<view class='header'>
+  <image src='../../../images/my/address_add.png' bindtap='skip_addid'></image>
+  <text>添加实名认证</text>
+</view>
+
+<view class='main'>
+  <!-- ----------------地址----------------- -->
+  <view class="address" wx:if="{{bool}}">
+    <block wx:for="{{id_list}}">
+      <view style='height:30rpx '></view>
+      <view class="address_item">
+        <view class="top">
+          <text>{{item.username}}</text>
+          <text>{{item.id_card}}</text>
+        </view>
+        <view class='center'>
+          <view class='changID-img'>
+            <text style="display:{{item.image_front == ''?'block':'none'}}">身份证未上传</text>
+            <image mode='widthFix' style='width:204rpx' src='{{item.image_front}}'></image>
+          </view>
+          <view class='changID-img'>
+            <text style="display:{{item.image_other == ''?'block':'none'}}">身份证未上传</text>
+            <image mode='widthFix' style='width:204rpx' src='{{item.image_other}}'></image>
+          </view>
+          <view class='changID-btn' bindtap='setdefault' data-addressid='{{item.id}}' data-index="{{index}}">
+            <!-- <image src='{{item.is_default==1?"../../../images/my/selectc.png":"../../../images/my/selecth.png"}}' bindtap='changedefault'></image>
+            <text>设置默认</text> -->
+            <button type="warn" size="default" data-index="{{index}}" plain="" bindtap="changeSet">使用</button> 
+          </view>
+        </view>
+        <view class='bottom'>
+          
+          <view class='bot_right'>
+            <view style='margin-right:6rpx;' bindtap='redact' data-id='{{item.id}}' data-index="{{index}}">
+              <image mode='widthFix' src='../../../images/my/xiugai.png'></image>
+              <text>编辑</text>
+            </view>
+            <view bindtap='deleteaddress' data-index="{{index}}" data-addressid='{{item.id}}'>
+              <image mode='widthFix' src='../../../images/my/shanchu.png' style='width:31rpx;'></image>
+              <text>删除</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+
+  <!-- -------------没有收货地址时显示-------------- -->
+  <view class='null' wx:else>
+    <text>您还没有添加实名认证哦</text>
+  </view>
+
+  <!-- 底部logo -->
+  <view class='bottom-logo'>
+    <image src='/images/two_code.png'></image>
+  </view>
+</view>

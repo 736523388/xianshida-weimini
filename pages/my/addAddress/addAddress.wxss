@@ -1,0 +1,41 @@
+page{
+  background:#f1f1f1;
+}
+.addAddress-box{
+  background: #fff;
+}
+.addAddress-cont{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  font-size:27rpx;
+  color: #000;
+}
+.addAddress-cont text{
+  width: 30%;
+}
+.addAddress-cont input{
+  width: 70%;
+  color: #121314;
+}
+/* 按钮 */
+.btn,
+.btn2{
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 27rpx;
+  color: #fff;
+  border-radius: 8px;
+  background: rgb(177, 173, 173);
+  margin-top: 30rpx;
+}
+.btn2{
+  background: #f32e6e;
+}
+
+
+
+

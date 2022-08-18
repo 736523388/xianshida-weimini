@@ -1,0 +1,7 @@
+<template name="footer">
+  <view class='footer' wx:if="{{ isEarth === false}}">
+    <view class='footer_text'>
+      <text>没有更多了</text>
+    </view>
+  </view>
+</template>

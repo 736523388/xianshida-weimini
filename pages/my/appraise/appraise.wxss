@@ -1,0 +1,203 @@
+page{
+  width: 100%;
+  height:100%;
+  background: #f1f1f1;
+}
+.main {
+  width: 100%;
+  height: auto;
+}
+
+/* 最上方商品 */
+
+.goods_list {
+  width: 100%;
+  background: #fff;
+  margin-top: 10rpx;
+}
+
+.gl_top {
+  width: 100%;
+   box-sizing: border-box;
+  padding: 28rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   border-bottom:1rpx solid #eee;
+}
+.gl_bottom{
+   width: 100%;
+   box-sizing: border-box;
+  padding:22rpx 20rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.gl_bottom>text{
+  font-size: 24rpx;
+  color: #8d8d8d;
+  margin-left:35rpx; 
+}
+
+.gl_top>image {
+  width: 234rpx;
+  height: 174rpx;
+  border-radius: 10rpx;
+}
+
+.gl_top>view {
+  width: 65%;
+  height: 170rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gl_top>view>text:nth-of-type(1){
+  font-size: 28rpx;
+  color: #121314;
+}
+.gl_top>view>text:nth-of-type(2){
+  font-size:22rpx;
+  color: #949494;
+}
+.gl_top>view>.price {
+  font-size: 36rpx;
+  color: #f00;
+}
+
+.gl_bot {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+
+.gl_bot>text {
+  font-size: 24rpx;
+  color: #8d8d8d;
+  margin: 23rpx 10rpx;
+}
+
+/* 填写评论 */
+
+.word {
+  width: 100%;
+  background: #fff;
+  margin-top: 10rpx;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.textarea {
+  width: 100%;
+  height: 150rpx;
+  overflow: hidden;
+}
+
+.textarea>textarea {
+  width: 100%;
+  height: 100%;
+  font-size: 24rpx;
+  color: #121314;
+}
+
+.photo {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.photo>view {
+  width: 130rpx;
+  height: 130rpx;
+  border: 2rpx dashed #8d8d8d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:20rpx 20rpx 20rpx 0;
+}
+
+.photo>view>image {
+  width: 47rpx;
+  height: 40rpx;
+  margin-bottom: 15rpx;
+}
+
+.photo>view>text {
+  font-size: 20rpx;
+  color: #8d8d8d;
+}
+
+/* 星级评论 */
+
+.comment1-description {
+  width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.star-pos {
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.description {
+  font-size: 25rpx;
+  color: #8d8d8d;
+}
+
+.stars {
+  /* 灰色星星 */
+  background: url("https://sxdq.aa.cqxueao.cn/public/static/bac/start_hui.png");
+  width: 30rpx;
+  height: 30rpx;
+  background-size: 30rpx 30rpx;
+  margin: 0 20rpx;
+  transition: 600ms;
+}
+
+.on {
+  /* 彩色星星 */
+  background: url("https://sxdq.aa.cqxueao.cn/public/static/bac/start_car.png");
+  width: 30rpx;
+  height: 30rpx;
+  background-size: 30rpx 30rpx;
+  transition: 1s;
+  transform: scale(1, 1);
+}
+
+.weui-cells_after-title {
+  width: 92%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+
+.btnSf {
+  width: 92%;
+  margin: 30rpx auto;
+}
+
+.btnSf button {
+  background: #57b6ba;
+  color: #fff;
+}
+
+.btnSf button:active {
+  background: #5bc2c6;
+  color: #fff;
+}
+

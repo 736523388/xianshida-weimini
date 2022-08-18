@@ -1,0 +1,119 @@
+{
+  "pages": [  
+    "pages/index/index/index",
+    "pages/my/wholesaler/wholesaler",
+    "pages/my/my_optometry_list/my_optometry_list",
+    "pages/my/my_optometry_details/my_optometry_details",
+ 
+    "pages/index/subbranch/subbranch",
+    "pages/index/single/single",
+    "pages/index/search/search",
+    "pages/index/second/second",
+    "pages/index/secondCont/secondCont",
+    "pages/index/secondRule/secondRule",
+    "pages/index/coupon/coupon",
+    "pages/index/productContent/productContent",
+    "pages/index/bargainList/bargainList",
+    "pages/index/bargainMy/bargainMy",
+    "pages/index/bargainCont/bargainCont",
+    "pages/index/bargainList2/bargainList2",
+    "pages/index/bargainOrderCon/bargainOrderCon",
+    "pages/index/changeAddress/changeAddress",
+    "pages/index/changeIDcard/changeIDcard",
+    "pages/index/assembleSuccess/assembleSuccess",
+    "pages/index/assemble/assemble",
+    "pages/index/groupOrderCon/groupOrderCon",
+    "pages/index/assembleGo/assembleGo",
+    "pages/index/assembleContent/assembleContent",
+    "pages/index/assembleRule/assembleRule",
+    "pages/index/shop/shop",
+    "pages/classify/classify/classify",
+    "pages/classify/classifyList/classifyList",
+    "pages/classify/brandCont/brandCont",
+    "pages/classify/brand/brand",
+    "pages/classify/brandList/brandList",
+    "pages/shop_care/shop_care/shop_care",
+    "pages/my/my/my",
+    "pages/my/article/article",
+    "pages/my/phone/phone",
+    "pages/my/logistics/logistics",
+    "pages/my/sales_return/sales_return",
+    "pages/my/money_return/money_return",
+    "pages/my/my_idcard_list/my_idcard_list",
+    "pages/my/confirm_order/confirm_order",
+    "pages/my/order_details/order_details",
+    "pages/my/my_jf/my_jf",
+    "pages/my/my_footprint/my_footprint",
+    "pages/my/my_order/my_order",
+    "pages/my/appraise/appraise",
+    "pages/my/custom_made/custom_made",
+    "pages/my/my_equities/my_equities",
+    "pages/my/about/about",
+    "pages/my/help/help",
+    "pages/my/help_details/help_details",
+    "pages/my/two_code/two_code",
+    "pages/my/my_address/my_address",
+    "pages/my/refund_money/refund_money",
+    "pages/my/refund_money_list/refund_money_list",
+    "pages/my/set_feedback/set_feedback",
+    "pages/my/set_person_msg/set_person_msg",
+    "pages/my/set/set",
+    "pages/my/my_coupon/my_coupon",
+    "pages/my/addId/addId",
+    "pages/my/logs/logs",
+    "pages/my/team/team",
+    "pages/my/login/index",
+    "pages/my/withdraw_cash_success/withdraw_cash_success",
+    "pages/my/withdraw_cash/withdraw_cash",
+    "pages/my/agreement/agreement",
+    "pages/my/shopping_success/shopping_success",
+    "pages/my/addAddress/addAddress"
+  ],
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "鲜食达",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#fff"
+  },
+  "tabBar": {
+    "color": "#8e8e8e",
+    "selectedColor": "#2ccc20",
+    "list": [
+      {
+        "pagePath": "pages/index/index/index",
+        "text": "首页",
+        "iconPath": "images/shouye_ico.png",
+        "selectedIconPath": "images/shouye.png"
+      },
+      {
+        "pagePath": "pages/classify/classify/classify",
+        "text": "分类",
+        "iconPath": "images/fenlei_ico.png",
+        "selectedIconPath": "images/fenlei.png"
+      },
+      {
+        "pagePath": "pages/shop_care/shop_care/shop_care",
+        "text": "购物车",
+        "iconPath": "images/gwc_ico.png",
+        "selectedIconPath": "images/gwc.png"
+      },
+      {
+        "pagePath": "pages/my/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_ico.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
