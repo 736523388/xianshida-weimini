@@ -1,0 +1,14 @@
+<template name="goods_card">
+  <view style="width: 342rpx;height: auto;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);box-sizing: border-box;padding: 10rpx;font-size: 24rpx;">
+    <view style="width: 100%;height: auto;">
+      <image mode="widthFix" src="{{item.goods_logo}}" style="width: 100%;height: auto;"></image>
+    </view>
+    
+    <view style="color: #000;"><text>{{item.goods_title}}</text></view>
+    <view>
+      <view style="display: inline-block;"><text>¥</text><text style="color: #DA251C;font-weight: 600;font-size: 28rpx;padding-left: 6rpx;">{{item.market_price}}</text></view>
+      <view style="display: inline-block;text-decoration: line-through;padding-left: 5px;"><text>{{item.huaxian_price}}</text></view>
+    </view>
+    
+  </view>
+</template>

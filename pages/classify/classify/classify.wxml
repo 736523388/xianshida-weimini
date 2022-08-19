@@ -32,12 +32,12 @@
         <view>
           <text class='cc_title'>{{item.goods_title}}</text>
           <view>
-            <view class='amiddle' style="color: #DA251C;font-weight: 600;">
-              <text style="font-size: 14px;">￥</text>
-              <text>{{item[aright.show_price]}}</text>
+            <view class='amiddle'>
+              <text>￥</text>
+              <text style="color: #DA251C;font-weight: 600;font-size: 14px;">{{item[aright.show_price]}}</text>
             </view>
             <view class='amiddle c999' style="text-decoration: line-through;padding-left: 5px;">
-              <text>￥{{item.huaxian_price}}</text>
+              <text>{{item.huaxian_price}}</text>
             </view>
           </view>
         </view>

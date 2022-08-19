@@ -808,14 +808,18 @@ recommend-scroll {
 .menu_container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  margin: 10px;
+  /* width: 100%; */
   /* margin-top: 30rpx;  */
-  margin-bottom: 18rpx;
+  /* margin-bottom: 18rpx; */
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    /* box-sizing: border-box; */
+    border-radius: 2%;
 }
 
 .menu_item {
   font-family: PingFang-SC-Medium;
-  width: 25%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -824,14 +828,13 @@ recommend-scroll {
   font-weight: 500;
   color: #333;
   box-sizing: border-box;
-  padding-bottom: 22rpx;
-  padding-top: 22rpx;
+  padding: 10rpx 0;
 }
 
 .menu_icon {
   width: 110rpx;
   height: 110rpx;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   /* padding-bottom: 12rpx; */
 }
 

@@ -1,24 +1,25 @@
+<import src="../../../templates/goods_card.wxml" />
 <view class='index-box'>
-    <view class='ban-box'>
-        <!-- banner图 -->
-        <swiper class="swipers" indicator-dots='true' interval='5000' circular='true' autoplay="{{autoplay}}" current="{{currentSwiper}}" bindchange="swiperChange">
-            <block wx:for="{{imgs}}">
-                <!-- <navigator wx:if="{{item.id!=0}}" url='../productContent/productContent?id={{item.id}}'> -->
-                <swiper-item data-index="{{index}}" data-type="{{item.banner_type}}">
-                    <image class='slide-image' data-item="{{item}}" bindtap="goTo" src="{{item.image}}" mode="aspectFill"></image>
-                </swiper-item>
-                <!-- </navigator> -->
+  <view class='ban-box'>
+    <!-- banner图 -->
+    <swiper class="swipers" indicator-dots='true' interval='5000' circular='true' autoplay="{{autoplay}}" current="{{currentSwiper}}" bindchange="swiperChange">
+      <block wx:for="{{imgs}}">
+        <!-- <navigator wx:if="{{item.id!=0}}" url='../productContent/productContent?id={{item.id}}'> -->
+        <swiper-item data-index="{{index}}" data-type="{{item.banner_type}}">
+          <image class='slide-image' data-item="{{item}}" bindtap="goTo" src="{{item.image}}" mode="aspectFill"></image>
+        </swiper-item>
+        <!-- </navigator> -->
 
-                <!-- <swiper-item wx:else data-index="{{index}}" data-type="{{item.banner_type}}">
+        <!-- <swiper-item wx:else data-index="{{index}}" data-type="{{item.banner_type}}">
                     <image class='slide-image' src="{{item.image}}"></image>
                 </swiper-item> -->
 
-            </block>
-        </swiper>
+      </block>
+    </swiper>
 
-        <!--重置小圆点的样式  -->
+    <!--重置小圆点的样式  -->
 
-        <!-- <swiper class="swipers" indicator-dots='true' autoplay='true' circular='true' interval='2000' indicator-active-color='#fff'>
+    <!-- <swiper class="swipers" indicator-dots='true' autoplay='true' circular='true' interval='2000' indicator-active-color='#fff'>
       <block wx:for="{{imgs}}">
         <swiper-item  bindtap='banLink' data-index="{{index}}" data-type="{{item.banner_type}}">
           <image class='slide-image' src="{{item.image}}"></image>  
@@ -26,40 +27,41 @@
       </block>
     </swiper> -->
 
-        <!-- <view class="dots">  
+    <!-- <view class="dots">  
         <block wx:for="{{imgs}}">  
             <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>  
         </block>  
     </view>   -->
 
-        <!-- 搜索框 -->
-        <view class='wrap search-box'>
-            <view class='ban-search' bindtap='ban_link'>
-                <!-- <text class='search-text1'>ne's</text>
+    <!-- 搜索框 -->
+    <view class='wrap search-box'>
+      <view class='ban-search' bindtap='ban_link'>
+        <!-- <text class='search-text1'>ne's</text>
         <text class='search-text2'>|</text> -->
-                <image src='/images/search-icon.png'></image>
-                <view>耗儿鱼、雪花牛肉</view>
-            </view>
-        </view>
+        <image src='/images/search-icon.png'></image>
+        <view>耗儿鱼、雪花牛肉</view>
+      </view>
     </view>
-    <!-- banner图  完 -->
-    <!-- <view class='demo'>CUTEMALL</view> -->
-    <!--新菜单-->
-    <view class='menu_container'>
-        <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{speciallist}}" hover-class='jz_hover'>
-            <image class="menu_icon" mode='widthFix' src='{{item.image}}'></image>
-            <text class="menu_name">{{item.cate_title}}</text>
-        </navigator>
-        <navigator class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
-            <image class="menu_icon" mode='widthFix' src='/images/shop22.png'></image>
-            <text class="menu_name">积分兑换</text>
-        </navigator>
-    </view>
-    <!-- 新菜单完 -->
+  </view>
+  <!-- banner图  完 -->
+  <!-- <view class='demo'>CUTEMALL</view> -->
+  <!--新菜单-->
+  <view class='menu_container'>
+    <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{speciallist}}" hover-class='jz_hover'>
+      <image class="menu_icon" mode='widthFix' src='{{item.image}}'></image>
+      <text class="menu_name">{{item.cate_title}}</text>
+    </navigator>
+    <navigator wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}}" class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
+      <image class="menu_icon" mode='widthFix' src='/images/shop22.png'></image>
+      <text class="menu_name">积分兑换</text>
+    </navigator>
 
-    <!--拼团、砍价 秒杀 优惠券 会员折扣-->
-    <view class='limit-discount-content'>
-        <!-- <navigator bindtap='goTospike' class='limit-discount-div' hover-class='jz_hover'>
+  </view>
+  <!-- 新菜单完 -->
+
+  <!--拼团、砍价 秒杀 优惠券 会员折扣-->
+  <view class='limit-discount-content'>
+    <!-- <navigator bindtap='goTospike' class='limit-discount-div' hover-class='jz_hover'>
             <image mode='widthFix' src='{{ allocation.group_nav_img }}'></image>
         </navigator>
         <navigator url="/pages/index/bargainList/bargainList" class='limit-discount-div' hover-class='jz_hover'>
@@ -68,16 +70,27 @@
         <navigator url="/pages/index/second/second" class='limit-discount-div' hover-class='jz_hover'>
             <image mode='widthFix' src='{{ allocation.spike_nav_img }}'></image>
         </navigator> -->
-        <navigator url="/pages/index/coupon/coupon" class='limit-discount-div' hover-class='jz_hover'>
-            <image mode='widthFix' src='{{ allocation.coupon_nav_img }}'></image>
-        </navigator>
+    <navigator url="/pages/index/coupon/coupon" class='limit-discount-div' hover-class='jz_hover'>
+      <image mode='widthFix' src='{{ allocation.coupon_nav_img }}'></image>
+    </navigator>
 
+  </view>
+  <!-- 拼团、砍价 秒杀 优惠券 会员折扣完 -->
+  <view style='height:10rpx;'></view>
+  <view class='wrap brand-title'>
+    <view>为您推荐</view>
+    <view class='bt_all' bindtap='skip_all'>更多
+      <image src='/images/index_right.png'></image>
     </view>
-    <!-- 拼团、砍价 秒杀 优惠券 会员折扣完 -->
-    <view style='height:10rpx;'></view>
+  </view>
+  <view style="display: flex;padding: 20rpx;flex-wrap: wrap;justify-content:space-around;">
+    <navigator url='../productContent/productContent?id={{item.id}}' wx:for="{{goods_list}}" wx:key="index">
+      <template is="goods_card" data="{{item}}" />
+    </navigator>
 
-    <!-- 单品推荐 -->
-    <!-- <view class='recommend-box' wx:for='{{recommendgoods.data}}'>
+  </view>
+  <!-- 单品推荐 -->
+  <!-- <view class='recommend-box' wx:for='{{recommendgoods.data}}'>
         <view class='wrap brand-title'>
             <view>{{item.cate_title}}</view>
             <view data-id="{{item.id}}" class='bt_all' bindtap='skip_all'>全部
@@ -109,30 +122,8 @@
         </view>
         <mp-loading type="circle" show="{{loading}}"></mp-loading>
     </view> -->
-    <view class="wrap">
-        <recycle-view batch="{{batchSetRecycleData}}" id="recycleId">
-        <view slot="before" style="text-align: center;">精品推荐</view>
-        <recycle-item wx:for="{{recycleList}}" wx:key="index">
-        <navigator url='../productContent/productContent?id={{item.id}}' class='rImgs-box'>
-            <view class='recommend-imgBox'>
-                <image mode='widthFix' src='{{item.goods_logo}}'></image>
-            </view>
-            <view class='rTitle textOverflow'>{{item.goods_title}}</view>
-            <view class='rPrice-box clearboth'>
-                <view class='amiddle' style="color: #DA251C;font-weight: 600;">
-                    <text style="font-size: 14px;">￥</text>
-                    <text>{{item[recommendgoodsPrice.show_price]}}</text>
-                </view>
-                <view class='amiddle c999' style="text-decoration: line-through;padding-left: 5px;">
-                    <text>￥{{item.huaxian_price}}</text>
-                </view>
-            </view>
-        </navigator>
-        </recycle-item>
-        <view slot="after">
-            <mp-loading type="circle" show="{{true}}"></mp-loading>
-        </view>
-    </recycle-view>
-    </view>
-    
+  <view class="wrap">
+
+  </view>
+
 </view>

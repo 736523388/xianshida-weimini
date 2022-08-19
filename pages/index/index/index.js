@@ -1,7 +1,5 @@
 //index.js
 //获取应用实例
-let flage = true
-const createRecycleContext = require('miniprogram-recycle-view')
 const app = getApp()
 import {
   getStorage,
@@ -11,29 +9,12 @@ import {
   $init,
   $digest
 } from '../../../utils/common.util'
-var ctx = null
 Page({
   
   data: {
-    userInfo: {}, //用户信息
     identity: 1, //身份
-
-    //推荐商品
-    nominate: [],
     // banner
-    imgs: [{
-        url: '/images/ban2.png'
-      },
-      {
-        url: '/images/ban1.png'
-      },
-      {
-        url: '/images/ban2.png'
-      },
-      {
-        url: '/images/ban1.png'
-      }
-    ],
+    imgs: [],
     recommendgoods: {},
     recommendgoodspage: 1,
     recommendgoodsPrice: '',
@@ -238,31 +219,6 @@ Page({
   //     })
   //   }
   // },
-  ctx: Object,
-  windowWidth: 0,
-  onReady: function(){
-    wx.getSystemInfo({
-      success: res => {
-        this.windowWidth = res.windowWidth;
-        //创建RecycleContext对象来管理 recycle-view 定义的的数据
-        this.ctx = createRecycleContext({
-          id: 'recycleId',
-          dataKey: 'recycleList',
-          page: this,
-          itemSize: this.itemSizeFunc,
-        })
-      },
-    })
-  },
-  //设置item宽高信息，样式所设必须与之相同
-  itemSizeFunc: function (item, idx) {
-    console.log(this.windowWidth * 0.47)
-    console.log(this.windowWidth * 0.63)
-    return {
-      width: this.windowWidth * 0.49,
-      height: this.windowWidth * 0.64
-    }
-  },
   onLoad: function () {
     $init(this)
     this.data.recommendgoods = {}
@@ -289,15 +245,8 @@ Page({
       success: res => {
         console.log('goods',res)
         this.data.loading = false
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
-        this.ctx.append(res.data.data.data)
+        this.data.goods_list = this.data.goods_list.concat(res.data.data.data)
+        console.log(this.data.goods_list)
         if(res.data.data.data.length < 10){
           this.data.loaded = true
         } else {

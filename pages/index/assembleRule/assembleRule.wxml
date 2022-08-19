@@ -1,14 +1,2 @@
 <!--pages/index/assembleRule/assembleRule.wxml-->
-<view class='aRule-box borderTop'>
-  <view class='wrap'>
-    <view class='aRule-title'>
-      — 拼团活动规则 —
-    </view>
-    <view class='aRule-cont'>
-      <view class='aRule-text' wx:for="{{text}}">{{item}}</view>
-    </view>
-  </view>
-  <!-- <view class='bottom-logo'>
-    <image src='/images/bottom-logo.png'></image>
-  </view> -->
-</view>
+<text>pages/index/assembleRule/assembleRule.wxml</text>
