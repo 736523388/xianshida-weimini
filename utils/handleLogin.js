@@ -3,8 +3,9 @@ module.exports = {
     login: login,
     getStorage: getStorage
 }
-//const baseUrl = "https://ncp.a.xueao400.com/api/user.login/wx_login";
-const baseUrl = "https://xianshida.test.cqclxsc.com/api/user.login/wx_login";
+const app = getApp()
+// const baseUrl = "http://xianshida.test.net/api/user.login/";
+// const baseUrl = "https://xianshida.test.cqclxsc.com/api/user.login/wx_login";
 const successcode = 1;
 /**
  * [login 微信登陆]
@@ -16,13 +17,42 @@ const successcode = 1;
 function login (callback) {
   wx.showLoading()
   wx.login({
-    success (res) {
+    success: res => {
+      console.log(res)
       if (res.code) {
         // 登录成功，获取用户信息
-        getUserInfo(res.code, callback)
+        let parent_id = 0
+        if (wx.getStorageSync('sceneUserId')){
+          parent_id = wx.getStorageSync('sceneUserId')
+        }
+        let data = {
+          code: res.code,
+          parent_id: parent_id
+        }
+        wx.request({
+            url: app.globalData.urlhost + '/api/user.login/save',
+            data: data,
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: res => {
+              wx.hideLoading()
+              if(res.statusCode === 200 && res.data.code === successcode){
+                  setStorage('token',res.data.data.token,res.data.data.exp)
+                  setStorage('is_insider',res.data.data.token,res.data.data.exp)
+                  callback && callback()
+              }else{
+                  showToast()
+              }
+            },
+            fail () {
+              wx.hideLoading()
+              showToast()
+            }
+          })
       } else {
         wx.hideLoading()
-        // 否则弹窗显示，showToast需要封装
         showToast()
       }
     },
@@ -123,7 +153,7 @@ function isLogin (callback) {
         callback && callback()
     } else {
         // 如果没有登录态，弹窗提示一键登录
-        showLoginModal()
+        login(callback)
     }
 }
 /**

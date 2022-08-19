@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 let flage = true
+const createRecycleContext = require('miniprogram-recycle-view')
 const app = getApp()
 import {
   getStorage,
@@ -10,14 +11,12 @@ import {
   $init,
   $digest
 } from '../../../utils/common.util'
-
-var wc = require('../../../src/wcache.js');
-
-var page;
+var ctx = null
 Page({
+  
   data: {
-      userInfo:{},//用户信息
-      identity:1,//身份
+    userInfo: {}, //用户信息
+    identity: 1, //身份
 
     //推荐商品
     nominate: [],
@@ -37,7 +36,7 @@ Page({
     ],
     recommendgoods: {},
     recommendgoodspage: 1,
-    recommendgoodsPrice:'',
+    recommendgoodsPrice: '',
     getRecommend: true,
     speciallist: [],
     specialCate: [],
@@ -81,142 +80,57 @@ Page({
     rTitle2: '偷窥达人购物车 好物剁手不停',
     rImg: 'https://cdn.xhzsm.com/rImg.png',
     // 首页配置
-    allocation:[],
-    
+    allocation: [],
+    loading: false,
+    loaded: false,
+    goods_list: [],
+    goods_page: 1
   },
-  skip_all:function(e){
+  skip_all: function (e) {
     wx.navigateTo({
       url: '/pages/classify/classifyList/classifyList?id=' + e.currentTarget.dataset.id,
     })
   },
-
-
-    getUserInfo() {
-        var _this = this;
-
-        // 个人中心通用信息
-        wx.request({
-            url: app.globalData.urlhost + '/api/user.member/index',
-            data: {
-                token: wc.get('token'),
-            },
-            header: {
-                "content-type": "application/x-www-form-urlencoded"
-            },
-            method: 'POST',
-            success: function (res) {
-                console.log(res)
-                _this.setData({
-                    userInfo: res.data.data
-                })
-
-                if(res.data.code == 0){
-                    _this.load(_this.data.identity);
-                }else{
-                    if (res.data.data.user_level != 0) {
-                        _this.setData({
-                            identity: 2
-                        })
-                    } else {
-                        _this.setData({
-                            identity: 1
-                        })
-                    }
-                    _this.load(_this.data.identity);
-                }
-
-                
-
-                
-
-            },
-        })
-    },
-
-    //轮播图跳转
-    goTo(e){
-        var item = e.currentTarget.dataset.item;
-        console.log(item)
-        if (item.target_type == 2){
-            console.log(item.url)
-            wx.navigateTo({
-                url: '../../'+item.url,
-            })
-        } else if (item.target_type == 1){
-            console.log(item)
-            wx.navigateTo({
-                url: '../productContent/productContent?id='+item.url,
-            })
-        }
-    },
-
-  /**
-   * 获取推荐商品
-   */
-  getnominate: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlhost + '/api/store.goods/goods_nominate',
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      dataType: 'json',
-      success: function (res) {
-        console.log(res)
-        if (res.statusCode == 200) {
-          if (res.data.code == 1) {
-            that.data.nominate = res.data.data.data
-            $digest(that)
-          }
-        }
-      }
-    })
+  //轮播图跳转
+  goTo(e) {
+    var item = e.currentTarget.dataset.item;
+    console.log(item)
+    if (item.target_type == 2) {
+      console.log(item.url)
+      wx.navigateTo({
+        url: '../../' + item.url,
+      })
+    } else if (item.target_type == 1) {
+      console.log(item)
+      wx.navigateTo({
+        url: '../productContent/productContent?id=' + item.url,
+      })
+    }
   },
+
   // 自定义banner指示点
-  swiperChange: function(e) {
+  swiperChange: function (e) {
     // this.setData({
     //   currentSwiper: e.detail.current
     // })
   },
   // 限量购  产品点击跳转
-  limitLink: function(e) {
+  limitLink: function (e) {
     wx.navigateTo({
       url: '/pages/index/productContent/productContent?id=' + e.currentTarget.dataset.id,
     })
   },
-  // 获取首页配置
-  allocation:function(){
-    var that=this;
-    wx.request({
-      url: app.globalData.urlhost + '/api/store.goods/getconfig',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      dataType: 'json',
-      success: function (res) {
-        if (res.statusCode == 200) {
-          if (res.data.code == 1) {
-            that.data.allocation = res.data.data
-            $digest(that)
-              console.log(res)
-          }
-        }
-      }
-    })
-  },
 
   //获取首页推荐商品
-  recommend: function() {
-    if (this.data.getRecommend === false){
+  recommend: function () {
+    if (this.data.getRecommend === false) {
       return false
     }
     let token = getStorage('token')
     let that = this
 
-    let pamas= {
-        token: token
+    let pamas = {
+      token: token
     }
     //获取首页推荐商品
     wx.showLoading({
@@ -232,7 +146,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       dataType: 'json',
-      success: function(res) {
+      success: function (res) {
         console.log(res.data.data)
         console.log(typeof res.data.data)
         if (res.statusCode === 200) {
@@ -244,58 +158,49 @@ Page({
             console.log(that.data.recommendgoods)
             console.log(that.data.recommendgoods.show_price)
             console.log(that.data.recommendgoodsPrice)
-
-
-            that.getUserInfo();
           }
         }
       }
     })
-    
-  },
 
-    load: function (identity) {
-    let token = getStorage('token')
-    let that = this
-    
-    let params = {
-        identity: identity
-    }
-      console.log("params", params)
+  },
+  // 获取banner和商品分类
+  load: function (identity) {
     // 获取banner
     wx.request({
-      data:params,
+      data: {identity},
       url: app.globalData.urlhost + '/api/store.banner/index',
-      success: function(res) {
-        console.log(res)
+      success: res => {
         if (res.statusCode === 200) {
           if (res.data.code === 1) {
-            that.data.imgs = res.data.data;
-            console.log(res)
-            $digest(that)
-          } else {
-            wx.showLoading({
-              title: '加载中',
-            })
+            this.data.imgs = res.data.data;
+            $digest(this)
           }
-
         }
       }
     })
-
     //获取分类
     wx.request({
       url: app.globalData.urlhost + '/api/store.goods_cate/special',
       method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function(res) {
-        console.log(res)
+      success: res => {
         if (res.statusCode === 200) {
           if (res.data.code === 1) {
-            that.data.speciallist = res.data.data
-            $digest(that)
+            this.data.speciallist = res.data.data
+            $digest(this)
+          }
+        }
+      }
+    })
+    // 获取首页配置
+    wx.request({
+      url: app.globalData.urlhost + '/api/store.goods/getconfig',
+      method: 'POST',
+      success: res => {
+        if (res.statusCode == 200) {
+          if (res.data.code == 1) {
+            this.data.allocation = res.data.data
+            $digest(this)
           }
         }
       }
@@ -304,15 +209,9 @@ Page({
   },
 
   // 搜索跳转
-  ban_link: function() {
+  ban_link: function () {
     wx.navigateTo({
       url: '/pages/index/search/search',
-    })
-  },
-  // 大牌专享  点击更多跳转
-  brandLink:function(){
-    wx.navigateTo({
-      url: '/pages/classify/brandList/brandList',
     })
   },
   /**
@@ -339,80 +238,83 @@ Page({
   //     })
   //   }
   // },
- 
-  onLoad: function() {
+  ctx: Object,
+  windowWidth: 0,
+  onReady: function(){
+    wx.getSystemInfo({
+      success: res => {
+        this.windowWidth = res.windowWidth;
+        //创建RecycleContext对象来管理 recycle-view 定义的的数据
+        this.ctx = createRecycleContext({
+          id: 'recycleId',
+          dataKey: 'recycleList',
+          page: this,
+          itemSize: this.itemSizeFunc,
+        })
+      },
+    })
+  },
+  //设置item宽高信息，样式所设必须与之相同
+  itemSizeFunc: function (item, idx) {
+    console.log(this.windowWidth * 0.47)
+    console.log(this.windowWidth * 0.63)
+    return {
+      width: this.windowWidth * 0.49,
+      height: this.windowWidth * 0.64
+    }
+  },
+  onLoad: function () {
     $init(this)
-    
     this.data.recommendgoods = {}
     this.data.recommendgoodspage = 1
     this.data.getRecommend = true
-    //this.load()
-   
-    this.allocation()
-    this.getnominate()
     $digest(this)
-    this.getLogo()
-  },
-  /**
-   * 获取LOGO 并存入缓存
-   */
-  getLogo(){
-    let that = this
-    wx.request({
-      url: app.globalData.urlhost + '/api/base.system/sysconf',
-      method: 'GET',
-      data: {
-        name: 'web_logo'
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.statusCode === 200) {
-          if (res.data.code === 1) {
-            wx.setStorageSync('web_logo', res.data.data)
-            console.log(wx.getStorageSync('web_logo'))
-          }
-        }
-      }
-    })
-  },
-  onShow: function() {
-    let token = getStorage('token');    
+    //加载BANNER和分类及首页配置
+    this.load(1)
+    //加载商品数据
     this.recommend()
-    if (token){
-      if (flage){
-        // this.data.recommendgoods = {}
-        console.log(this.data.recommendgoodspage)
-        this.data.recommendgoodspage = ((this.data.recommendgoodspage)-1)+1
-        console.log(this.data.recommendgoodspage)
-        this.data.getRecommend = true
-        //this.load()
-        this.allocation()
-        console.log(1)
-        flage = false
-        if (page != this.data.recommendgoodspage){
-          this.recommend()
+    this.getGoodsList()
+  },
+  getGoodsList(){
+    if(this.data.loading !== false || this.data.loaded === true){
+      return false
+    }
+    this.setData({loading: true})
+    wx.request({
+      url: app.globalData.urlhost +  '/api/store.goods/allgoods',
+      method: 'GET',
+      params: {
+        page: this.data.goods_page,
+      },
+      success: res => {
+        console.log('goods',res)
+        this.data.loading = false
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        this.ctx.append(res.data.data.data)
+        if(res.data.data.data.length < 10){
+          this.data.loaded = true
+        } else {
+          this.data.goods_page++
         }
         $digest(this)
       }
-    }else{
-      console.log(12)
-      return false
-    }
+    })
   },
-  goTospike: function (){
+  onShow: function () {
+    console.log('index onshow')
+  },
+  goTospike: function () {
     wx.navigateTo({
       url: '/pages/index/assemble/assemble',
     })
-     console.log('去拼团')
-    // wx.showModal({
-    //   title: '提示',
-    //   content: '敬请期待',
-    //   showCancel: false,
-    //   confirmText: '确认'
-    // })
+    console.log('去拼团')
   },
   onPullDownRefresh: function () {
     // wx.showNavigationBarLoading()
@@ -425,24 +327,17 @@ Page({
     wx.stopPullDownRefresh()
     this.onShow()
   },
-    // 页面上拉触底事件的处理函数
-  onReachBottom: function () {
-  },
+  // 页面上拉触底事件的处理函数
+  onReachBottom: function () {},
 
-    //分享转发
-    onShareAppMessage: function (options) {
-        console.log(options)
-        var that = this;
-        // 设置转发内容
-        var shareObj = {
-            title: "豪臻",
-            path: '', // 默认是当前页面，必须是以‘/’开头的完整路径
-            imgUrl: '', //转发时显示的图片路径，支持网络和本地，不传则使用当前页默认截图。
+  //分享转发
+  onShareAppMessage: function (options) {
+    // 设置转发内容
+    return {
+      title: "鲜食达",
+      path: '', // 默认是当前页面，必须是以‘/’开头的完整路径
+      imgUrl: '', //转发时显示的图片路径，支持网络和本地，不传则使用当前页默认截图。
+    };
+  }
 
-        };
-
-        // 返回shareObj
-        return shareObj;
-    }
-  
 })

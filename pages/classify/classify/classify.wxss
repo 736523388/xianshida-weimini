@@ -110,15 +110,15 @@ page {
 }
 
 .classify-cont {
-  width: 100%;
+  width: auto;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
   padding: 20rpx 10rpx;
   background-color: #fff;
-  border: #e8e8e8 solid 2rpx;
-  margin: 10rpx 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  margin: 16rpx;
 }
 
 .classify-cont>image {
@@ -157,8 +157,9 @@ page {
   padding: 16rpx;
   margin: 4rpx 10rpx;
   width: 10%;
-  border: #e8e8e8 solid 2rpx;
-  border-radius: 10%;
+  /* border: #e8e8e8 solid 2rpx; */
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  /* border-radius: 10%; */
 }
 
 .classify-right .cate-container .active {

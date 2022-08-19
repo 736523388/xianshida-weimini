@@ -1,13 +1,8 @@
 // pages/classify/classify.js
-const app = getApp();
-
-var wc = require('../../../src/wcache.js');
-
 import {
-  getStorage,
-  isLogin
+  getStorage
 } from '../../../utils/handleLogin'
-
+const app = getApp();
 var page = 1
 Page({
 
@@ -18,19 +13,6 @@ Page({
 
     // 左边导航
     num: 0,
-    bg: [
-      "#FFADAD",
-      "#FFC8DE",
-      "#FFCCAD",
-      "#FFE9AD",
-      "#D0FFAD",
-      "#C4FFD9",
-      "#ADFFFE",
-      "#ADC8FF",
-      "#B7ADFF",
-      "#FFADFC"
-    ],
-    bg2: "#FFADAD",
     // 右边类别
     aright: [],
     arightData: [],
@@ -60,12 +42,13 @@ Page({
       url: '/pages/classify/classifyList/classifyList?id=' + e.currentTarget.dataset.id,
     })
   },
+  //跳转商品详情页
   skip_details: function (e) {
     wx.navigateTo({
       url: '/pages/index/productContent/productContent?id=' + e.currentTarget.dataset.id,
     })
   },
-  getGoods(cate_id){
+  getGoods(cate_id) {
     let token = getStorage('token')
     wx.request({
       url: app.globalData.urlhost + '/api/store.goods/allgoods',
@@ -82,7 +65,7 @@ Page({
             this.setData({
               aright: res.data.data,
               arightData: res.data.data.data,
-              page: this.data.page+1,
+              page: this.data.page + 1,
               loading: false
             })
             console.log("aright", this.data.aright)
@@ -121,14 +104,14 @@ Page({
       }
     })
   },
-  getCate(ref){
-    if(this.data.loading !== false){
+  getCate(ref) {
+    if (this.data.loading !== false) {
       return false
     }
     this.setData({
       loading: true
     })
-    if(ref){
+    if (ref) {
       this.setData({
         page: 1
       })
@@ -155,7 +138,7 @@ Page({
               loading: false
             })
           }
-        } else{
+        } else {
           wx.hideLoading()
           wx.showToast({
             title: '网络错误，请稍后重试',
@@ -184,64 +167,6 @@ Page({
   onShow: function (options) {
     console.log(this.data.num)
     this.getCate(1)
-    // var that = this;
-    // let token = getStorage('token')
-    // let pamas = {
-    //   token: token
-    // }
-
-    // console.log("token", token)
-    // page = 1
-    // wx.request({
-    //   url: app.globalData.urlhost + '/api/store.goods_cate/lists',
-    //   //data: pamas,
-    //   success: function (res) {
-    //     // console.log(res)
-    //     if (res.statusCode == 200) {
-    //       if (res.data.code === 1) {
-    //         wx.hideLoading()
-    //         that.setData({
-    //           aleft: res.data.data,
-    //           cate_id: res.data.data[0].id
-    //         })
-    //         wx.request({
-    //           url: app.globalData.urlhost + '/api/store.goods/allgoods',
-    //           data: {
-    //             page: 1,
-    //             cate_id: res.data.data[0].id,
-    //             token: token
-    //           },
-    //           success: function (res) {
-    //             // console.log(res)
-    //             if (res.statusCode == 200) {
-    //               if (res.data.code === 1) {
-    //                 wx.hideLoading()
-    //                 that.setData({
-    //                   aright: res.data.data,
-    //                   arightData: res.data.data.data
-    //                 })
-    //                 console.log("aright", that.data.aright)
-    //                 console.log("res", res)
-
-    //               } else {
-    //                 wx.showToast({
-    //                   title: res.data.msg,
-    //                   icon: 'none',
-    //                 })
-    //               }
-    //             }
-    //           }
-    //         })
-    //       } else {
-    //         wx.showToast({
-    //           title: res.data.msg,
-    //           icon: 'none',
-    //         })
-    //       }
-    //     }
-    //   }
-    // })
-
   },
 
   /**
@@ -263,7 +188,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log('category hide')
   },
 
   /**
@@ -272,14 +197,6 @@ Page({
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -309,24 +226,14 @@ Page({
             that.setData({
               arightData: that.data.arightData.concat(res.data.data.data)
             })
-
-            // that.setData({
-            //     aright: that.data.aright.data.concat(res.data.data.data)
-            // })
-
             console.log("aright", that.data.aright)
-
           }
         }
       },
     })
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  changeCate(e){
+    console.log(e.currentTarget.dataset.id)
   }
 })

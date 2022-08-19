@@ -6,25 +6,27 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     //自动登陆
-    // this.login(()=>{
+    // login(()=>{
     //    console.log('已经授权，直接登陆')
     // })
-  },
-  loginx: function () {
-    if (!wc.get('token')) {
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-      return false;
-    } else {
-      return true
-    }
+    wx.request({
+      url: this.globalData.urlhost + '/api/base.system/sysconf?name=web_logo',
+      method: 'GET',
+      success: res => {
+        if (res.statusCode === 200) {
+          if (res.data.code === 1) {
+            wx.setStorageSync('web_logo', res.data.data)
+            console.log('web_logo',wx.getStorageSync('web_logo'))
+          }
+        }
+      }
+    })
   },
   globalData: {
     userInfo: null,
     code: null,
     // urlhost: "http://192.168.1.15:8081",
-    //urlhost: "https://ncp.a.xueao400.com",
-      urlhost:'https://xianshida.test.cqclxsc.com'
+    urlhost: "http://xianshida.test.net",
+      // urlhost:'https://xianshida.test.cqclxsc.com'
   }
 })

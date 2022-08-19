@@ -18,16 +18,18 @@ Page({
       { img: "../../../images/my/order_icon2.png", url: "/pages/my/my_order/my_order?status=2", name: "待发货", key: "2", orderCount: 0 },
       { img: "../../../images/my/order_icon3.png", url: "/pages/my/my_order/my_order?status=3", name: "待收货", key: "3", orderCount: 0 },
       { img: "../../../images/my/order_icon4.png", url: "/pages/my/my_order/my_order?status=4", name: "待评价", key: "4", orderCount: 0 },
+      { img: "../../../images/my/order_icon4.png", url: "/pages/my/refund_money_list/refund_money_list", name: "退款售后", key: "5", orderCount: 0 },
     ],
     my_menu: [
-      { img: "../../../images/my/menu_icon1_1.jpg", url: '/pages/my/withdraw_cash/withdraw_cash', name: "提现", key: "1" },
-      { img: "../../../images/my/menu_icon3.jpg", url: "/pages/my/my_jf/my_jf", name: "积分", key: "3" },
-      { img: "../../../images/my/menu_icon5.jpg", url: '/pages/my/my_address/my_address', name: "收货地址", key: "1" },
+      // { img: "../../../images/my/menu_icon1_1.jpg", url: '/pages/my/withdraw_cash/withdraw_cash', name: "提现", key: "1" },
+      { img: "../../../images/my/menu_icon3.jpg", url: "/pages/my/my_jf/my_jf", name: "积分", key: "1" },
+      
       { img: "../../../images/my/menu_icon6.jpg", url: '/pages/my/my_coupon/my_coupon', name: "优惠券", key: "2" },
-      { img: "../../../images/my/menu_icon7.jpg", url: '/pages/my/two_code/two_code', name: "我的二维码", key: "3" },
-      { img: "../../../images/my/menu_icon9.jpg", url: '/pages/my/set/set', name: "设置", key: "1" },
-      { img: "../../../images/my/menu_icon10.jpg", url: '/pages/my/refund_money_list/refund_money_list', name: "退款售后", key: "2" },
-        { img: "../../../images/pifa.png", url: '/pages/my/wholesaler/wholesaler', name: "批发商" },
+      { img: "../../../images/my/menu_icon5.jpg", url: '/pages/my/my_address/my_address', name: "收货地址", key: "3" },
+      // { img: "../../../images/my/menu_icon7.jpg", url: '/pages/my/two_code/two_code', name: "我的二维码", key: "3" },
+      { img: "../../../images/my/menu_icon9.jpg", url: '/pages/my/set/set', name: "设置", key: "4" },
+      // { img: "../../../images/my/menu_icon10.jpg", url: '/pages/my/refund_money_list/refund_money_list', name: "退款售后", key: "2" },
+        // { img: "../../../images/pifa.png", url: '/pages/my/wholesaler/wholesaler', name: "批发商" },
     ],
     top_msg:{},
     my_jf:"",
@@ -122,8 +124,7 @@ Page({
     // 登录
     isLogin(() => {
       this.getorderCount()
-    })
-    // 个人中心通用信息
+          // 个人中心通用信息
     wx.request({
       url: app.globalData.urlhost + '/api/user.member/index',
       data: {
@@ -160,6 +161,7 @@ Page({
           })
         }
       },
+    })
     })
 
     var circleCount = 0;

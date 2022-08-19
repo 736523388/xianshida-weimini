@@ -115,5 +115,9 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "darkmode": true,
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

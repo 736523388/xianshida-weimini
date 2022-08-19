@@ -17,15 +17,14 @@
     <view class='classify-right'>
       <view class="cate-container">
         <block wx:for="{{aleft}}" wx:key="index">
-        <block wx:if="{{index === num && item.sub.length > 0}}">
-          <view class="active">
-            <text>全部</text>
-          </view>
-          <view wx:for="{{item.sub}}" wx:key="k" wx:for-item="vo">
-            <text>{{vo.cate_title}}</text>
-          </view>
-        </block>
-          
+          <block wx:if="{{index === num && item.sub.length > 0}}">
+            <view class="active" bindtap="changeCate" data-id="{{item.id}}">
+              <text>全部</text>
+            </view>
+            <view wx:for="{{item.sub}}" wx:key="k" wx:for-item="vo" bindtap="changeCate" data-id="{{vo.id}}">
+              <text>{{vo.cate_title}}</text>
+            </view>
+          </block>
         </block>
       </view>
       <view class='classify-cont' wx:for="{{arightData}}" wx:key="index" data-id="{{item.id}}" bindtap='skip_details'>
@@ -33,10 +32,12 @@
         <view>
           <text class='cc_title'>{{item.goods_title}}</text>
           <view>
-            <view class='amiddle cmain' wx:if="{{aright.show_price === 'market_price'}}">零售价:{{item.market_price}} </view>
-            <view class='amiddle marginR6 cmain' wx:if="{{aright.show_price === 'selling_price'}}">批发价:{{item.selling_price}}</view>
-            <view class='amiddle c999'>
-              原价:{{item.huaxian_price}}
+            <view class='amiddle' style="color: #DA251C;font-weight: 600;">
+              <text style="font-size: 14px;">￥</text>
+              <text>{{item[aright.show_price]}}</text>
+            </view>
+            <view class='amiddle c999' style="text-decoration: line-through;padding-left: 5px;">
+              <text>￥{{item.huaxian_price}}</text>
             </view>
           </view>
         </view>

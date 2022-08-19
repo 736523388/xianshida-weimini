@@ -4,10 +4,10 @@
       <text>个人信息</text>
       <image src='../../../images/my/tm_right.png'></image>
     </navigator>
-    <button open-type='contact'>
+    <!-- <button open-type='contact'>
       <text>联系客服</text>
       <image src='../../../images/my/tm_right.png'></image>
-    </button>
+    </button> -->
   </view>
 
   <view>
@@ -23,7 +23,7 @@
 
   <view>
     <navigator hover-class='none' bindtap='logout'>
-      <text>注销登陆</text>
+      <text>退出登录</text>
       <image src='../../../images/my/tm_right.png'></image>
     </navigator>
   </view>
