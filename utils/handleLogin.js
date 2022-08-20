@@ -1,7 +1,7 @@
 module.exports = {
-    isLogin: isLogin,
-    login: login,
-    getStorage: getStorage
+  isLogin: isLogin,
+  login: login,
+  getStorage: getStorage
 }
 const app = getApp()
 // const baseUrl = "http://xianshida.test.net/api/user.login/";
@@ -14,7 +14,7 @@ const successcode = 1;
  * @param    {Function}               callback [回调函数]
  * @return   {[type]}                          [description]
  */
-function login (callback) {
+function login(callback) {
   wx.showLoading()
   wx.login({
     success: res => {
@@ -22,7 +22,7 @@ function login (callback) {
       if (res.code) {
         // 登录成功，获取用户信息
         let parent_id = 0
-        if (wx.getStorageSync('sceneUserId')){
+        if (wx.getStorageSync('sceneUserId')) {
           parent_id = wx.getStorageSync('sceneUserId')
         }
         let data = {
@@ -30,33 +30,32 @@ function login (callback) {
           parent_id: parent_id
         }
         wx.request({
-            url: app.globalData.urlhost + '/api/user.login/save',
-            data: data,
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            success: res => {
-              wx.hideLoading()
-              if(res.statusCode === 200 && res.data.code === successcode){
-                  setStorage('token',res.data.data.token,res.data.data.exp)
-                  setStorage('is_insider',res.data.data.token,res.data.data.exp)
-                  callback && callback()
-              }else{
-                  showToast()
-              }
-            },
-            fail () {
-              wx.hideLoading()
+          url: app.globalData.urlhost + '/api/user.login/save',
+          data: data,
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: res => {
+            wx.hideLoading()
+            if (res.statusCode === 200 && res.data.code === successcode) {
+              setStorage('token', res.data.data.token.token, res.data.data.token.exp)
+              callback && callback()
+            } else {
               showToast()
             }
-          })
+          },
+          fail() {
+            wx.hideLoading()
+            showToast()
+          }
+        })
       } else {
         wx.hideLoading()
         showToast()
       }
     },
-    fail () {
+    fail() {
       wx.hideLoading()
       showToast()
     }
@@ -70,14 +69,14 @@ function login (callback) {
  * @param    {Function}               callback [description]
  * @return   {[type]}                          [description]
  */
-function getUserInfo (code, callback) {
+function getUserInfo(code, callback) {
   wx.getUserInfo({
     // 获取成功，全局存储用户信息，开发者服务器登录
-    success (res) {
+    success(res) {
       postLogin(code, res.iv, res.encryptedData, callback)
     },
     // 获取失败，弹窗提示一键登录
-    fail () {
+    fail() {
       wx.hideLoading()
       // 获取用户信息失败，清楚全局存储的登录状态，弹窗提示一键登录
       // 使用token管理登录态的，清楚存储全局的token
@@ -99,41 +98,41 @@ function getUserInfo (code, callback) {
  * @param    {Function}               callback      [description]
  * @return   {[type]}                               [description]
  */
-function postLogin (code, iv, encryptedData, callback) {
+function postLogin(code, iv, encryptedData, callback) {
   var parent_id = 0
-  if (wx.getStorageSync('sceneUserId')){
+  if (wx.getStorageSync('sceneUserId')) {
     parent_id = wx.getStorageSync('sceneUserId')
   }
   let params = {
     code: code,
     iv: iv,
     encryptedData: encryptedData,
-    parent_id:parent_id
+    parent_id: parent_id
   }
   wx.request({
-      url: baseUrl,
-      data: params,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success (res) {
-        if(res.statusCode === 200 && res.data.code === successcode){
-            wx.hideLoading()
-            setStorage('token',res.data.data.token,res.data.data.exp)
-            setStorage('is_insider',res.data.data.token,res.data.data.exp)
-            callback && callback()
-        }else{
-            showToast()
-        }
-      },
-      fail () {
+    url: baseUrl,
+    data: params,
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success(res) {
+      if (res.statusCode === 200 && res.data.code === successcode) {
+        wx.hideLoading()
+        setStorage('token', res.data.token.token, res.data.token.exp)
+        setStorage('is_insider', res.data.data.token, res.data.data.exp)
+        callback && callback()
+      } else {
         showToast()
       }
-    })
+    },
+    fail() {
+      showToast()
+    }
+  })
 }
 
 // 显示toast弹窗
-function showToast (content = '登录失败，请稍后再试') {
+function showToast(content = '登录失败，请稍后再试') {
   wx.showToast({
     title: content,
     icon: 'none'
@@ -146,15 +145,15 @@ function showToast (content = '登录失败，请稍后再试') {
  * @param    {Function}               callback [description]
  * @return   {Boolean}                         [description]
  */
-function isLogin (callback) {
-    let token = getStorage('token','');
-    if (token) {
-        // 如果有全局存储的登录态，暂时认为他是登录状态
-        callback && callback()
-    } else {
-        // 如果没有登录态，弹窗提示一键登录
-        login(callback)
-    }
+function isLogin(callback) {
+  let token = getStorage('token', '');
+  if (token) {
+    // 如果有全局存储的登录态，暂时认为他是登录状态
+    callback && callback()
+  } else {
+    // 如果没有登录态，弹窗提示一键登录
+    login(callback)
+  }
 }
 /**
  * [showLoginModal 显示一键登录的弹窗]
@@ -162,12 +161,12 @@ function isLogin (callback) {
  * @DateTime 2018-11-09T14:27:48+0800
  * @return   {[type]} [description]
  */
-function showLoginModal () {
+function showLoginModal() {
   wx.showModal({
     title: '提示',
     content: '你还未登录，登录后可获得完整体验 ',
     confirmText: '一键登录',
-    success (res) {
+    success(res) {
       // 点击一键登录，去授权页面
       if (res.confirm) {
         wx.navigateTo({
@@ -181,30 +180,30 @@ function showLoginModal () {
  * [put 设置缓存]
  * @author Forska 736523388@qq.com
  * @DateTime 2018-11-09T10:59:56+0800
- * @param    {[type]}                 key  [缓存名称]
+ * @param    {[string]}               key  [缓存名称]
  * @param    {[type]}                 val  [缓存值]
  * @param    {[type]}                 time [有效期 单位：秒]
- * @return   {[type]}                      [description]
+ * @return   {[type]}                 [description]
  */
 function setStorage(key, val, time) {
 
-    wx.setStorageSync(key, val)
+  wx.setStorageSync(key, val)
 
-    var seconds = parseInt(time);
+  var seconds = parseInt(time);
 
-    if (seconds > 0) {
+  if (seconds > 0) {
 
-        var timestamp = Date.parse(new Date());
+    var timestamp = Date.parse(new Date());
 
-        timestamp = timestamp / 1000 + seconds;
+    timestamp = timestamp / 1000 + seconds;
 
-        wx.setStorageSync(key + 'dtime', timestamp + "")
+    wx.setStorageSync(key + 'dtime', timestamp + "")
 
-    } else {
+  } else {
 
-        wx.removeStorageSync(key + 'dtime')
+    wx.removeStorageSync(key + 'dtime')
 
-    }
+  }
 
 }
 /**
@@ -217,32 +216,32 @@ function setStorage(key, val, time) {
  */
 function getStorage(key, def) {
 
-    var deadtime = parseInt(wx.getStorageSync(key+ 'dtime'))
+  var deadtime = parseInt(wx.getStorageSync(key + 'dtime'))
 
-    if (deadtime) {
+  if (deadtime) {
 
-      if (parseInt(deadtime) < Date.parse(new Date()) /1000) {
+    if (parseInt(deadtime) < Date.parse(new Date()) / 1000) {
 
-          if (def) { 
-              return def;
-          }else { 
-              return; 
-          }
-
+      if (def) {
+        return def;
+      } else {
+        return;
       }
 
     }
 
-    var res = wx.getStorageSync(key);
+  }
 
-    if (res) {
+  var res = wx.getStorageSync(key);
 
-        return res;
+  if (res) {
 
-    } else {
+    return res;
 
-        return def;
+  } else {
 
-    }
+    return def;
+
+  }
 
 }

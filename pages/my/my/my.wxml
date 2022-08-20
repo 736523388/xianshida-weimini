@@ -37,7 +37,7 @@
       </view>
     </view>
 
-    <button open-type='contact' class='f_service' style='background:#8044ec'>
+    <button open-type='contact' class='f_service' style='background:#fb670f'>
       <image src='../../../images/my/service.png'></image>
       <text>联系客服</text>
     </button>

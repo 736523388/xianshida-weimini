@@ -10,7 +10,7 @@ Page({
     theme: wx.getSystemInfoSync().theme,
   },
   onLoad() {
-    wx.onThemeChange((result) => {
+    wx.onThemeChange(result => {
       this.setData({
         theme: result.theme
       })

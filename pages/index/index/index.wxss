@@ -1,5 +1,6 @@
 /**index.wxss**/
 @import '../../../style/stylesheet.wxss';
+@import '../../../templates/goods_card.wxss';
 
 /*
 *banner样式开始

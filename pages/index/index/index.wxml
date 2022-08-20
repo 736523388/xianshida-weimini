@@ -3,7 +3,7 @@
   <view class='ban-box'>
     <!-- banner图 -->
     <swiper class="swipers" indicator-dots='true' interval='5000' circular='true' autoplay="{{autoplay}}" current="{{currentSwiper}}" bindchange="swiperChange">
-      <block wx:for="{{imgs}}">
+      <block wx:for="{{imgs}}" wx:key="index">
         <!-- <navigator wx:if="{{item.id!=0}}" url='../productContent/productContent?id={{item.id}}'> -->
         <swiper-item data-index="{{index}}" data-type="{{item.banner_type}}">
           <image class='slide-image' data-item="{{item}}" bindtap="goTo" src="{{item.image}}" mode="aspectFill"></image>
@@ -44,14 +44,13 @@
     </view>
   </view>
   <!-- banner图  完 -->
-  <!-- <view class='demo'>CUTEMALL</view> -->
   <!--新菜单-->
   <view class='menu_container'>
-    <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{speciallist}}" hover-class='jz_hover'>
+    <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{speciallist}}" wx:key="index" hover-class='jz_hover'>
       <image class="menu_icon" mode='widthFix' src='{{item.image}}'></image>
       <text class="menu_name">{{item.cate_title}}</text>
     </navigator>
-    <navigator wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}}" class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
+    <navigator class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
       <image class="menu_icon" mode='widthFix' src='/images/shop22.png'></image>
       <text class="menu_name">积分兑换</text>
     </navigator>
@@ -60,7 +59,7 @@
   <!-- 新菜单完 -->
 
   <!--拼团、砍价 秒杀 优惠券 会员折扣-->
-  <view class='limit-discount-content'>
+  <!-- <view class='limit-discount-content'> -->
     <!-- <navigator bindtap='goTospike' class='limit-discount-div' hover-class='jz_hover'>
             <image mode='widthFix' src='{{ allocation.group_nav_img }}'></image>
         </navigator>
@@ -70,11 +69,11 @@
         <navigator url="/pages/index/second/second" class='limit-discount-div' hover-class='jz_hover'>
             <image mode='widthFix' src='{{ allocation.spike_nav_img }}'></image>
         </navigator> -->
-    <navigator url="/pages/index/coupon/coupon" class='limit-discount-div' hover-class='jz_hover'>
+    <!-- <navigator url="/pages/index/coupon/coupon" class='limit-discount-div' hover-class='jz_hover'>
       <image mode='widthFix' src='{{ allocation.coupon_nav_img }}'></image>
-    </navigator>
+    </navigator> -->
 
-  </view>
+  <!-- </view> -->
   <!-- 拼团、砍价 秒杀 优惠券 会员折扣完 -->
   <view style='height:10rpx;'></view>
   <view class='wrap brand-title'>
