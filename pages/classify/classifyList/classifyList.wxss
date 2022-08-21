@@ -1,4 +1,5 @@
 /* pages/classify/classifyList/classifyList.wxss */
+@import '../../../templates/goods_card.wxss';
 .classifyList-box{
   height: 100vh;
   overflow: hidden;
@@ -44,7 +45,7 @@
   font-size: 14px;
   color: #fff;
   border-radius: 6px;
-  background: #885EED;
+  background: #fb670f;
   margin-top: 3px;
 }
 .search-text1{

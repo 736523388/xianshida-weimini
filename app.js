@@ -21,7 +21,7 @@ App({
     userInfo: null,
     code: null,
     // urlhost: "http://192.168.1.15:8081",
-    urlhost: "http://xianshida.test.net",
-      // urlhost:'https://xianshida.test.cqclxsc.com'
+    // urlhost: "http://xianshida.test.net",
+      urlhost:'https://xianshida.test.cqclxsc.com'
   }
 })

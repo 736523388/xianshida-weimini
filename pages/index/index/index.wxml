@@ -1,128 +1,99 @@
 <import src="../../../templates/goods_card.wxml" />
 <view class='index-box'>
-  <view class='ban-box'>
-    <!-- banner图 -->
-    <swiper class="swipers" indicator-dots='true' interval='5000' circular='true' autoplay="{{autoplay}}" current="{{currentSwiper}}" bindchange="swiperChange">
-      <block wx:for="{{imgs}}" wx:key="index">
-        <!-- <navigator wx:if="{{item.id!=0}}" url='../productContent/productContent?id={{item.id}}'> -->
-        <swiper-item data-index="{{index}}" data-type="{{item.banner_type}}">
-          <image class='slide-image' data-item="{{item}}" bindtap="goTo" src="{{item.image}}" mode="aspectFill"></image>
-        </swiper-item>
-        <!-- </navigator> -->
-
-        <!-- <swiper-item wx:else data-index="{{index}}" data-type="{{item.banner_type}}">
-                    <image class='slide-image' src="{{item.image}}"></image>
-                </swiper-item> -->
-
-      </block>
-    </swiper>
-
-    <!--重置小圆点的样式  -->
-
-    <!-- <swiper class="swipers" indicator-dots='true' autoplay='true' circular='true' interval='2000' indicator-active-color='#fff'>
-      <block wx:for="{{imgs}}">
-        <swiper-item  bindtap='banLink' data-index="{{index}}" data-type="{{item.banner_type}}">
-          <image class='slide-image' src="{{item.image}}"></image>  
-        </swiper-item>
-      </block>
-    </swiper> -->
-
-    <!-- <view class="dots">  
-        <block wx:for="{{imgs}}">  
-            <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>  
-        </block>  
-    </view>   -->
-
-    <!-- 搜索框 -->
-    <view class='wrap search-box'>
-      <view class='ban-search' bindtap='ban_link'>
-        <!-- <text class='search-text1'>ne's</text>
-        <text class='search-text2'>|</text> -->
-        <image src='/images/search-icon.png'></image>
-        <view>耗儿鱼、雪花牛肉</view>
+  <view class="head-container">
+    <view class="site-logo">
+    <image src="../../../images/login_logo.png" mode="scaleToFill"></image>
+    </view>
+    <view class="site-content">
+      <view style="padding:0 20rpx 0 190rpx;box-sizing: border-box;display: flex;justify-content:space-between;align-items:center;">
+        <view style="color: #000;font-weight: 600;">
+          <view style="font-size: 28rpx;">纯绿生活-红旗河沟店</view>
+          <view style="font-size: 20rpx;">
+            <mp-icon type="field" icon="location" color="#000" size="{{10}}"></mp-icon>地址:渝北区锦龙支路32号（金凤大厦）
+          </view>
+        </view>
+        <view style="width: 120rpx;height: 50rpx;">
+        <image style="height: 100%;width: 100%;" src="../../../images/limitImg-bg.png" mode="scaleToFill"></image>
+        </view>
+      </view>
+      <view style="padding: 20rpx;box-sizing: border-box;display: flex;align-items:flex-start;font-size: 10px;"> 
+        <view style="background-color: #fb670f;white-space: nowrap;padding: 0 6rpx;border-radius: 15%;color: #fff;box-sizing: border-box;">配送</view>
+        <view style="padding-left: 20rpx;color: #333;">日间6:00-22:00下单，2小时内送达；夜间22:00-次日6:00下单次日8点送达</view>
       </view>
     </view>
   </view>
-  <!-- banner图  完 -->
-  <!--新菜单-->
-  <view class='menu_container'>
-    <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{speciallist}}" wx:key="index" hover-class='jz_hover'>
-      <image class="menu_icon" mode='widthFix' src='{{item.image}}'></image>
-      <text class="menu_name">{{item.cate_title}}</text>
-    </navigator>
-    <navigator class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
-      <image class="menu_icon" mode='widthFix' src='/images/shop22.png'></image>
-      <text class="menu_name">积分兑换</text>
-    </navigator>
-
-  </view>
-  <!-- 新菜单完 -->
-
-  <!--拼团、砍价 秒杀 优惠券 会员折扣-->
-  <!-- <view class='limit-discount-content'> -->
-    <!-- <navigator bindtap='goTospike' class='limit-discount-div' hover-class='jz_hover'>
-            <image mode='widthFix' src='{{ allocation.group_nav_img }}'></image>
-        </navigator>
-        <navigator url="/pages/index/bargainList/bargainList" class='limit-discount-div' hover-class='jz_hover'>
-            <image mode='widthFix' src='{{ allocation.bargain_nav_img }}'></image>
-        </navigator>
-        <navigator url="/pages/index/second/second" class='limit-discount-div' hover-class='jz_hover'>
-            <image mode='widthFix' src='{{ allocation.spike_nav_img }}'></image>
-        </navigator> -->
-    <!-- <navigator url="/pages/index/coupon/coupon" class='limit-discount-div' hover-class='jz_hover'>
-      <image mode='widthFix' src='{{ allocation.coupon_nav_img }}'></image>
-    </navigator> -->
-
-  <!-- </view> -->
-  <!-- 拼团、砍价 秒杀 优惠券 会员折扣完 -->
-  <view style='height:10rpx;'></view>
-  <view class='wrap brand-title'>
-    <view>为您推荐</view>
-    <view class='bt_all' bindtap='skip_all'>更多
-      <image src='/images/index_right.png'></image>
+  <view class="search-container">
+    <view>
+      <mp-icon extClass="search-icon" type="outline" icon="search" color="#ea5514" size="{{16}}"></mp-icon>
+      <input type="text" placeholder="请搜索你需要的商品" bindfocus="ban_link"/>
     </view>
   </view>
-  <view style="display: flex;padding: 20rpx;flex-wrap: wrap;justify-content:space-around;">
+  <view class="goods-tag-box">
+    <text class="goods-tag">鸡蛋</text>
+    <text class="goods-tag">三线肉</text>
+    <text class="goods-tag">上海青</text>
+    <text class="goods-tag">藏香猪猪</text>
+    <text class="goods-tag">精品里脊</text>
+    <text class="goods-tag">腊香肠</text>
+  </view>
+
+  <view style="padding:20rpx 20rpx 0 20rpx">
+    <swiper class="swipers" indicator-dots='true' interval='5000' circular='true' autoplay="{{autoplay}}" current="{{currentSwiper}}" bindchange="swiperChange">
+      <block wx:for="{{imgs}}" wx:key="index">
+        <swiper-item data-index="{{index}}" data-type="{{item.banner_type}}">
+          <image class='slide-image' data-item="{{item}}" bindtap="goTo" src="{{item.image}}" mode="aspectFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view style="margin: 20rpx;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);border-radius: 2%;background-color: #fff;">
+    <view style="display: flex;justify-content:space-between;align-items: center;padding: 10rpx 20rpx;box-sizing: border-box;">
+      <text style="color: #fb670f;font-size: 28rpx;">Purrgreen纯绿生活</text>
+      <view style="color: #333;font-size: 24rpx;">
+        <view style="display: inline-block;padding: 0 4rpx;">
+          <mp-icon type="field" icon="location" color="#000" size="{{10}}"></mp-icon>
+          <text>新鲜食材</text>
+        </view>
+        <view style="display: inline-block;padding: 0 4rpx;">
+          <mp-icon type="field" icon="location" color="#000" size="{{10}}"></mp-icon>
+          <text>平价优选</text>
+        </view>
+      </view>
+
+    </view>
+    <view style="display: flex;flex-wrap: wrap;">
+      <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{specialCate}}" wx:key="index" hover-class='jz_hover'>
+        <image class="menu_icon" mode='widthFix' src='{{item.image}}'></image>
+        <text class="menu_name">{{item.cate_title}}</text>
+      </navigator>
+      <navigator class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
+        <image class="menu_icon" mode='widthFix' src='/images/shop22.png'></image>
+        <text class="menu_name">积分兑换</text>
+      </navigator>
+    </view>
+  </view>
+
+  <view style='height:10rpx;'></view>
+  <view class='container_t goods-card-box-title'>
+    <view class="goods-card-box-title-left">
+      <text>为您推荐</text>
+    </view>
+
+    <view class="goods-card-box-title-right" bindtap='skip_all'>
+      <view style="padding: 5rpx 12rpx;">更多</view>
+      <mp-icon type="field" icon="arrow" color="#fff" size="{{12}}"></mp-icon>
+    </view>
+  </view>
+  <view class="container_f goods-card-box">
     <navigator url='../productContent/productContent?id={{item.id}}' wx:for="{{goods_list}}" wx:key="index">
       <template is="goods_card" data="{{item}}" />
     </navigator>
-
   </view>
-  <!-- 单品推荐 -->
-  <!-- <view class='recommend-box' wx:for='{{recommendgoods.data}}'>
-        <view class='wrap brand-title'>
-            <view>{{item.cate_title}}</view>
-            <view data-id="{{item.id}}" class='bt_all' bindtap='skip_all'>全部
-                <image src='/images/index_right.png'></image>
-            </view>
-        </view>
-        <view class='recommend-cont wrap'>
-            <view class='recommend-imgs'>
-                <view class='recommend-scroll clearboth'>
-                    <navigator url='../productContent/productContent?id={{val.id}}' class='rImgs-box' wx:for="{{item.goods}}" wx:for-item="val">
-                        <view class='rImgs-icon'>
-                        </view>
-                        <view class='recommend-imgBox'>
-                            <image mode='widthFix' src='{{val.goods_logo}}'></image>
-                        </view>
-                        <view class='rTitle textOverflow'>{{val.goods_title}}</view>
-                        <view class='rPrice-box clearboth'>
-                            <view class='amiddle' style="color: #DA251C;font-weight: 600;">
-                                <text style="font-size: 14px;">￥</text>
-                                <text>{{val[recommendgoodsPrice.show_price]}}</text>
-                            </view>
-                            <view class='amiddle c999' style="text-decoration: line-through;padding-left: 5px;">
-                                <text>￥{{val.huaxian_price}}</text>
-                            </view>
-                        </view>
-                    </navigator>
-                </view>
-            </view>
-        </view>
-        <mp-loading type="circle" show="{{loading}}"></mp-loading>
-    </view> -->
-  <view class="wrap">
-
+  <view style="background-color: #fff;">
+    <mp-loading type="circle" show="{{loading}}"></mp-loading>
+    <view style="text-align: center;color: #8e8e8e;padding-bottom: 16rpx;" wx:if="{{loaded}}"><text>没有更多了~</text></view>
+    <view style="text-align: center;color: #8e8e8e;padding-bottom: 16rpx;" wx:if="{{loaderror}}"><text bindtap="getGoodsList">加载失败，点击重试~</text></view>
   </view>
 
 </view>

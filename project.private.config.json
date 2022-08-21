@@ -19,6 +19,13 @@
           "pathName": "pages/my/set_person_msg/set_person_msg",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "别表",
+          "pathName": "pages/classify/classifyList/classifyList",
+          "query": "id=undefined",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

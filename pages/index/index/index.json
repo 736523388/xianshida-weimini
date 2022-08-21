@@ -1,8 +1,10 @@
 {
   "usingComponents": {
     "mp-loading": "weui-miniprogram/loading/loading",
-    "recycle-view": "miniprogram-recycle-view/recycle-view",
-    "recycle-item": "miniprogram-recycle-view/recycle-item"
+    "mp-icon": "weui-miniprogram/icon/icon"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "navigationBarBackgroundColor": "#fb670f",
+  "navigationBarTextStyle": "white"
 }

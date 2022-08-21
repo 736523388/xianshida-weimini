@@ -2,46 +2,7 @@
 page {
   width: 100vw;
   height: 100vh;
-}
-
-.classify-box {
-  height: 100%;
   background-color: #f1f1f1;
-}
-
-.classify-title {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  font-size: 14px;
-  color: #000;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  margin-bottom: 10rpx;
-  z-index: 100;
-  background: #fff;
-}
-
-.classify-title text {
-  color: #f32e6e;
-  position: relative;
-  margin-right: 222rpx;
-}
-
-.classify-title text::before {
-  position: absolute;
-  content: "";
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #f32e6e;
-}
-
-.classify-title text,
-.classify-title navigator {
-  padding: 22rpx;
 }
 
 /* 分类主体 */
@@ -51,8 +12,6 @@ page {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  /* margin-top: 88rpx; */
-
 }
 
 /* 左边导航 */
@@ -67,40 +26,20 @@ page {
 }
 
 .classify-nav view {
-  /* width: 100%;
-  height: 74px; */
-  /* width: 96%; */
-  /* height: 68px; */
-
-  background: #f1f1f1;
-  /* background: #ededed; */
-  /* border-top-right-radius: 22px;
-  border-bottom-right-radius: 22px; */
+  background: #fff;
   margin-bottom: 1px;
-}
-
-.classify-nav view.active {
-  background: #ffc8de;
-}
-
-/* .classify-nav view text{
-  display: block;
-  padding-top: 12px;
-  width: 32px;
-  font-size: 16px;
   color: #000;
-  margin: 0 auto;
-} */
-.classify-nav view text {
+}
+
+.classify-nav .active {
+  background-color: #f1f1f1;
+  color: #fb670f;
+}
+.classify-nav text {
   display: block;
   padding: 30rpx 0;
   font-size: 14px;
-  color: #000;
   text-align: center;
-}
-
-.nav1 {
-  background: #FFADAD;
 }
 
 /* 右边类别 */
@@ -163,6 +102,43 @@ page {
 }
 
 .classify-right .cate-container .active {
-  background-color: #DA251C;
+  background-color: #fb670f;
   color: #fff;
+}
+
+.goods-card {
+  width: 280rpx;
+  height: auto;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  padding: 10rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.goods-card-image {
+  width: 100%;
+  height: auto;
+}
+
+.goods-card-image image {
+  width: 100%;
+  height: auto;
+}
+
+.goods-card-price view {
+  display: inline-block;
+}
+
+.goods-card-price-striking {
+  color: #DA251C;
+  font-weight: 600;
+  font-size: 28rpx;
+  padding-left: 6rpx;
+}
+
+.goods-card-price-line {
+  text-decoration: line-through;
+  padding-left: 10rpx;
+  color: #8e8e8e;
 }

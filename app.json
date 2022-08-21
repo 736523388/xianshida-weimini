@@ -56,40 +56,40 @@
     }
   },
   "window": {
-    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "鲜食达",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true,
-    "backgroundColor": "#fff"
+    "backgroundColor": "#e8e8e8",
+    "backgroundTextStyle": "light"
   },
   "tabBar": {
     "color": "#8e8e8e",
-    "selectedColor": "#2ccc20",
+    "selectedColor": "#fb670f",
     "list": [
       {
         "pagePath": "pages/index/index/index",
         "text": "首页",
-        "iconPath": "images/shouye_ico.png",
-        "selectedIconPath": "images/shouye.png"
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_curr.png"
       },
       {
         "pagePath": "pages/classify/classify/classify",
         "text": "分类",
-        "iconPath": "images/fenlei_ico.png",
-        "selectedIconPath": "images/fenlei.png"
+        "iconPath": "images/mirror_light.png",
+        "selectedIconPath": "images/mirror_light_curr.png"
       },
       {
         "pagePath": "pages/shop_care/shop_care/shop_care",
         "text": "购物车",
-        "iconPath": "images/gwc_ico.png",
-        "selectedIconPath": "images/gwc.png"
+        "iconPath": "images/cart.png",
+        "selectedIconPath": "images/cart_curr.png"
       },
       {
         "pagePath": "pages/my/my/my",
         "text": "我的",
-        "iconPath": "images/my.png",
-        "selectedIconPath": "images/my_ico.png"
+        "iconPath": "images/nickname.png",
+        "selectedIconPath": "images/nickname_curr.png"
       }
     ]
   },

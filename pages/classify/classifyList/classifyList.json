@@ -1,4 +1,7 @@
 {
+  "usingComponents": {
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
+  },
   "navigationBarBackgroundColor": "#f5f5f5",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "商品列表",
