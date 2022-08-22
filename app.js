@@ -2,6 +2,7 @@
 App({
   //生命周期回调——监听小程序初始化
   onLaunch: function () {
+    // this.loadFontFace()
     //程序初始化缓存必要数据
     wx.request({
       url: this.globalData.urlhost + '/api/base.system/sysconf?name=web_logo',
@@ -14,6 +15,22 @@ App({
         }
       }
     })
+  },
+  loadFontFace() {
+    wx.loadFontFace({
+      family: 'PingFangSC-Medium',
+      global: true,
+      source: 'url("https://sungd.github.io/Pacifico.ttf")',
+      success(res) {
+        console.log(res.status)
+      },
+      fail: function(res) {
+        console.log(res.status)
+      },
+      complete: function(res) {
+        console.log(res.status)
+      }
+    });
   },
   //生命周期回调——监听小程序切后台
   onHide: function(){},

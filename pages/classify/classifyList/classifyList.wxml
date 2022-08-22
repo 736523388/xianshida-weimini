@@ -2,25 +2,20 @@
 <import src="../../../templates/goods_card.wxml" />
 <scroll-view class='classifyList-box' scroll-y bindscrolltolower="load">
   <!-- 搜索框 -->
-  <mp-searchbar></mp-searchbar>
-  <view class='classifyList-search'>
-    <form bindsubmit='search'>
-      <view class='wrap clearboth'>
-        <view class='ban-search'>
-          <image src='/images/search-icon.png'></image>
-          <input bindconfirm='resignFocus' confirm-type='search' placeholder='耗儿鱼、雪花牛肉' name="Keyword" value='{{Keyword}}'></input>
-        </view>
-        <button form-type='submit'>搜索</button>
-      </view>
-    </form>
+  <view class="search-container" style="display: flex;align-items: center;justify-content: space-between;">
+    <view>
+      <mp-icon extClass="search-icon" type="outline" icon="search" color="#fb670f" size="{{16}}"></mp-icon>
+      <input type="text" placeholder="耗儿鱼、雪花牛肉" bindconfirm='changeSearch' name="Keyword"  confirm-type='search' bindinput="changeSearchInput"  value="{{Keyword}}"/>
+    </view>
+    <button bindtap="changeSearch">搜索</button>
   </view>
   <!-- 主体 -->
   <view>
     <!-- 筛选 -->
-    <view class='main-screen'>
-      <view data-index="hot" bindtap='goodssort' style="color:{{sort === 'hot' ?'#F43C77': '#333'}}">人气</view>
-      <view data-index="price" bindtap='goodssort'>
-        <text style="color:{{sort === 'pricelow' || sort === 'pricehight' ?'#F43C77': '#333'}}">价格</text>
+    <view class="screen_container">
+      <view class="{{sort === 'hot' ? 'active' : ''}}" data-index="hot" bindtap='goodssort'>人气</view>
+      <view class="{{sort === 'pricelow' || sort === 'pricehight' ? 'active screen_container_updown' : 'screen_container_updown'}}" data-index="price" bindtap='goodssort'>
+        <text>价格</text>
         <view>
           <image src="{{sort === 'pricehight' ? '/images/upper.png': '/images/upper2.png'}}"></image>
           <image src="{{sort === 'pricelow' ? '/images/lower.png': '/images/lower2.png'}}"></image>
@@ -32,6 +27,13 @@
       <view wx:for="{{goodsList.data}}" wx:key="index" data-id="{{item.id}}" bindtap='goodsLink'>
         <template is="goods_card" data="{{item}}" />
       </view>
+      <view style="width: 50%;"></view>
     </view>
+    <view>
+      <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
+      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>
+      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loadError}}"><text bindtap="load">{{loadErrorTxt}}</text></view>
+    </view>
+    
   </view>
 </scroll-view>

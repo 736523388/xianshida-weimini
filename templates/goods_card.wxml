@@ -5,8 +5,16 @@
     </view>
     <view class="goods-card-title"><text>{{item.goods_title}}</text></view>
     <view class="goods-card-price">
-      <view><text>¥</text><text class="goods-card-price-striking">{{item.market_price}}</text></view>
-      <view class="goods-card-price-line"><text>{{item.huaxian_price}}</text></view>
+      <view>
+        <view>
+          <text class="goods-card-price-striking" style="font-size: 26rpx;">¥</text>
+          <text class="goods-card-price-striking">{{item.market_price}}</text>
+        </view>
+        <!-- <view class="goods-card-price-line"><text>{{item.huaxian_price}}</text></view> -->
+        
+      </view>
+      <view style="height: 44rpx;width: 44rpx;"><image style="height: 100%;width: 100%;" src="../../../images/cart_curr.png" /></view>
+
     </view>
   </view>
 </template>

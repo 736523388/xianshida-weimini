@@ -26,6 +26,13 @@
           "query": "id=undefined",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "pages/index/productContent/productContent",
+          "query": "id=1",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

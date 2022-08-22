@@ -2,21 +2,21 @@
 <view class='index-box'>
   <view class="head-container">
     <view class="site-logo">
-    <image src="../../../images/login_logo.png" mode="scaleToFill"></image>
+      <image src="../../../images/login_logo.png" mode="scaleToFill"></image>
     </view>
     <view class="site-content">
-      <view style="padding:0 20rpx 0 190rpx;box-sizing: border-box;display: flex;justify-content:space-between;align-items:center;">
+      <view style="padding:8rpx 20rpx 0 190rpx;box-sizing: border-box;display: flex;justify-content:space-between;align-items:center;">
         <view style="color: #000;font-weight: 600;">
-          <view style="font-size: 28rpx;">纯绿生活-红旗河沟店</view>
+          <view style="font-size: 30rpx;">纯绿生活-红旗河沟店</view>
           <view style="font-size: 20rpx;">
             <mp-icon type="field" icon="location" color="#000" size="{{10}}"></mp-icon>地址:渝北区锦龙支路32号（金凤大厦）
           </view>
         </view>
-        <view style="width: 120rpx;height: 50rpx;">
+        <!-- <view style="width: 120rpx;height: 50rpx;">
         <image style="height: 100%;width: 100%;" src="../../../images/limitImg-bg.png" mode="scaleToFill"></image>
-        </view>
+        </view> -->
       </view>
-      <view style="padding: 20rpx;box-sizing: border-box;display: flex;align-items:flex-start;font-size: 10px;"> 
+      <view style="padding: 28rpx 20rpx;box-sizing: border-box;display: flex;align-items:flex-start;font-size: 12px;">
         <view style="background-color: #fb670f;white-space: nowrap;padding: 0 6rpx;border-radius: 15%;color: #fff;box-sizing: border-box;">配送</view>
         <view style="padding-left: 20rpx;color: #333;">日间6:00-22:00下单，2小时内送达；夜间22:00-次日6:00下单次日8点送达</view>
       </view>
@@ -24,8 +24,8 @@
   </view>
   <view class="search-container">
     <view>
-      <mp-icon extClass="search-icon" type="outline" icon="search" color="#ea5514" size="{{16}}"></mp-icon>
-      <input type="text" placeholder="请搜索你需要的商品" bindfocus="ban_link"/>
+      <mp-icon extClass="search-icon" type="outline" icon="search" color="#fb670f" size="{{16}}"></mp-icon>
+      <input type="text" placeholder="请搜索你需要的商品" bindfocus="ban_link" />
     </view>
   </view>
   <view class="goods-tag-box">
@@ -47,8 +47,8 @@
     </swiper>
   </view>
 
-  <view style="margin: 20rpx;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);border-radius: 2%;background-color: #fff;">
-    <view style="display: flex;justify-content:space-between;align-items: center;padding: 10rpx 20rpx;box-sizing: border-box;">
+  <view style="margin: 20rpx;box-shadow: 0 4rpx 10rpx 0 rgba(0, 0, 0, 0.2);border-radius: 2%;background-color: #fff;">
+    <view style="display: flex;justify-content:space-between;align-items: center;margin: 10rpx 20rpx;padding-bottom:4rpx;box-sizing: border-box;border-bottom: 2rpx solid #F3F4F6;">
       <text style="color: #fb670f;font-size: 28rpx;">Purrgreen纯绿生活</text>
       <view style="color: #333;font-size: 24rpx;">
         <view style="display: inline-block;padding: 0 4rpx;">
@@ -68,7 +68,7 @@
         <text class="menu_name">{{item.cate_title}}</text>
       </navigator>
       <navigator class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
-        <image class="menu_icon" mode='widthFix' src='/images/shop22.png'></image>
+        <image class="menu_icon" mode='scaleToFill' src='/images/shop22.png'></image>
         <text class="menu_name">积分兑换</text>
       </navigator>
     </view>
@@ -89,6 +89,7 @@
     <navigator url='../productContent/productContent?id={{item.id}}' wx:for="{{goods_list}}" wx:key="index">
       <template is="goods_card" data="{{item}}" />
     </navigator>
+    <view style="width: 50%;"></view>
   </view>
   <view style="background-color: #fff;">
     <mp-loading type="circle" show="{{loading}}"></mp-loading>

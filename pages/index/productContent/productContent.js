@@ -59,7 +59,7 @@ Page({
     optionFlage:false,
     btnFlage:false,
     Num:1,
-    close:false,
+    close:true,
     // 分享弹出层
     shareFlage:false,
     // 分享图片

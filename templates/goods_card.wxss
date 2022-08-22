@@ -3,9 +3,11 @@
   height: auto;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  padding: 10rpx;
+  margin: 10rpx 0;
   font-size: 24rpx;
   color: #333;
+  border-radius: 2%;
+  overflow: hidden;
 }
 
 .goods-card-image {
@@ -18,12 +20,29 @@
   height: auto;
 }
 
+.goods-card .goods-card-title {
+  padding: 10rpx 20rpx;
+  color: #374151;
+  font-size: 28rpx;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goods-card .goods-card-price {
+  padding: 10rpx 20rpx 20rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .goods-card-price view {
   display: inline-block;
 }
 
 .goods-card-price-striking {
-  color: #DA251C;
+  color: #fb670f;
   font-weight: 600;
   font-size: 28rpx;
   padding-left: 6rpx;

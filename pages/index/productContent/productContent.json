@@ -1,4 +1,7 @@
 {
+  "usingComponents": {
+    "mp-icon": "weui-miniprogram/icon/icon"
+  },
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "商品详情",

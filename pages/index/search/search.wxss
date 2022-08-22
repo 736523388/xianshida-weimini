@@ -63,7 +63,6 @@ page{
   flex-grow:2;
 }
 .search-text1{
-  font-family:'LinotypeSyntax';
   font-weight:bold;
   font-style:normal;
   color:#8044EC;

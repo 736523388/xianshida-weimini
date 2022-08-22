@@ -33,7 +33,7 @@
 }
 
 .search-container input {
-  padding: 4rpx 0;
+  padding: 8rpx 0;
   font-size: 24rpx;
 }
 
@@ -57,7 +57,7 @@
 
 .head-container .site-content {
   background-color: #fff;
-  border-radius: 8rpx;
+  border-radius: 16rpx;
 }
 
 .goods-tag-box {
@@ -126,12 +126,16 @@
 /* banner */
 
 swiper {
-  height: 410rpx;
+  height: 243rpx;
+}
+swiper-item {
+  border-radius: 16rpx;
 }
 
 .slide-image {
   width: 100vw;
-  height: 410rpx;
+  height: 243rpx;
+  
 }
 
 /* 菜单栏 */
@@ -147,7 +151,6 @@ swiper {
 }
 
 .menu_item {
-  font-family: PingFang-SC-Medium;
   width: 20%;
   display: flex;
   flex-direction: column;
@@ -163,4 +166,5 @@ swiper {
 .menu_icon {
   width: 110rpx;
   height: 110rpx;
+  border-radius: 10rpx;
 }
