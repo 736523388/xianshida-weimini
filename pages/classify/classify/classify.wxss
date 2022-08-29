@@ -1,4 +1,5 @@
 /* pages/classify/classify.wxss */
+@import '../../../templates/goods_card.wxss';
 page {
   width: 100vw;
   height: 100vh;
@@ -106,39 +107,3 @@ page {
   color: #fff;
 }
 
-.goods-card {
-  width: 280rpx;
-  height: auto;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  padding: 10rpx;
-  font-size: 24rpx;
-  color: #333;
-}
-
-.goods-card-image {
-  width: 100%;
-  height: auto;
-}
-
-.goods-card-image image {
-  width: 100%;
-  height: auto;
-}
-
-.goods-card-price view {
-  display: inline-block;
-}
-
-.goods-card-price-striking {
-  color: #DA251C;
-  font-weight: 600;
-  font-size: 28rpx;
-  padding-left: 6rpx;
-}
-
-.goods-card-price-line {
-  text-decoration: line-through;
-  padding-left: 10rpx;
-  color: #8e8e8e;
-}

@@ -1,5 +1,5 @@
 <!-- ------------------------tab栏------------------ -->
-<scroll-view scroll-x="true" class="tab" scroll-left="{{scrollLeft}}">
+<scroll-view scroll-x="{{true}}" class="tab" scroll-left="{{scrollLeft}}">
   <view class='tabitem {{current1?"active":""}}' bindtap='changenav1'>全部</view>
   <view class='tabitem {{current2?"active":""}}' bindtap='changenav2'>待付款</view>
   <view class='tabitem {{current3?"active":""}}' bindtap='changenav3'>待发货</view>
@@ -54,7 +54,7 @@
             <view>
               <block wx:if="{{item.status == 1}}">
                 <text data-orderid="{{item.id}}" bindtap='cancelorder'>取消订单</text>
-                <text style='background:#f32c6e;color:#fff'  data-order_no="{{item.order_no}}" bindtap='pay' wx:if="{{item.type == 1 || (item.type == 2 && item.success_time >= 0)}}">立即支付</text>
+                <text style='background:#fb670f;color:#fff'  data-order_no="{{item.order_no}}" bindtap='pay' wx:if="{{item.type == 1 || (item.type == 2 && item.success_time >= 0)}}">立即支付</text>
               </block>
 
               <!-- <block wx:if="{{item.order_status == 2}}">
@@ -67,11 +67,11 @@
 
               <block wx:if="{{item.status == 3}}">
                 <text data-order_no="{{item.order_no}}" data-way="{{item.express.way}}" data-order_index="{{groupind}}" bindtap='skip_logistic'>{{item.express.way==1?'查看物流':'到店自取'}}</text>
-                <text style='background:#f32c6e;color:#fff' data-orderid="{{item.id}}" bindtap='receive'>确认收货</text>
+                <text style='background:#fb670f;color:#fff' data-orderid="{{item.id}}" bindtap='receive'>确认收货</text>
               </block>
 
               <block wx:if="{{(item.status == 4 || item.status == 5) && item.is_comment == 0}}">
-                <text style='background:#f32c6e;color:#fff' data-orderid="{{item.id}}" data-order_index="{{groupind}}" bindtap='appraise'>去评价</text>
+                <text style='background:#fb670f;color:#fff' data-orderid="{{item.id}}" data-order_index="{{groupind}}" bindtap='appraise'>去评价</text>
               </block>
               
               <block wx:if="{{(item.status == 2 && (item.type == 1 || (item.type == 2 && item.success_time != 0) || item.type == 3)) || item.status ==3 || item.status ==4 }}">
@@ -83,7 +83,7 @@
       </view>
 
       <view class='cart-no-data' wx:else>
-        <image src='/images/null_cart.png' mode='widthFix'></image>
+        <!-- <image src='/images/null_cart.png' mode='widthFix'></image> -->
         <view>啊哦，您还没有相关订单哦</view>
       </view>
       <!-- tab栏1最大盒子的结束标签 -->

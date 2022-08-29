@@ -57,7 +57,7 @@ page {
   line-height: 22rpx;
   text-align: center;
   font-size: 18rpx;
-  color: #f32e6e;
+  color: #fb670f;
   border-radius: 22px;
   background: #fff;
   margin-left: 32rpx;
@@ -96,8 +96,9 @@ page {
 
 .price1-text1 {
   font-size: 38rpx;
-  color: #f32c6e;
+  color: #fb670f;
   margin-right: 20rpx;
+  font-weight: 600;
 }
 
 .price1-text2 {
@@ -107,7 +108,7 @@ page {
   font-size: 18rpx;
   color: #fff;
   border-radius: 2px;
-  background: #f32c6e;
+  background: #fb670f;
   vertical-align: top;
   margin-bottom: 12rpx;
 }
@@ -142,12 +143,13 @@ page {
 }
 
 .price2 text {
-  color: #f32c6e;
+  color: #fb670f;
 }
 
 .price3 {
   font-size: 23rpx;
-  color: #949494;
+  color: #6B7280;
+  margin-top: 12rpx;
 }
 
 .pCont-price .right {
@@ -217,7 +219,7 @@ page {
   font-size: 26rpx;
   color: #fff;
   border-radius: 4px;
-  background: #f32c6e;
+  background: #fb670f;
 }
 
 /* 服务 */
@@ -241,7 +243,7 @@ page {
 
 .service1 .wrap .project .spot {
   font-size: 16rpx;
-  color: #f32c6e;
+  color: #fb670f;
   margin-right: 6rpx;
 }
 
@@ -324,7 +326,7 @@ page {
 
 .text-price .price1 {
   font-size: 28rpx;
-  color: #f32c6e;
+  color: #fb670f;
   margin-right: 12rpx;
 }
 
@@ -335,7 +337,7 @@ page {
   font-size: 18rpx;
   color: #fff;
   border-radius: 2px;
-  background: #f32c6e;
+  background: #fb670f;
   margin-bottom: 12rpx;
 }
 
@@ -368,7 +370,7 @@ page {
 
 .details-title #details {
   position: relative;
-  color: #f32e6e;
+  color: #fb670f;
 }
 
 .details-title #details::before {
@@ -378,7 +380,7 @@ page {
   left: 24rpx;
   width: 80rpx;
   height: 2px;
-  background: #f32e6e;
+  background: #fb670f;
 }
 
 .details-title .right {
@@ -386,7 +388,7 @@ page {
 }
 
 .details-title .right view:last-child text {
-  color: #f32e6e;
+  color: #fb670f;
 }
 
 .details1 rich-text {
@@ -487,7 +489,7 @@ page {
   text-align: center;
   font-size: 20rpx;
   color: #fff;
-  background: #f32e6e;
+  background: #fb670f;
   border-radius: 50%;
 }
 
@@ -501,11 +503,11 @@ page {
 }
 
 .pCont-tabar>.afright>view.afleft {
-  background: #f32e6e;
+  background: #fb670f;
 }
 
 .pCont-tabar>.afright>view.afright {
-  background: #d72861;
+  background: #DC2626;
 }
 
 /* 商品详情 */
@@ -558,7 +560,7 @@ page {
 
 .evaluate-tab .wrap view.active {
   color: #fff;
-  background: #f32e6e;
+  background: #fb670f;
 }
 
 /* 评价列表 */
@@ -669,14 +671,14 @@ page {
 
 .cont-img .left {
   /* margin-top: 20rpx; */
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   align-items: flex-end;
 }
 
 .cont-img .left .img {
   width: 180rpx;
-  height: 173rpx;
+  height: 180rpx;
   border-radius: 6px;
   box-shadow: 1px 1px 6px #44464e;
   margin-right: 20rpx;
@@ -692,6 +694,7 @@ page {
 .cont-img .left .img-price {
   /* margin-top: 44rpx; */
   display: flex;
+  flex: 1;
   flex-flow: column-reverse nowrap;
 }
 
@@ -757,6 +760,7 @@ page {
   border-color: #f32e6e;
   background: #fb670f;
 }
+
 .cont-option view.active {
   border-color: #FCD34D;
   background-color: #FFFBEB;
@@ -1143,4 +1147,21 @@ page {
 .create_order {
   background: #fb670f;
   width: 100%;
+}
+
+.checked_spec_box {
+  height: 34rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: #6B7280;
+}
+
+.checked_spec_item {
+  color: #F59E0B !important;
+  background: #FFFBEB;
+  border: 1px solid #FCD34D;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-right: 8rpx;
+  padding: 0 4rpx;
 }

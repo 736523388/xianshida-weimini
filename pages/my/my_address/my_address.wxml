@@ -10,6 +10,7 @@
       <view style='height:30rpx '></view>
       <view class="address_item">
         <view class="top">
+          <text>{{item.store_name}}</text>
           <text>{{item.username}}</text>
           <text>{{item.phone}}</text>
         </view>

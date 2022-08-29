@@ -1,11 +1,22 @@
 <!--pages/classify/classifyList/classifyList.wxml-->
 <import src="../../../templates/goods_card.wxml" />
-<scroll-view class='classifyList-box' scroll-y bindscrolltolower="load">
+<scroll-view class='classifyList-box' 
+scroll-y 
+bindscrolltolower="load" 
+bindrefresherrefresh="load"	
+scroll-anchoring="{{true}}" 
+refresher-enabled="{{true}}"
+refresher-default-style="black"
+  refresher-triggered="{{triggered}}"
+  bindrefresherpulling="onPulling"
+  bindrefresherrefresh="onRefresh"
+  bindrefresherrestore="onRestore"
+  bindrefresherabort="onAbort">
   <!-- 搜索框 -->
   <view class="search-container" style="display: flex;align-items: center;justify-content: space-between;">
     <view>
       <mp-icon extClass="search-icon" type="outline" icon="search" color="#fb670f" size="{{16}}"></mp-icon>
-      <input type="text" placeholder="耗儿鱼、雪花牛肉" bindconfirm='changeSearch' name="Keyword"  confirm-type='search' bindinput="changeSearchInput"  value="{{Keyword}}"/>
+      <input type="text" placeholder="请输入你需要的商品" bindconfirm='changeSearch' name="Keyword"  confirm-type='search' bindinput="changeSearchInput"  value="{{Keyword}}"/>
     </view>
     <button bindtap="changeSearch">搜索</button>
   </view>
@@ -24,10 +35,10 @@
     </view>
     <!-- 产品 -->
     <view style="display: flex;flex-wrap: wrap;justify-content: space-around;padding: 10rpx;box-sizing: border-box;">
-      <view wx:for="{{goodsList.data}}" wx:key="index" data-id="{{item.id}}" bindtap='goodsLink'>
+      <navigator style="margin: 10rpx 0;width: 342rpx;" url='/pages/index/productContent/productContent?id={{item.id}}' wx:for="{{goodsList.data}}" wx:key="index">
         <template is="goods_card" data="{{item}}" />
-      </view>
-      <view style="width: 50%;"></view>
+      </navigator>
+      <view style="width: 342rpx;"></view>
     </view>
     <view>
       <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>

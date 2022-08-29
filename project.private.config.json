@@ -30,7 +30,63 @@
         {
           "name": "详情",
           "pathName": "pages/index/productContent/productContent",
-          "query": "id=1",
+          "query": "id=6",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "购物车",
+          "pathName": "pages/shop_care/shop_care/shop_care",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "搜索中转",
+          "pathName": "pages/index/search/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "订单列表",
+          "pathName": "pages/my/my_order/my_order",
+          "query": "status=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "积分",
+          "pathName": "pages/my/my_jf/my_jf",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/my/my/my",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "123",
+          "pathName": "pages/index/groupOrderCon/groupOrderCon",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "优惠券领取",
+          "pathName": "pages/index/coupon/coupon",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的优惠券",
+          "pathName": "pages/my/my_coupon/my_coupon",
+          "query": "",
           "launchMode": "default",
           "scene": null
         }

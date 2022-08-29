@@ -47,7 +47,7 @@ page{
 .address_item .top>text {
   font-size: 30rpx;
   color: #121314;
-  margin-right: 40rpx;
+  margin-right: 12rpx;
 }
 
 .address_item .center {

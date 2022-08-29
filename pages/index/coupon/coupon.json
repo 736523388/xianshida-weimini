@@ -1,8 +1,12 @@
 {
+  "usingComponents": {
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "mp-icon": "weui-miniprogram/icon/icon"
+  },
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "优惠券",
+  "navigationBarTitleText": "领取优惠券",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true
 }

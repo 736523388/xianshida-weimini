@@ -32,13 +32,14 @@ page{
 }
 /* 主体 */
 .coupon-mian{
-  padding-top: 20rpx; 
+  margin: 20rpx;
 }
 .coupon-cont{
-  width: 634rpx;
+  margin-bottom: 20rpx;
   border-radius: 6px;
   background: #fff;
-  margin: 0 auto 20rpx auto;
+  padding-right: 20rpx;
+  box-sizing: border-box;
 }
 .cont-border{
   width: 100%;
@@ -48,27 +49,48 @@ page{
   border-top-right-radius: 6px;
 }
 .cont-text{
-  width: 606rpx;
-  border-bottom: 1px dashed #f32e6e;
-  margin: 0 auto;
+  /* width: 606rpx; */
+  /* border-bottom: 1px dashed #f32e6e; */
+  /* margin: 0 auto; */
 }
 .cont-text .cont-wrap{
    padding: 32rpx 20rpx 26rpx 20rpx;
 }
 .text-money{
-  width: 140rpx;
-  margin-right: 42rpx;
+  background-color: #DB2777;
+  color: #fff;
+  height: 180rpx;
+  width: 220rpx;
+  border-radius: 20rpx 0 0 20rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.text-money::after {
+  content: '';
+  height: 100%;
+  position: absolute;
+  border-left: 12rpx dotted white;
+  top: 0;
+  right: -6rpx;
 }
 .money1{
-  font-size: 32rpx;
-  color: #4c4c4c;
+  font-size: 56rpx;
+  line-height: 56rpx;
+  font-weight: 500;
+  text-align: center;
+  /* padding: 20rpx 0; */
 }
-.money1 text{
-  font-size: 68rpx;
+.money1>text {
+  margin: 0;
 }
 .money2{
   font-size: 22rpx;
-  color: #4c4c4c;
+  text-align: center;
+  font-weight: lighter;
 }
 .money3{
   width: 100rpx;
@@ -82,29 +104,40 @@ page{
   margin-top: 10rpx;
 }
 .cont-name{
-  width: 256rpx;
-   color: #f32e6e;
-  margin-right: 6rpx;
+  /* width: 256rpx; */
+   /* color: #f32e6e; */
+  /* margin-right: 6rpx; */
+  /* flex-grow: 1; */
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  flex: 1;
+  color: #6B7280;
 }
 .name1{
-  font-size: 36rpx;
+  font-size: 28rpx;
+  color: #000;
+  font-weight: 500;
+  letter-spacing: 2rpx;
 }
 .name2{
-  font-size: 24rpx;
-  margin-bottom: 46rpx;
+  font-size: 22rpx;
+  font-weight: lighter;
 }
 .name3{
   font-size: 24rpx;
 }
 .cont-btn{
-  font-size: 22rpx;
+  font-size: 24rpx;
+  white-space: normal;
   color: #fff;
-  width: 116rpx;
+  /* width: 116rpx;
   height: 33rpx;
   line-height: 33rpx;
   text-align: center;
-  border-radius: 4px;
-  background: #f32e6e;
+  border-radius: 15%; */
+  background: #DB2777;
+  border-radius: 30rpx;
+  padding: 8rpx 36rpx;
 }
 .cont-day{
   height: 62rpx;
@@ -201,6 +234,7 @@ page{
   margin-bottom: 52rpx;
 }
 .coupon-mian>.active .cont-border,
+.coupon-mian>.active .text-money,
 .coupon-mian>.active .money3,
 .coupon-mian>.active .cont-btn{
   background: #8d8d8d;

@@ -2,14 +2,14 @@
 <view class='index-box'>
   <view class="head-container">
     <view class="site-logo">
-      <image src="../../../images/login_logo.png" mode="scaleToFill"></image>
+      <image src="{{web_logo}}" mode="scaleToFill"></image>
     </view>
     <view class="site-content">
       <view style="padding:8rpx 20rpx 0 190rpx;box-sizing: border-box;display: flex;justify-content:space-between;align-items:center;">
         <view style="color: #000;font-weight: 600;">
-          <view style="font-size: 30rpx;">纯绿生活-红旗河沟店</view>
+          <view style="font-size: 30rpx;">{{site_name}}</view>
           <view style="font-size: 20rpx;">
-            <mp-icon type="field" icon="location" color="#000" size="{{10}}"></mp-icon>地址:渝北区锦龙支路32号（金凤大厦）
+            <text class="iconfont icon-shouhuodizhi1">地址:{{company_address}}</text>
           </view>
         </view>
         <!-- <view style="width: 120rpx;height: 50rpx;">
@@ -18,7 +18,7 @@
       </view>
       <view style="padding: 28rpx 20rpx;box-sizing: border-box;display: flex;align-items:flex-start;font-size: 12px;">
         <view style="background-color: #fb670f;white-space: nowrap;padding: 0 6rpx;border-radius: 15%;color: #fff;box-sizing: border-box;">配送</view>
-        <view style="padding-left: 20rpx;color: #333;">日间6:00-22:00下单，2小时内送达；夜间22:00-次日6:00下单次日8点送达</view>
+        <view style="padding-left: 20rpx;color: #333;">{{express_desc}}</view>
       </view>
     </view>
   </view>
@@ -29,12 +29,7 @@
     </view>
   </view>
   <view class="goods-tag-box">
-    <text class="goods-tag">鸡蛋</text>
-    <text class="goods-tag">三线肉</text>
-    <text class="goods-tag">上海青</text>
-    <text class="goods-tag">藏香猪猪</text>
-    <text class="goods-tag">精品里脊</text>
-    <text class="goods-tag">腊香肠</text>
+    <navigator url="/pages/classify/classifyList/classifyList?key={{item.title}}" wx:for="{{keywords}}" wx:key="keyword"><text class="goods-tag">{{item.title}}</text></navigator>
   </view>
 
   <view style="padding:20rpx 20rpx 0 20rpx">
@@ -48,15 +43,15 @@
   </view>
 
   <view style="margin: 20rpx;box-shadow: 0 4rpx 10rpx 0 rgba(0, 0, 0, 0.2);border-radius: 2%;background-color: #fff;">
-    <view style="display: flex;justify-content:space-between;align-items: center;margin: 10rpx 20rpx;padding-bottom:4rpx;box-sizing: border-box;border-bottom: 2rpx solid #F3F4F6;">
-      <text style="color: #fb670f;font-size: 28rpx;">Purrgreen纯绿生活</text>
+    <view style="display: flex;justify-content:space-between;align-items: center;margin: 10rpx 20rpx;padding:10rpx;box-sizing: border-box;border-bottom: 2rpx solid #F3F4F6;">
+      <text style="color: #fb670f;font-size: 28rpx;font-weight: 600;">{{app_name}}</text>
       <view style="color: #333;font-size: 24rpx;">
-        <view style="display: inline-block;padding: 0 4rpx;">
-          <mp-icon type="field" icon="location" color="#000" size="{{10}}"></mp-icon>
+        <view style="display: inline-flex;padding: 0 4rpx;align-items: center;">
+          <mp-icon style="display: inline-flex;align-items: center;" type="outline" icon="keyboard" color="#000" size="{{14}}"></mp-icon>
           <text>新鲜食材</text>
         </view>
-        <view style="display: inline-block;padding: 0 4rpx;">
-          <mp-icon type="field" icon="location" color="#000" size="{{10}}"></mp-icon>
+        <view style="display: inline-flex;padding: 0 4rpx;align-items: center;">
+          <mp-icon style="display: inline-flex;align-items: center;" type="outline" icon="shop" color="#000" size="{{14}}"></mp-icon>
           <text>平价优选</text>
         </view>
       </view>
@@ -67,10 +62,26 @@
         <image class="menu_icon" mode='widthFix' src='{{item.image}}'></image>
         <text class="menu_name">{{item.cate_title}}</text>
       </navigator>
-      <navigator class='menu_item' url='/pages/index/subbranch/subbranch' hover-class='jz_hover'>
+      <!-- <navigator class='menu_item' url='/pages/index/coupon/coupon' hover-class='jz_hover'>
         <image class="menu_icon" mode='scaleToFill' src='/images/shop22.png'></image>
         <text class="menu_name">积分兑换</text>
-      </navigator>
+      </navigator> -->
+    </view>
+  </view>
+
+  <view class="container_coupon">
+    <view style="align-items: flex-end;justify-content: flex-end;" bindtap="clickIntegral">
+      <image src="/images/crown.png"/>
+      <text>积分兑换</text>
+    </view>
+    <text class="coupon_column"></text>
+    <view style="align-items: center;" bindtap="clickCoupon">
+      <image src="/images/coupon.png"/>
+      <view style="align-items: flex-end;padding: 0;">
+        <text style="color: #DC2626;font-weight: bolder;">领</text>
+        <text style="margin-left: 4rpx;">优惠券(先领取，后购买)</text>
+      </view>
+      
     </view>
   </view>
 
@@ -86,15 +97,16 @@
     </view>
   </view>
   <view class="container_f goods-card-box">
-    <navigator url='../productContent/productContent?id={{item.id}}' wx:for="{{goods_list}}" wx:key="index">
+    <navigator style="margin: 10rpx 0;width: 342rpx;" url='../productContent/productContent?id={{item.id}}' wx:for="{{goods_list}}" wx:key="index">
       <template is="goods_card" data="{{item}}" />
     </navigator>
-    <view style="width: 50%;"></view>
+    <view style="width: 342rpx;"></view>
   </view>
+
   <view style="background-color: #fff;">
-    <mp-loading type="circle" show="{{loading}}"></mp-loading>
-    <view style="text-align: center;color: #8e8e8e;padding-bottom: 16rpx;" wx:if="{{loaded}}"><text>没有更多了~</text></view>
-    <view style="text-align: center;color: #8e8e8e;padding-bottom: 16rpx;" wx:if="{{loaderror}}"><text bindtap="getGoodsList">加载失败，点击重试~</text></view>
-  </view>
+      <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
+      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>
+      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loadError}}"><text bindtap="getGoodsList">{{loadErrorTxt}}</text></view>
+    </view>
 
 </view>

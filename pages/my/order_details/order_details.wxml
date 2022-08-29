@@ -5,7 +5,7 @@
   <view class='order-information'>
       <view class='information-main'>
         <view class='wrap'>
-          <view class='left'>收货地址：{{order_desc.express.express_username}} {{order_desc.express.express_phone}}</view>
+          <view class='left'>收货地址：{{order_desc.express.express_store_name}} {{order_desc.express.express_username}} {{order_desc.express.express_phone}}</view>
           <view class='right'>
             <text>{{order_desc.express.express_address}}</text>
           </view>
@@ -14,7 +14,7 @@
   </view>
   <!-- 结算的产品 -->
   <view class='settlement-product'>
-    <navigator class='product-cont' wx:for="{{goods}}">
+    <navigator class='product-cont' wx:for="{{goods}}" wx:key="index">
       <view class='wrap'>
         <view class='product-left'>
           <image src='{{item.goods_logo}}'></image>
@@ -23,7 +23,7 @@
           <view class='product-title'>{{item.goods_title}}</view>
           <view class='product-text1'>{{item.goods_spec_alias}}</view>
           <view class='product-text3'>
-            <view class='product-price'>￥{{item.selling_price}}</view>
+            <view class='product-price'>￥{{item.market_price}}</view>
             <view class='product-num'>x{{item.number}}</view>
           </view>
         </view>

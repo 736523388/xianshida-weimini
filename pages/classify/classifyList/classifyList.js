@@ -1,10 +1,7 @@
 // pages/classify/classifyList/classifyList.js
 //获取应用实例
 const app = getApp()
-import { getStorage, isLogin } from '../../../utils/handleLogin'
-import { $init, $digest } from '../../../utils/common.util'
-var s1 = true,
-  title = true;
+import { getStorage } from '../../../utils/handleLogin'
 Page({
 
   /**
@@ -26,6 +23,7 @@ Page({
     loadErrorTxt: '加载失败，点击重试',
     //搜索关键字
     Keyword: '',
+    triggered: false
 
   },
   goodssort: function (e) {
@@ -44,15 +42,16 @@ Page({
     this.load('ref')
   },
   // 产品列表接收数据
-  load: function (ref) {
-    if(ref === 'ref'){
+  load: function (e) {
+    console.log('load', e)
+    if(e === 'ref'){
       this.setData({
         goodsList: {},
         page: 1,
         loadError: false,
         loading: this.data.loading === 'loading' ? 'loading' : 'more'
       })
-    } else if(ref !== undefined){
+    } else if(e !== undefined){
       this.setData({
         loadError: false
       })
@@ -89,10 +88,12 @@ Page({
         if (goodsList.hasOwnProperty('data')) {
           goodsList.data = goodsList.data.concat(res.data.data.data)
         } else {
-          goodsList.data = res.data.data.data
-          goodsList.hide_price = res.data.data.hide_price
-          goodsList.hide_price_txt = res.data.data.hide_price_txt
-          goodsList.show_price = res.data.data.show_price
+          goodsList = {
+            data: res.data.data.data,
+            hide_price: res.data.data.hide_price,
+            hide_price_txt: res.data.data.hide_price_txt,
+            show_price: res.data.data.show_price,
+          }
         }
         page++
         if (res.data.data.data.length < 10) {
@@ -100,7 +101,8 @@ Page({
         } else {
           loading = 'more'
         }
-        this.setData({ goodsList, page, loading })
+        this.setData({ goodsList, page, loading, triggered: false })
+        this._freshing = false
       },
       fail: () => {
         this.setData({
@@ -114,10 +116,33 @@ Page({
       }
     })
   },
+  onRefresh(){
+    if (this._freshing) return
+    this._freshing = true
+    setTimeout(() => {
+      this.load('ref')
+    }, 1000)
+    setTimeout(() => {
+      this.setData({
+        triggered: false,
+      })
+      this._freshing = false
+    }, 3000)
+  },
+  onPulling(e) {
+    console.log('onPulling:', e)
+  },
+  onRestore(e) {
+    console.log('onRestore:', e)
+  },
+
+  onAbort(e) {
+    console.log('onAbort', e)
+  },
   changeSearch(e) {
-    if (!this.data.Keyword) {
-      return
-    }
+    // if (!this.data.Keyword) {
+    //   return
+    // }
     this.setData({
       sort: 'hot'
     })
@@ -139,6 +164,7 @@ Page({
    */
   onLoad: function (e) {
 
+    console.log(e)
     let { cateId, Keyword } = this.data
     // 商品id
     if (e.hasOwnProperty('id')) {

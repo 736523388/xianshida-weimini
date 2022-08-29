@@ -19,7 +19,7 @@
   <navigator class='top-cont top-text1' wx:if="{{address_bool}}" url='/pages/my/my_address/my_address'>
     <view class='wrap'>
       <view class='text1-left'>
-        <view>{{address.username}} {{address.phone}}</view>
+        <view>{{address.store_name}} {{address.username}} {{address.phone}}</view>
         <text>{{address.address}}</text>
       </view>
       <view class='text1-right'>

@@ -6,7 +6,8 @@
   width: 100vw;
   height: auto;
   overflow: hidden;
-  background: -webkit-linear-gradient(top, #fb670f, #f7a373, white);
+  background: linear-gradient(#fb670f 0%, #f0f0f0 50%);
+  background: -webkit-linear-gradient(#fb670f 0%, #f0f0f0 1000rpx);
 }
 
 .search-container {
@@ -48,8 +49,10 @@
   position: absolute;
   left: 40rpx;
   top: 60rpx;
-  border-radius: 15%;
+  border-radius: 16rpx;
+  overflow: hidden;
 }
+
 .head-container .site-logo>image {
   height: 100%;
   width: 100%;
@@ -70,7 +73,7 @@
 .goods-tag {
   background-color: #fff;
   color: #fb670f;
-  padding: 0 16rpx;
+  padding: 4rpx 16rpx;
   box-sizing: border-box;
   border-radius: 12rpx;
 }
@@ -128,6 +131,7 @@
 swiper {
   height: 243rpx;
 }
+
 swiper-item {
   border-radius: 16rpx;
 }
@@ -135,7 +139,7 @@ swiper-item {
 .slide-image {
   width: 100vw;
   height: 243rpx;
-  
+
 }
 
 /* 菜单栏 */
@@ -167,4 +171,46 @@ swiper-item {
   width: 110rpx;
   height: 110rpx;
   border-radius: 10rpx;
+}
+
+.menu_item .menu_name {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.container_coupon {
+  margin: 20rpx;
+  box-shadow: 0 4rpx 10rpx 0 rgba(0, 0, 0, 0.2);
+  border-radius: 24rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 14px;
+  padding: 8rpx 0;
+  box-sizing: border-box;
+}
+.container_coupon view{
+  display: flex;
+  box-sizing: border-box;
+  font-weight: 500;
+  padding: 0 20rpx;
+}
+
+.container_coupon image {
+  width: 40rpx;height: 40rpx;margin-right: 20rpx;
+}
+
+.coupon_column {
+  /* flex: 1; */
+  /* display: block; */
+  /* text-align: center; */
+}
+
+.coupon_column::after {
+  content: '';
+  border-left: 1px solid #ccc;
 }

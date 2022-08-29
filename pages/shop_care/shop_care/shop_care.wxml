@@ -64,7 +64,7 @@
     </view>
   </view>
   <view class='cart-no-data' wx:else>
-    <image src="https://cdn.xhzsm.com/null_cart.png" mode='widthFix'></image>
+    <!-- <image src="https://cdn.xhzsm.com/null_cart.png" mode='widthFix'></image> -->
     <view>啊哦，购物车还没有商品哦</view>
   </view>
 </view>

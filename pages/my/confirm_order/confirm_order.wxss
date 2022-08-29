@@ -137,7 +137,7 @@ page {
 
 .settlement-product .product-price {
   font-size: 16px;
-  color: #f32e6e;
+  color: #fb670f;
 }
 
 .settlement-product .product-num {
@@ -345,7 +345,7 @@ font-size:23rpx;
 .payment-text2 {
   font-size: 18px;
   font-weight: 500;
-  color: #f43d78;
+  color: #fb670f;
   margin-right: 4px;
 }
 
@@ -360,5 +360,5 @@ font-size:23rpx;
   font-size: 30rpx;
   color: #fff;
   text-align: center;
-  background: #f32e6e;
+  background: #DC2626;
 }

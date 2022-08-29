@@ -1,99 +1,117 @@
-
-page{
+page {
   background: #f1f1f1;
 }
+
 /* 个人信息 */
-.order-img1{
+.order-img1 {
   display: block;
   width: 100vw;
   height: auto;
 }
-.information-main{
+
+.information-main {
   padding: 34rpx 0;
   font-size: 14px;
   color: #000;
-  margin-bottom:10rpx;
+  margin-bottom: 10rpx;
   background: #fff;
 }
-.information-main>.wrap{
+
+.information-main>.wrap {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.information-main .right text{
+
+.information-main .right text {
   font-size: 13px;
   color: #8d8d8d;
-  margin:15rpx 0;
+  margin: 15rpx 0;
 }
-.information-main .right image{
+
+.information-main .right image {
   width: 204rpx;
   height: 127rpx;
   margin: 20rpx 20rpx 0 0;
-  border-radius:10rpx;
+  border-radius: 10rpx;
 }
+
 /* 结算的产品 */
-.settlement-product{
+.settlement-product {
   margin: 10rpx 0;
 }
-.settlement-product>navigator{
+
+.settlement-product>navigator {
   padding: 0 40rpx;
   border-bottom: 1px solid #f1f1f1;
   background: #fff;
 }
-.settlement-product>navigator>.wrap{
+
+.settlement-product>navigator>.wrap {
   padding: 28rpx 0;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-.settlement-product .product-left{
+
+.settlement-product .product-left {
   width: 34%;
   height: 220rpx;
   box-shadow: 0px 0px 4px rgb(170, 169, 169);
   border-radius: 8px;
 }
-.settlement-product .product-left image{
+
+.settlement-product .product-left image {
   display: block;
   width: 100%;
   height: 100%;
   border-radius: 8px;
 }
-.settlement-product .product-right{
+
+.settlement-product .product-right {
   width: 63%;
 }
+
 .settlement-product .product-right .product-title,
-.settlement-product .product-right .product-text1{
+.settlement-product .product-right .product-text1 {
   width: 92%;
 }
-.settlement-product .product-right .product-title{
+
+.settlement-product .product-right .product-title {
   font-size: 14px;
   color: #000;
 }
-.settlement-product .product-right .product-text1{
+
+.settlement-product .product-right .product-text1 {
   font-size: 13px;
   color: #949494;
 }
-.settlement-product .product-right .product-text3{
+
+.settlement-product .product-right .product-text3 {
   width: 94%;
   margin-top: 30rpx;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-.settlement-product .product-price{
+
+.settlement-product .product-price {
   font-size: 16px;
-  color: #f32e6e;
+  color: #fb670f;
 }
-.settlement-product .product-num{
+
+.settlement-product .product-num {
   font-size: 12px;
   color: #000;
 }
+
 /* 价格信息 */
-.information-price{
+.information-price {
   padding-bottom: 20rpx;
   background: #fff;
 }
-.price-text{
+
+.price-text {
   padding-top: 20rpx;
   display: flex;
   flex-flow: row nowrap;
@@ -102,30 +120,36 @@ page{
   color: #000;
   font-weight: 500;
 }
-.price-text:last-child{
+
+.price-text:last-child {
   padding-top: 30rpx;
 }
-.price-text:last-child .right{
-  color:#F32E6E
+
+.price-text:last-child .right {
+  color: #fb670f;
 }
+
 /* 底部订单信息 */
-.order-bottom{
+.order-bottom {
   background: #fff;
   padding-top: 18rpx;
-  margin-top:10rpx;
+  margin-top: 10rpx;
   padding: 8px 0;
 }
-.bottom-cont{
+
+.bottom-cont {
   font-size: 14px;
   color: #8d8d8d;
   margin-bottom: 10rpx;
 }
-.bottom-click{
+
+.bottom-click {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-.bottom-click .bottom-btn{
+
+.bottom-click .bottom-btn {
   width: 84rpx;
   height: 40rpx;
   line-height: 40rpx;
@@ -134,12 +158,3 @@ page{
   border: 1px solid #d8d7d7;
   border-radius: 4px;
 }
-
-
-
-
-
-
-
-
-

@@ -1,85 +1,28 @@
-<!-- ---------------------------顶部tab栏-------------------- -->
 <view class='header_coupon'>
-  <view class='nav {{nav_bool1?"nav_active":""}} ' bindtap='change_nav1'>未使用</view>
-  <view class='nav {{nav_bool2?"nav_active":""}}' bindtap='change_nav2'>已使用</view>
-  <view class='nav {{nav_bool3?"nav_active":""}}' bindtap='change_nav3'>已过期</view>
+  <view wx:for="{{nav}}" wx:key="n" class='nav {{status === item.index?"nav_active":""}}' data-index="{{item.index}}" bindtap='change_nav'>{{item.label}}</view>
+</view>
+<view style="margin: 20rpx;">
+  <view class="{{status === 3 ? 'coupon-cont active':'coupon-cont'}}" wx:for="{{coupon_list}}" wx:key="index">
+      <view class='text-money'>
+        <view class="money1">
+          <view>{{item.coupon_type === 1 ? item.coupon_quota : item.coupon_discount}}</view>
+          <view style="font-size: 44rpx;line-height: 44rpx;">{{item.coupon_type === 2 ? '折' : '元'}}</view>
+        </view>
+        <view class="money2">{{item.use_threshold > 0 ? ('满' + item.use_threshold + '元可用') : '无使用门槛'}}</view>
+      </view>
+      <view class='cont-name'>
+        <view class='name1'>{{item.coupon_name}}</view>
+        <view class="name2">
+          <view>生效时间: {{item.coupon_start_time}}</view>
+          <view>失效时间: {{item.coupon_end_time}}</view>
+        </view>
+      </view>
+      <view bindtap="now_use" class='cont-btn'>{{status === 1 ? '立即使用' : (status === 2 ? '已使用' : '已过期')}}</view>
+  </view>
 </view>
 
-<!-- ----------------------------内容------------------------- -->
-<view class='coupon_content'>
-  <!-- ------------------------未使用优惠券---------------------- -->
-  <view class='cc_item {{nav_bool1?"nav_show":""}}' wx:for="{{mycoupon_list1}}">
-    <view class='cc_item_top'>
-      <view class='cct_left'>
-        <view wx:if="{{item.coupon_quota}}">
-          ￥<text>{{item.coupon_quota}}</text>
-        </view>
-        <view wx:if="{{item.coupon_discount}}">
-          <text>{{item.coupon_discount}}</text>折
-        </view>
-        <text wx:if="{{item.use_threshold}}">满{{item.use_threshold}}元可用</text>
-        <text class='spq'>{{item.coupon_type === 1 ? '现金券' : '折扣券'}}</text>
-      </view>
-      <view class='cct_center'>
-        <view>
-          <text>{{item.coupon_name}}</text>
-        </view>
-      </view>
-      <text class='cct_use' bindtap='now_use'>立即使用</text>
-    </view>
-    <view class='cc_item_bottom'>
-      <text>有效期：{{item.start_time_format}}~{{item.end_time_format}}</text>
-      <text>使用说明:{{item.coupon_explain}}</text>
-    </view>
-  </view>
-  <!-- ------------------------已使用优惠券---------------------- -->
-  <view class='cc_item1 {{nav_bool2?"nav_show":""}}' wx:for="{{mycoupon_list2}}">
-    <view class='cc_item_top1'>
-      <view class='cct_left1'>
-        <view wx:if="{{item.coupon_quota}}">
-          ￥<text>{{item.coupon_quota}}</text>
-        </view>
-        <view wx:if="{{item.coupon_discount}}">
-          <text>{{item.coupon_discount}}</text>折
-        </view>
-        <text wx:if="{{item.use_threshold}}">满{{item.use_threshold}}元可用</text>
-        <text class='spq1'>{{item.coupon_type === 1 ? '现金券' : '折扣券'}}</text>
-      </view>
-      <view class='cct_center1'>
-        <view>
-          <text>{{item.coupon_name}}</text>
-        </view>
-      </view>
-      <text class='cct_use1'>已使用</text>
-    </view>
-    <view class='cc_item_bottom1'>
-      <text>有效期：{{item.start_time_format}}~{{item.end_time_format}}</text>
-      <!-- <text>使用说明:{{item.coupon_explain}}</text> -->
-    </view>
-  </view>
-  <!-- ------------------------已过期优惠券---------------------- -->
-  <view class='cc_item1 {{nav_bool3?"nav_show":""}}' wx:for="{{mycoupon_list3}}">
-    <view class='cc_item_top1'>
-      <view class='cct_left1'>
-        <view wx:if="{{item.coupon_quota}}">
-          ￥<text>{{item.coupon_quota}}</text>
-        </view>
-        <view wx:if="{{item.coupon_discount}}">
-          <text>{{item.coupon_discount}}</text>折
-        </view>
-        <text wx:if="{{item.use_threshold}}">满{{item.use_threshold}}元可用</text>
-        <text class='spq1'>{{item.coupon_type === 1 ? '现金券' : '折扣券'}}</text>
-      </view>
-      <view class='cct_center1'>
-        <view>
-          <text>{{item.coupon_name}}</text>
-        </view>
-      </view>
-      <text class='cct_use1'>已使用</text>
-    </view>
-    <view class='cc_item_bottom1'>
-      <text>有效期：{{item.start_time_format}}~{{item.end_time_format}}</text>
-      <text>使用说明:{{item.coupon_explain}}</text>
-    </view>
-  </view>
+<view>
+  <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
+  <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>
+  <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loadError}}"><text bindtap="loadData">{{loadErrorTxt}}</text></view>
 </view>

@@ -1,4 +1,5 @@
 <!--pages/classify/classify.wxml-->
+<import src="../../../templates/goods_card.wxml" />
 <view class='classify-main'>
   <!-- 左边导航 -->
   <view class='classify-nav'>
@@ -14,26 +15,25 @@
     <view class="cate-container">
       <block wx:for="{{aleft}}" wx:key="index">
         <block wx:if="{{index === num && item.sub.length > 0}}">
-          <view class="{{index === num ? 'active' : ''}}" bindtap="changeCate" data-id="{{item.id}}">
+          <view class="{{item.id === cate_id ? 'active' : ''}}" bindtap="changeCate" data-id="{{item.id}}">
             <text>全部</text>
           </view>
-          <view wx:for="{{item.sub}}" wx:key="k" wx:for-item="vo" bindtap="changeCate" data-id="{{vo.id}}">
+          <view class="{{vo.id === cate_id ? 'active' : ''}}" wx:for="{{item.sub}}" wx:key="k" wx:for-item="vo" bindtap="changeCate" data-id="{{vo.id}}">
             <text>{{vo.cate_title}}</text>
           </view>
         </block>
       </block>
     </view>
     <view style="display: flex;flex-wrap: wrap;justify-content: space-around;padding: 0 10rpx;box-sizing: border-box;">
-      <view class="goods-card" wx:for="{{arightData}}" wx:key="index" data-id="{{item.id}}" bindtap='skip_details'>
-        <view class="goods-card-image">
-          <image mode="widthFix" src="{{item.goods_logo}}"></image>
-        </view>
-        <view class="goods-card-title"><text>{{item.goods_title}}</text></view>
-        <view class="goods-card-price">
-          <view><text>¥</text><text class="goods-card-price-striking">{{item.market_price}}</text></view>
-          <view class="goods-card-price-line"><text>{{item.huaxian_price}}</text></view>
-        </view>
-      </view>
+      <navigator style="margin: 10rpx 0;width: 280rpx;" url='/pages/index/productContent/productContent?id={{item.id}}' wx:for="{{goods_list.data}}" wx:key="index">
+        <template is="goods_card" data="{{item}}" />
+      </navigator>
+      <view style="width: 280rpx;"></view>
+    </view>
+    <view>
+      <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
+      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>
+      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loadError}}"><text bindtap="getGoods">{{loadErrorTxt}}</text></view>
     </view>
   </view>
 </view>

@@ -28,7 +28,7 @@ input{
 .submit{
   width:690rpx;
   height: 88rpx;
-  background: #f32c6e;
+  background: #fb670f;
   text-align: center;
   line-height: 88rpx;
   font-size:30rpx;

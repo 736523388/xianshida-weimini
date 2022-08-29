@@ -1,60 +1,86 @@
 const app = getApp()
 const {
-  isLogin
+  isLogin, getStorage
 } = require('../../../utils/handleLogin');
-var wc = require('../../../src/wcache.js');
-var page = 1
+
 Page({
 
 
   data: {
     jf_list: [],
-    my_jf:''
+    my_jf: 0,
+    integral_total: 0,
+    loading: 'more',// more noMore loading
+    // loadend
+    loadEnd: "我是有底线的~",
+    loadError: false,
+    loadErrorTxt: '加载失败，点击重试',
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(e) {
-    if(e.jf){
+  page: 1,
+  get_integral_log(ref) {
+    console.log('get_integral_log', ref)
+    if(this._freshing || ref === 'ref'){
+      this.page = 1
       this.setData({
-        my_jf: e.jf
+        jf_list: [],
+        loadError: false,
+        loading: this.data.loading === 'loading' ? 'loading' : 'more'
+      })
+    } else if(ref !== undefined){
+      this.setData({
+        loadError: false
       })
     }
+    if (this.data.loading !== 'more') {
+      return
+    }
+    this.setData({
+      loading: 'loading'
+    })
+    wx.request({
+      url: app.globalData.urlhost + '/api/user.integral_log/index',
+      method: 'GET',
+      data: {
+        token: getStorage('token', ''),
+        page: this.page
+      },
+      success: res => {
+        if(res.statusCode !== 200 || res.data.code !== 1){
+          return
+        }
+        this.setData({
+          jf_list: res.data.data.data,
+          loading: res.data.data.data.length < 20 ? 'noMore' : 'more'
+        })
+        this.page++
+        this._freshing = false
+      },
+      fail: () => {
+        this.setData({
+          loading: 'more',
+          loadError: true
+        })
+      },
+      complete: () => {
+        console.log('complate')
+        wx.stopPullDownRefresh()
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
+  onLoad: function(options){
+    isLogin(() => {
+      this.get_integral_log()
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var that = this
-    page = 1
-    // 登录
-    isLogin(() => { })
-    wx.request({
-      url: app.globalData.urlhost + '/api/user.integral_log/index',
-      data: {
-        token: wc.get('token'),
-        page: 1
-      },
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      method: 'POST',
-      success: function(res) {
-        if (res.data.code == 1) {
-          that.setData({
-            jf_list: res.data.data.data
-          })
-        }
-      },
+    isLogin(() => {
+      console.log('登陆成功')
+      this._freshing = true
+      this.get_integral_log()
     })
   },
 
@@ -78,39 +104,26 @@ Page({
   onPullDownRefresh: function() {
 
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    var that = this
-    page++
+    this.get_integral_log()
+  },
+  onReady: function(){
     wx.request({
-      url: app.globalData.urlhost + '/api/user.integral_log/index',
-      data: {
-        token: wc.get('token'),
-        page: page
-      },
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      method: 'POST',
-      success: function (res) {
-        if (res.data.code == 1) {
-          if (res.data.data.data.length == 0){
-            return
-          }else{
-            var jf_list = that.data.jf_list
-            var jf = jf_list.concat(res.data.data.data)
-            that.setData({
-              jf_list:jf
-            })
-            console.log(jf)
-          }
+      url: app.globalData.urlhost + '/api/user.integral_log/balance',
+      method: 'GET',
+      data: {token: getStorage('token', '')},
+      success: res => {
+        if(res.statusCode === 200 && res.data.code === 1){
+          this.setData({
+            my_jf: res.data.data.integral,
+            integral_total: res.data.data.integral_total
+          })
         }
-      },
+      }
     })
-
   },
 
   /**

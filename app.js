@@ -3,18 +3,6 @@ App({
   //生命周期回调——监听小程序初始化
   onLaunch: function () {
     // this.loadFontFace()
-    //程序初始化缓存必要数据
-    wx.request({
-      url: this.globalData.urlhost + '/api/base.system/sysconf?name=web_logo',
-      method: 'GET',
-      success: res => {
-        if (res.statusCode === 200) {
-          if (res.data.code === 1) {
-            wx.setStorageSync('web_logo', res.data.data)
-          }
-        }
-      }
-    })
   },
   loadFontFace() {
     wx.loadFontFace({
@@ -37,7 +25,6 @@ App({
   globalData: {
     userInfo: null,
     code: null,
-    // urlhost: "http://192.168.1.15:8081",
     // urlhost: "http://xianshida.test.net",
       urlhost:'https://xianshida.test.cqclxsc.com'
   }

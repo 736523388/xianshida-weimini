@@ -4,51 +4,60 @@
   <view class='coupon-title'>
     <view class='wrap'>
       <view class='left'>
-        <image mode='widthFix' src='/images/coupon-icon1.png'></image>
-        <text>精选优惠券</text>
+        <text style="color: #DB2777;font-size: 38rpx;" class="iconfont icon-youhuiquan"></text>
+        <text>领取优惠券</text>
       </view>
-      <navigator url='/pages/my/my_coupon/my_coupon' class='right'>
+      <navigator url='/pages/my/my_coupon/my_coupon' class='right' style="display: inline-flex;">
         <text>我的优惠券</text>
-        <image src='/images/aCont-icon2.png'></image>
+        <mp-icon style="display: inline-flex;align-items: center;" type="outline" icon="arrow" color="#6B7280" size="{{10}}"></mp-icon>
       </navigator>
     </view>
   </view>
   <!-- 主体 -->
   <view class='coupon-mian'>
-    <view class="{{item.is_receive === true ? 'coupon-cont active':'coupon-cont'}}"  wx:for="{{couponList}}">
-      <view class='cont-border'></view>
-      <view class='cont-text'>
-        <view class='cont-wrap'>
-          <view class='text-money'>
-            <view class='money1'>{{item.coupon_type === 1 ? '￥' : ''}}<text>{{item.coupon_type === 1 ? item.coupon_quota : item.coupon_discount}}</text>{{item.coupon_type === 2 ? '折' : ''}}</view>
-            <view class='money2' wx:if="{{item.use_threshold > 0}}">满{{item.use_threshold}}元可用</view>
-            <view class='money3'>{{item.coupon_type === 1 ? '现金券' : '折扣券'}}</view>
+    <view class="{{item.is_receive === true ? 'coupon-cont active':'coupon-cont'}}" wx:for="{{coupon_list}}" wx:key="index">
+      <!-- <view class='cont-border'></view> -->
+      <view class='cont-wrap' style="display: flex;align-items: center;">
+        <view class='text-money'>
+          <view class='money1'>
+            <view>{{item.coupon_type === 1 ? item.coupon_quota : item.coupon_discount}}</view>
+            <view style="font-size: 44rpx;line-height: 44rpx;">{{item.coupon_type === 2 ? '折' : '元'}}</view>
           </view>
-          <view class='cont-name'>
-            <view class='name1'>{{item.coupon_name}}</view>
-            <view class='name2'>{{item.time_type === 1 ? item.coupon_start_time + '~' + item.coupon_end_time : '领取之后' + item.coupon_day + '天有效'}}</view>
-          </view>
-          <view data-index="{{index}}" bindtap="receiveShow" class='cont-btn'>{{item.is_receive === true ? '已领取':'立即领取'}}</view>
+          <view class='money2'>{{item.use_threshold > 0 ? ('满' + item.use_threshold + '元可用') : '无使用门槛'}}</view>
+          <!-- <view class='money3'>{{item.coupon_type === 1 ? '现金券' : '折扣券'}}</view> -->
         </view>
+        <view class='cont-name'>
+          <view class='name1'>{{item.coupon_name}}</view>
+          <view class="name2">
+            <view>生效时间: {{item.coupon_start_time}}</view>
+            <view>失效时间: {{item.coupon_end_time}}</view>
+          </view>
+        </view>
+        <view data-index="{{index}}" bindtap="receiveShow" class='cont-btn'>{{item.is_receive === false ? '立即':''}}{{item.integral > 0 ? '兑换':'领取'}}{{item.is_receive === true ? '成功':''}}</view>
       </view>
-      <view class='cont-day'>  
+      <!-- <view class='cont-day'>  
         <view>{{item.coupon_explain}}</view>
-        <!-- <view bindtap='explainShow'>使用说明</view> -->
-      </view>
+        <view bindtap='explainShow'>使用说明</view>
+      </view> -->
     </view>
+    <view>
+  <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
+  <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>
+  <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loadError}}"><text bindtap="loadData">{{loadErrorTxt}}</text></view>
+</view>
   </view>
   <!-- 使用说明 -->
   <view class='coupon-explain' style="display:{{explainFlage===true?'block':'none'}}">
     <view class='explain-main'>
       <view class='explain-padding'>
         <view class='explain-title'>优惠券使用说明</view>
-        <view class='explain-cont'wx:for="{{explain}}">
+        <view class='explain-cont' wx:for="{{explain}}" wx:key="i">
           <view class='explain-title2'>
             <view></view><text>{{item[0].title}}</text>
           </view>
-          <view wx:for="{{item[1]}}" wx:for-item="items">{{items}}</view>
+          <view wx:for="{{item[1]}}" wx:for-item="items" wx:key="v">{{items}}</view>
         </view>
-        
+
       </view>
       <view class='explain-close' bindtap='explainHide'> X</view>
     </view>
@@ -59,14 +68,3 @@
     <view>领取成功</view>
   </view>
 </view>
-
-
-
-
-
-
-
-
-
-
-

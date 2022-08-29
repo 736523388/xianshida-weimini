@@ -8,7 +8,7 @@
           <!-- <text class='search-text1'>ne's</text>
           <text class='search-text2'>|</text> -->
           <image src='/images/search-icon.png'></image>
-          <input confirm-type='search' bindconfirm='resignFocus' bindfocus="activeFocus"   auto-focus="true" placeholder='耗儿鱼、雪花牛肉' name="keyword" value='{{searchValue}}'></input>
+          <input confirm-type='search' bindconfirm='resignFocus' auto-focus="true" placeholder='请输入你需要的商品' name="keyword" value='{{searchValue}}'></input>
         </view>
           <button form-type='submit'>搜索</button>
       </view>
@@ -24,7 +24,7 @@
           src='/images/search-icon2.png'></image>
         </view>
         <view class='near-cont'>
-          <view bindtap='searchLink' data-title="{{item}}"  wx:for="{{searchData}}">{{item}}</view>
+          <view bindtap='searchLink' data-title="{{item}}" wx:for="{{searchData}}" wx:key="i">{{item}}</view>
         </view>
       </view>
       <!-- 热门搜索 -->
@@ -33,7 +33,7 @@
           <text >热门搜索</text>
         </view>
         <view class='hot-cont'>
-           <view bindtap='searchLink' data-title="{{item.title}}" wx:for="{{hotCont}}">{{item.title}}</view>
+           <view bindtap='searchLink' data-title="{{item.title}}" wx:for="{{hotCont}}" wx:key="index">{{item.title}}</view>
         </view>
       </view>
   </view>

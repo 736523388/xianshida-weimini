@@ -10,7 +10,6 @@
     "pages/index/productContent/productContent",
     "pages/index/changeAddress/changeAddress",
     "pages/index/changeIDcard/changeIDcard",
-    "pages/index/groupOrderCon/groupOrderCon",
     "pages/classify/classify/classify",
     "pages/classify/classifyList/classifyList",
     "pages/shop_care/shop_care/shop_care",

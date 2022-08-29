@@ -21,12 +21,14 @@ Page({
     var name = e.detail.value.name;
     var phone = e.detail.value.phone;
     var address = e.detail.value.address;
+    var store_name = e.detail.value.store_name
     if (that.data.edit_bool == 1) {
       wx.request({
         url: app.globalData.urlhost + '/api/user.address/edit',
         data: {
           token: wc.get('token'),
           id: that.data.amend_list.id,
+          store_name,
           username: name,
           phone: phone,
           province: that.data.region[0],
@@ -69,6 +71,7 @@ Page({
         url: app.globalData.urlhost + '/api/user.address/create',
         data: {
           token: wc.get('token'),
+          store_name,
           username: name,
           phone: phone,
           province: that.data.region[0],

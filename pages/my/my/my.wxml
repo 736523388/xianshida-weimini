@@ -1,9 +1,12 @@
 <!-- ----------------------顶部个人信息展示--------------------- -->
 <view class='header wrap' >
-  <view class='h_top'>
-    <image class='hrader_img' src='{{person_msg.headimg}}'></image>
-    <view>{{person_msg.nickname}}</view>
-  </view>
+<view style="box-sizing: border-box;padding: 24rpx 200rpx;border-radius: 20rpx;background: #fff;">
+  <navigator class='h_top' hover-class='none' url='/pages/my/set_person_msg/set_person_msg'>
+    <image class='hrader_img' src='{{avatarUrl}}'></image>
+    <view>{{nickname}}</view>
+  </navigator>
+</view>
+  
 </view>
 
 
@@ -12,16 +15,16 @@
   <view class='f_list' >
     <view class="f_list_order">
       <view class='fo_title' bindtap='skip_order'>
-        <text style='color:{{person_msg.ColorPlan.font_color_menu_h}}'>我的订单</text>
+        <text>我的订单</text>
         <view>
-          <text style='color:{{person_msg.ColorPlan.font_color_menu_h}}'>全部订单</text>
-          <image src='../../../images/my/tm_right.png'></image>
+          <text style='padding-right: 4rpx;'>全部订单</text>
+          <mp-icon style="display: inline-flex;align-items: center;" type="outline" icon="arrow" color="#6B7280" size="{{10}}"></mp-icon>
         </view>
       </view>
       <view class='fo_content'>
         <navigator wx:for="{{my_order}}" url='{{item.url}}' hover-class='none' style="position: relative;">
           <!-- <view class="tp_cart_info" wx:if="{{item.orderCount > 0}}">{{item.orderCount}}</view> -->
-          <image src='{{item.img}}' mode='widthFix'></image>
+          <view style="font-size: 52rpx;" class="iconfont {{item.icon}}"></view>
           <text>{{item.name}}</text>
           <view class="orderCount" wx:if="{{item.orderCount != 0}}">{{item.orderCount}}</view>
         </navigator>

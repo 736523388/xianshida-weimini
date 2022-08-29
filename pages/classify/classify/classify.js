@@ -3,7 +3,7 @@ import {
   getStorage
 } from '../../../utils/handleLogin'
 const app = getApp();
-var page = 1
+
 Page({
 
   /**
@@ -11,169 +11,133 @@ Page({
    */
   data: {
 
-    // 左边导航
+    // 左边导航选中
     num: 0,
-    // 右边类别
-    aright: [],
-    arightData: [],
     aleft: [],
     cate_id: '',
-    loading: false
+    goods_list: {},
+    loading: 'more',// more noMore loading
+    // loadend
+    loadEnd: "我是有底线的~",
+    loadError: false,
+    loadErrorTxt: '加载失败，点击重试',
   },
-
-
+  page: 1,
+  _freshing: false,
   // 左边导航点击
   active: function (e) {
-
-    //商品数据初始化
     this.setData({
-      page: 1,
       num: e.currentTarget.dataset.index,
       cate_id: e.currentTarget.dataset.id,
-      arightData: []
     })
-    wx.showLoading()
-    this.getGoods(e.currentTarget.dataset.id)
-
+    this._freshing = true
+    this.getGoods()
   },
-  //右边图片点击跳转页面
-  link: function (e) {
-    wx.navigateTo({
-      url: '/pages/classify/classifyList/classifyList?id=' + e.currentTarget.dataset.id,
+  /**
+   * 获取商品列表
+   * @param {*} ref 是否刷新列表
+   */
+  getGoods(ref) {
+    if (this._freshing || ref === 'ref') {
+      this.page = 1
+      this.setData({
+        goods_list: {},
+        loadError: false,
+        loading: this.data.loading === 'loading' ? 'loading' : 'more'
+      })
+    } else if (ref !== undefined) {
+      this.setData({
+        loadError: false
+      })
+    }
+    if (this.data.loading !== 'more') {
+      return
+    }
+    this.setData({
+      loading: 'loading'
     })
-  },
-  //跳转商品详情页
-  skip_details: function (e) {
-    wx.navigateTo({
-      url: '/pages/index/productContent/productContent?id=' + e.currentTarget.dataset.id,
-    })
-  },
-  getGoods(cate_id) {
-    let token = getStorage('token')
     wx.request({
       url: app.globalData.urlhost + '/api/store.goods/allgoods',
       data: {
-        page: this.data.page,
-        cate_id,
-        token
+        page: this.page,
+        cate_id: this.data.cate_id,
+        token: getStorage('token')
       },
       success: res => {
         // console.log(res)
-        if (res.statusCode == 200) {
-          if (res.data.code === 1) {
-            wx.hideLoading()
-            this.setData({
-              aright: res.data.data,
-              arightData: res.data.data.data,
-              page: this.data.page + 1,
-              loading: false
-            })
-            console.log("aright", this.data.aright)
-            console.log("res", res)
-
-          } else {
-            wx.hideLoading()
-            wx.showToast({
-              title: '网络错误，请稍后重试',
-              icon: 'none',
-            })
-            this.setData({
-              loading: false
-            })
-          }
-        } else {
-          wx.hideLoading()
-          wx.showToast({
-            title: '网络错误，请稍后重试',
-            icon: 'none',
-          })
-          this.setData({
-            loading: false
-          })
+        if (res.statusCode !== 200 || res.data.code !== 1) {
+          return
         }
+        let { goods_list, loading } = this.data
+        if (goods_list.hasOwnProperty('data')) {
+          goods_list.data = goods_list.data.concat(res.data.data.data)
+        } else {
+          goods_list = {
+            data: res.data.data.data,
+            hide_price: res.data.data.hide_price,
+            hide_price_txt: res.data.data.hide_price_txt,
+            show_price: res.data.data.show_price,
+          }
+        }
+        this.page++
+        if (res.data.data.data.length < 10) {
+          loading = 'noMore'
+        } else {
+          loading = 'more'
+        }
+        this.setData({ goods_list, loading })
+        this._freshing = false
+        console.log('goods data',this.data.goods_list)
       },
       fail: error => {
-        wx.hideLoading()
-        wx.showToast({
-          title: error.errMsg,
-          icon: 'none',
-        })
         this.setData({
-          loading: false
+          loading: 'more',
+          loadError: true
         })
+      },
+      complete: () => {
+        console.log('complate')
+        wx.stopPullDownRefresh()
       }
     })
   },
-  getCate(ref) {
-    if (this.data.loading !== false) {
-      return false
-    }
-    this.setData({
-      loading: true
-    })
-    if (ref) {
-      this.setData({
-        page: 1
-      })
-    }
-    wx.showLoading()
+  getCate() {
     wx.request({
       url: app.globalData.urlhost + '/api/store.goods_cate/lists',
       success: res => {
-        console.log(res)
-        if (res.statusCode == 200) {
-          if (res.data.code === 1) {
-            this.setData({
-              aleft: res.data.data,
-              cate_id: res.data.data[0].id
-            })
-            this.getGoods(res.data.data[0].id)
-          } else {
-            wx.hideLoading()
-            wx.showToast({
-              title: res.data.msg,
-              icon: 'none',
-            })
-            this.setData({
-              loading: false
-            })
-          }
-        } else {
-          wx.hideLoading()
-          wx.showToast({
-            title: '网络错误，请稍后重试',
-            icon: 'none',
-          })
-          this.setData({
-            loading: false
-          })
+        if (res.statusCode !== 200 || res.data.code !== 1) {
+          return
         }
+        console.log(res.data.data[this.data.num].id)
+        this.setData({
+          aleft: res.data.data,
+          cate_id: this.data.cate_id ? this.data.cate_id : res.data.data[this.data.num].id
+        })
+        this.getGoods()
       },
       fail: error => {
-        wx.hideLoading()
-        wx.showToast({
-          title: error.errMsg,
-          icon: 'none',
-        })
-        this.setData({
-          loading: false
-        })
+        console.log('getCate fail:', error)
+      },
+      complete: () => {
+        console.log('getCate complete')
       }
     })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
-    console.log(this.data.num)
-    this.getCate(1)
+    console.log('on show', this.data.num)
+    this._freshing = true
+    this.getCate()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getCate()
   },
 
   /**
@@ -181,7 +145,7 @@ Page({
    */
   onLoad: function () {
     //页面create
-    this.getCate()
+    // this.getCate()
   },
 
   /**
@@ -190,50 +154,17 @@ Page({
   onHide: function () {
     console.log('category hide')
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    var that = this
-    page++
-    let token = getStorage('token')
-    console.log("page", page)
-    wx.request({
-      url: app.globalData.urlhost + '/api/store.goods/allgoods',
-      data: {
-        page: page,
-        cate_id: that.data.cate_id,
-        token: token
-      },
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      method: 'POST',
-      success: function (res) {
-        if (res.data.code == 1) {
-          if (res.data.data.data.length == 0) {
-            return
-          } else {
-
-
-            that.setData({
-              arightData: that.data.arightData.concat(res.data.data.data)
-            })
-            console.log("aright", that.data.aright)
-          }
-        }
-      },
-    })
-
+    console.log('onReachBottom', this.page)
+    this.getGoods()
   },
-  changeCate(e){
-    console.log(e.currentTarget.dataset.id)
+  changeCate(e) {
+    this.setData({
+      cate_id: e.currentTarget.dataset.id
+    })
+    this.getGoods('ref')
   }
 })

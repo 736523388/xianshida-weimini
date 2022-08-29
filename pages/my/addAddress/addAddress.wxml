@@ -3,6 +3,10 @@
   <view class='addAddress-box borderTop'>
     <view class='wrap'>
       <view class='addAddress-cont'>
+        <text>店铺名称</text>
+        <input name="store_name" value='{{amend_list.store_name}}' placeholder='请输入店铺名称' placeholder-style='color:#8d8d8d'></input>
+      </view>
+      <view class='addAddress-cont'>
         <text>收货人</text>
         <input name="name" value='{{amend_list.username}}' placeholder='请输入收货人' placeholder-style='color:#8d8d8d'></input>
       </view>

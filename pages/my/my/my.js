@@ -1,7 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const { isLogin } = require('../../../utils/handleLogin');
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+
+const { isLogin, getStorage } = require('../../../utils/handleLogin');
 var wc = require('../../../src/wcache.js');
 var top_msg={
   headimg:"",
@@ -14,11 +16,11 @@ Page({
     // 个人中心通用信息
     person_msg: [],
     my_order: [
-      { img: "../../../images/my/order_icon1.png",url: "/pages/my/my_order/my_order?status=1", name: "待付款", key: "1",orderCount: 0 },
-      { img: "../../../images/my/order_icon2.png", url: "/pages/my/my_order/my_order?status=2", name: "待发货", key: "2", orderCount: 0 },
-      { img: "../../../images/my/order_icon3.png", url: "/pages/my/my_order/my_order?status=3", name: "待收货", key: "3", orderCount: 0 },
-      { img: "../../../images/my/order_icon4.png", url: "/pages/my/my_order/my_order?status=4", name: "待评价", key: "4", orderCount: 0 },
-      { img: "../../../images/my/order_icon4.png", url: "/pages/my/refund_money_list/refund_money_list", name: "退款售后", key: "5", orderCount: 0 },
+      { icon:'icon-daifukuan',url: "/pages/my/my_order/my_order?status=1", name: "待付款", key: "1",orderCount: 0 },
+      { icon:'icon-31daifahuo', url: "/pages/my/my_order/my_order?status=2", name: "待发货", key: "2", orderCount: 0 },
+      { icon:'icon-daishouhuo', url: "/pages/my/my_order/my_order?status=3", name: "待收货", key: "3", orderCount: 0 },
+      { icon:'icon-daifahuo', url: "/pages/my/my_order/my_order?status=4", name: "待评价", key: "4", orderCount: 0 },
+      { icon:'icon-tuikuantuihuo', url: "/pages/my/refund_money_list/refund_money_list", name: "退款售后", key: "5", orderCount: 0 },
     ],
     my_menu: [
       // { img: "../../../images/my/menu_icon1_1.jpg", url: '/pages/my/withdraw_cash/withdraw_cash', name: "提现", key: "1" },
@@ -33,7 +35,9 @@ Page({
     ],
     top_msg:{},
     my_jf:"",
-    animationData: {}
+    animationData: {},
+    avatarUrl: defaultAvatarUrl,
+    nickname: '未设置昵称',
   },
   getorderCount: function () {
     let that = this
@@ -123,6 +127,24 @@ Page({
     console.log(wc.get("sceneUserId"))
     // 登录
     isLogin(() => {
+      wx.request({
+        url: app.globalData.urlhost + '/api/user.member/index',
+        method: 'GET',
+        data: {
+          token: getStorage('token', '')
+        },
+        success: res => {
+          if(res.statusCode === 200 && res.data.code === 1){
+            let avatarUrl = res.data.data.headimg ? res.data.data.headimg : this.data.avatarUrl
+            let nickname = res.data.data.nickname
+            if(res.data.data.headimg){
+              this.setData({
+                avatarUrl, nickname
+              })
+            }
+          }
+        }
+      })
       this.getorderCount()
           // 个人中心通用信息
     wx.request({

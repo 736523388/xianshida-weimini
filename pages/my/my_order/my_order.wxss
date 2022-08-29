@@ -32,8 +32,8 @@ page{
 }
 
 .active {
-  color: #f32c6e;
-  border-bottom: 4px solid #f32c6e;
+  color: #fb670f;
+  border-bottom: 4px solid #fb670f;
 }
 
 /* 内容 */
@@ -72,7 +72,7 @@ page{
 }
 
 .con-top>text {
-  color: #f32c6e;
+  color: #fb670f;
   font-size: 24rpx;
   margin: 0 20rpx;
 }
@@ -96,7 +96,7 @@ page{
 }
 
 .con_bottom>view:nth-of-type(1) text {
-  color: #f32c6e;
+  color: #fb670f;
   font-size: 26rpx;
   margin-right: 20rpx;
 }
@@ -175,7 +175,7 @@ page{
 
 .price {
   font-size: 26rpx;
-  color: #f32c6e;
+  color: #fb670f;
 }
 
 
