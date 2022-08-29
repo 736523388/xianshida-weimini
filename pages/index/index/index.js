@@ -18,6 +18,7 @@ Page({
     // 首页配置
     allocation: [],
     goods_list: [],
+    page: 1,
     loading: 'more',// more noMore loading
     // loadend
     loadEnd: "我是有底线的~",
@@ -25,6 +26,19 @@ Page({
     loadErrorTxt: '加载失败，点击重试',
   },
   page: 1,
+  clickCate(e){
+    console.log(e.currentTarget.dataset.index)
+    wx.setStorageSync('cate_index', e.currentTarget.dataset.index)
+    wx.switchTab({
+      url: '/pages/classify/classify/classify',
+    })
+  },
+  waterFallResh(loading){
+    console.log('loading',loading)
+    this.setData({
+      loading: this.data.loading === 'loading' ? 'more' : 'noMore'
+    })
+  },
   //跳转商品列表
   skip_all: function (e) {
     wx.navigateTo({
@@ -44,18 +58,21 @@ Page({
   //轮播图跳转
   goTo(e) {
     var item = e.currentTarget.dataset.item;
-    console.log(item)
-    if (item.target_type == 2) {
-      console.log(item.url)
-      wx.navigateTo({
-        url: '../../' + item.url,
-      })
-    } else if (item.target_type == 1) {
-      console.log(item)
-      wx.navigateTo({
-        url: '../productContent/productContent?id=' + item.url,
-      })
-    }
+    wx.navigateTo({
+      url: '../productContent/productContent?id=' + item.url,
+    })
+    // console.log(item)
+    // if (item.target_type == 2) {
+    //   console.log(item.url)
+    //   wx.navigateTo({
+    //     url: '../../' + item.url,
+    //   })
+    // } else if (item.target_type == 1) {
+    //   console.log(item)
+    //   wx.navigateTo({
+    //     url: '../productContent/productContent?id=' + item.url,
+    //   })
+    // }
   },
 
   // 自定义banner指示点
@@ -129,8 +146,9 @@ Page({
       this.page = 1
       this.setData({
         goods_list: [],
+        page: 1,
         loadError: false,
-        loading: this.data.loading === 'loading' ? 'loading' : 'more'
+        loading: 'more'
       })
     } else if(ref !== undefined){
       this.setData({
@@ -155,8 +173,10 @@ Page({
         }
         this.page++
         this.setData({
-          goods_list: this.data.goods_list.concat(res.data.data.data),
-          loading: res.data.data.data.length < 10 ? 'noMore' : 'more'
+          goods_list: res.data.data.data,
+          // goods_list: this.data.goods_list.concat(res.data.data.data),
+          loading: res.data.data.data.length < 10 ? 'noMore' : 'loading',
+          page: this.data.page +1
         })
         console.log('goods data',this.data.goods_list)
       },

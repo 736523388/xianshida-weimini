@@ -16,6 +16,7 @@ Page({
     aleft: [],
     cate_id: '',
     goods_list: {},
+    page: 1,
     loading: 'more',// more noMore loading
     // loadend
     loadEnd: "我是有底线的~",
@@ -33,6 +34,12 @@ Page({
     this._freshing = true
     this.getGoods()
   },
+  waterFallResh(loading){
+    console.log('loading',loading)
+    this.setData({
+      loading: this.data.loading === 'loading' ? 'more' : 'noMore'
+    })
+  },
   /**
    * 获取商品列表
    * @param {*} ref 是否刷新列表
@@ -42,8 +49,9 @@ Page({
       this.page = 1
       this.setData({
         goods_list: {},
+        page: 1,
         loadError: false,
-        loading: this.data.loading === 'loading' ? 'loading' : 'more'
+        loading: 'more'
       })
     } else if (ref !== undefined) {
       this.setData({
@@ -70,7 +78,8 @@ Page({
         }
         let { goods_list, loading } = this.data
         if (goods_list.hasOwnProperty('data')) {
-          goods_list.data = goods_list.data.concat(res.data.data.data)
+          // goods_list.data = goods_list.data.concat(res.data.data.data)
+          goods_list.data = res.data.data.data
         } else {
           goods_list = {
             data: res.data.data.data,
@@ -83,9 +92,9 @@ Page({
         if (res.data.data.data.length < 10) {
           loading = 'noMore'
         } else {
-          loading = 'more'
+          loading = 'loading'
         }
-        this.setData({ goods_list, loading })
+        this.setData({ goods_list, loading, page: this.data.page+1 })
         this._freshing = false
         console.log('goods data',this.data.goods_list)
       },
@@ -128,9 +137,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
-    console.log('on show', this.data.num)
+    console.log('on show', options, this.data.num)
+    let cate_index = wx.getStorageSync('cate_index')
+    console.log('cate_index', cate_index)
+    this.setData({
+      num: cate_index
+    })
     this._freshing = true
     this.getCate()
+    
+    
   },
 
   /**

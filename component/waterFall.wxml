@@ -12,6 +12,7 @@
   </view>
 </view>
 <template name="goods_card">
+<navigator url='/pages/index/productContent/productContent?id={{id}}'>
   <view class="goods-card">
     <view class="goods-card-image">
       <image lazy-load="{{true}}" bindload="waterfall" mode="widthFix" src="{{goods_logo}}"></image>
@@ -32,6 +33,7 @@
       </view>
     </view>
   </view>
+</navigator>
 </template>
 <!-- <template name="item">
   <view class="img-item">

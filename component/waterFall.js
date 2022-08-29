@@ -4,30 +4,53 @@ Component({
    * 组件的属性列表
    */
   options: {
-    addGlobalClass: true
+    addGlobalClass: true,
+    pureDataPattern: /^dataFall$/
   },
   properties: {
     dataFall: {
       type: Array,
       default: () => {
         return []
-      },
-      observer: function(newVal, oldVal) {
-        console.log(newVal)
-        this.setData({
-          imgList: newVal
-        })
-        if (this.data.imgList.length !== 0) {
-          let that = this
-          setTimeout(function () {
+      }
+    },
+    page: {
+      type: Number,
+      value: 1,
+      observer: function(newVal, oldVal){
+        console.log(newVal, oldVal)
+        if(newVal === 1 && oldVal !== 1){
+          this.setData({
+            // imgList: [],
+            leftfall: [],
+            rightfall: []
+          })
+          wx.nextTick(() => {
             // 数据改变以后首次执行瀑布流代码
-            that.waterfall()
+            this.waterfall()
             // 更改加载瀑布流的状态
-            that.setData({
+            this.setData({
               fallStatus: false
             })
-          }, 0)
+          })
         }
+      }
+    }
+  },
+  observers: {
+    dataFall: function(newVal, oldVal) {
+      this.setData({
+        imgList: newVal
+      })
+      if (this.data.imgList.length !== 0) {
+        wx.nextTick(() => {
+          // 数据改变以后首次执行瀑布流代码
+          this.waterfall()
+          // 更改加载瀑布流的状态
+          this.setData({
+            fallStatus: false
+          })
+        })
       }
     }
   },
@@ -85,7 +108,7 @@ Component({
           })
         } else {
           // 瀑布流加载结束向父组件传递信息，可进行上拉加载操作，获取分页数据
-          that.triggerEvent('waterFallResh', { loading: true })
+          that.triggerEvent('waterFallResh', { loaded: true })
           that.setData({
             fallStatus: true
           })

@@ -41,6 +41,12 @@ Page({
     this.setData({sort})
     this.load('ref')
   },
+  waterFallResh(loading){
+    // console.log('loading',loading)
+    this.setData({
+      loading: this.data.loading === 'loading' ? 'more' : 'noMore'
+    })
+  },
   // 产品列表接收数据
   load: function (e) {
     console.log('load', e)
@@ -49,7 +55,7 @@ Page({
         goodsList: {},
         page: 1,
         loadError: false,
-        loading: this.data.loading === 'loading' ? 'loading' : 'more'
+        loading: 'more'
       })
     } else if(e !== undefined){
       this.setData({
@@ -86,7 +92,8 @@ Page({
         }
         let { goodsList, page, loading } = this.data
         if (goodsList.hasOwnProperty('data')) {
-          goodsList.data = goodsList.data.concat(res.data.data.data)
+          // goodsList.data = goodsList.data.concat(res.data.data.data)
+          goodsList.data = res.data.data.data
         } else {
           goodsList = {
             data: res.data.data.data,
@@ -99,7 +106,7 @@ Page({
         if (res.data.data.data.length < 10) {
           loading = 'noMore'
         } else {
-          loading = 'more'
+          loading = 'loading'
         }
         this.setData({ goodsList, page, loading, triggered: false })
         this._freshing = false
@@ -130,7 +137,7 @@ Page({
     }, 3000)
   },
   onPulling(e) {
-    console.log('onPulling:', e)
+    // console.log('onPulling:', e)
   },
   onRestore(e) {
     console.log('onRestore:', e)

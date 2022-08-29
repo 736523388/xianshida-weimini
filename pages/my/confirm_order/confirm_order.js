@@ -329,12 +329,20 @@ Page({
                     paySign: res.data.data.paySign,
                     success: function(res) {
                       console.log(res)
-                      if (res.errMsg == "requestPayment:ok") {
-                        wx.navigateTo({
-                          url: '/pages/my/my_order/my_order',
-                        })
-                      }
+                      wx.redirectTo({
+                        url: '/pages/my/my_order/my_order',
+                      })
+                      // if (res.errMsg == "requestPayment:ok") {
+                      //   wx.navigateTo({
+                      //     url: '/pages/my/my_order/my_order',
+                      //   })
+                      // }
                     },
+                    fail: error => {
+                      wx.redirectTo({
+                        url: '/pages/my/my_order/my_order',
+                      })
+                    }
                   })
                 } else {
                   wx.showToast({

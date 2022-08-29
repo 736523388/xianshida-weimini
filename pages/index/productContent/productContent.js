@@ -63,7 +63,6 @@ Page({
     goodsCommentType: 0,
     // 评论图片暂存
     imgList: '',
-    loginStatus: false,
     // 评论列表显示高度
     commentHeight: "evaluate-list2",
   },

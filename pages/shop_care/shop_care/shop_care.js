@@ -304,7 +304,7 @@ Page({
              })
              return false
            }
-           params += params ? ';' : ''
+           params += params ? '@@' : ''
            params += this.data.carts[k].list[j].goods_id + '@' + this.data.carts[k].list[j].goods_spec + '@' + this.data.carts[k].list[j].number
          }
        }

@@ -59,10 +59,10 @@
       </view>
     </view>
     <view style="display: flex;flex-wrap: wrap;">
-      <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{specialCate}}" wx:key="index" hover-class='jz_hover'>
+      <view bindtap="clickCate" data-index="{{index}}" class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{specialCate}}" wx:key="index" hover-class='jz_hover'>
         <image class="menu_icon" mode='widthFix' src='{{item.image}}'></image>
         <text class="menu_name">{{item.cate_title}}</text>
-      </navigator>
+      </view>
       <!-- <navigator class='menu_item' url='/pages/index/coupon/coupon' hover-class='jz_hover'>
         <image class="menu_icon" mode='scaleToFill' src='/images/shop22.png'></image>
         <text class="menu_name">积分兑换</text>
@@ -101,7 +101,7 @@
     <view style="width: 342rpx;"></view> -->
   </view>
   <view>
-    <waterFall name="waterfall" bind:waterFallResh="waterFallResh" dataFall="{{goods_list}}"></waterFall>
+    <waterFall name="waterfall" bind:waterFallResh="waterFallResh" dataFall="{{goods_list}}" page="{{page}}"></waterFall>
   </view>
   <view style="background-color: #fff;">
     <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>

@@ -34,12 +34,15 @@ refresher-default-style="black"
       </view>
     </view>
     <!-- 产品 -->
-    <view style="display: flex;flex-wrap: wrap;justify-content: space-around;padding: 10rpx;box-sizing: border-box;">
+    <view>
+    <waterFall name="waterfall" bind:waterFallResh="waterFallResh" dataFall="{{goodsList.data}}" page="{{page}}"></waterFall>
+  </view>
+    <!-- <view style="display: flex;flex-wrap: wrap;justify-content: space-around;padding: 10rpx;box-sizing: border-box;">
       <navigator style="margin: 10rpx 0;width: 342rpx;" url='/pages/index/productContent/productContent?id={{item.id}}' wx:for="{{goodsList.data}}" wx:key="index">
         <template is="goods_card" data="{{item}}" />
       </navigator>
       <view style="width: 342rpx;"></view>
-    </view>
+    </view> -->
     <view>
       <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
       <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>

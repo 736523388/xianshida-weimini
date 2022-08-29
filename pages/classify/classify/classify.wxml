@@ -24,12 +24,15 @@
         </block>
       </block>
     </view>
-    <view style="display: flex;flex-wrap: wrap;justify-content: space-around;padding: 0 10rpx;box-sizing: border-box;">
+    <view>
+    <waterFall name="waterfall" bind:waterFallResh="waterFallResh" dataFall="{{goods_list.data}}" page="{{page}}"></waterFall>
+  </view>
+    <!-- <view style="display: flex;flex-wrap: wrap;justify-content: space-around;padding: 0 10rpx;box-sizing: border-box;">
       <navigator style="margin: 10rpx 0;width: 280rpx;" url='/pages/index/productContent/productContent?id={{item.id}}' wx:for="{{goods_list.data}}" wx:key="index">
         <template is="goods_card" data="{{item}}" />
       </navigator>
       <view style="width: 280rpx;"></view>
-    </view>
+    </view> -->
     <view>
       <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
       <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>
