@@ -17,7 +17,9 @@
         </view> -->
       </view>
       <view style="padding: 28rpx 20rpx;box-sizing: border-box;display: flex;align-items:flex-start;font-size: 12px;">
-        <view style="background-color: #fb670f;white-space: nowrap;padding: 0 6rpx;border-radius: 15%;color: #fff;box-sizing: border-box;">配送</view>
+        <view style="background-color: #fb670f;white-space: nowrap;padding: 0 6rpx;border-radius: 15%;color: #fff;box-sizing: border-box;">
+          配送
+        </view>
         <view style="padding-left: 20rpx;color: #333;">{{express_desc}}</view>
       </view>
     </view>
@@ -29,9 +31,10 @@
     </view>
   </view>
   <view class="goods-tag-box">
-    <navigator url="/pages/classify/classifyList/classifyList?key={{item.title}}" wx:for="{{keywords}}" wx:key="keyword"><text class="goods-tag">{{item.title}}</text></navigator>
+    <navigator url="/pages/classify/classifyList/classifyList?key={{item.title}}" wx:for="{{keywords}}" wx:key="keyword">
+      <text class="goods-tag">{{item.title}}</text>
+    </navigator>
   </view>
-
   <view style="padding:20rpx 20rpx 0 20rpx">
     <swiper class="swipers" indicator-dots='true' interval='5000' circular='true' autoplay="{{autoplay}}" current="{{currentSwiper}}" bindchange="swiperChange">
       <block wx:for="{{imgs}}" wx:key="index">
@@ -41,7 +44,6 @@
       </block>
     </swiper>
   </view>
-
   <view style="margin: 20rpx;box-shadow: 0 4rpx 10rpx 0 rgba(0, 0, 0, 0.2);border-radius: 2%;background-color: #fff;">
     <view style="display: flex;justify-content:space-between;align-items: center;margin: 10rpx 20rpx;padding:10rpx;box-sizing: border-box;border-bottom: 2rpx solid #F3F4F6;">
       <text style="color: #fb670f;font-size: 28rpx;font-weight: 600;">{{app_name}}</text>
@@ -55,7 +57,6 @@
           <text>平价优选</text>
         </view>
       </view>
-
     </view>
     <view style="display: flex;flex-wrap: wrap;">
       <navigator class='menu_item' url='/pages/classify/classifyList/classifyList?id={{item.id}}' wx:for="{{specialCate}}" wx:key="index" hover-class='jz_hover'>
@@ -68,45 +69,47 @@
       </navigator> -->
     </view>
   </view>
-
   <view class="container_coupon">
     <view style="align-items: flex-end;justify-content: flex-end;" bindtap="clickIntegral">
-      <image src="/images/crown.png"/>
+      <image src="/images/crown.png" />
       <text>积分兑换</text>
     </view>
     <text class="coupon_column"></text>
     <view style="align-items: center;" bindtap="clickCoupon">
-      <image src="/images/coupon.png"/>
+      <image src="/images/coupon.png" />
       <view style="align-items: flex-end;padding: 0;">
         <text style="color: #DC2626;font-weight: bolder;">领</text>
         <text style="margin-left: 4rpx;">优惠券(先领取，后购买)</text>
       </view>
-      
     </view>
   </view>
-
   <view style='height:10rpx;'></view>
   <view class='container_t goods-card-box-title'>
     <view class="goods-card-box-title-left">
       <text>为您推荐</text>
     </view>
-
     <view class="goods-card-box-title-right" bindtap='skip_all'>
       <view style="padding: 5rpx 12rpx;">更多</view>
       <mp-icon type="field" icon="arrow" color="#fff" size="{{12}}"></mp-icon>
     </view>
   </view>
   <view class="container_f goods-card-box">
-    <navigator style="margin: 10rpx 0;width: 342rpx;" url='../productContent/productContent?id={{item.id}}' wx:for="{{goods_list}}" wx:key="index">
+    <!-- <waterFall dataFall="{{goods_list}}"></waterFall> -->
+    <!-- <navigator style="margin: 10rpx 0;width: 342rpx;" url='../productContent/productContent?id={{item.id}}' wx:for="{{goods_list}}" wx:key="index">
       <template is="goods_card" data="{{item}}" />
     </navigator>
-    <view style="width: 342rpx;"></view>
+    <view style="width: 342rpx;"></view> -->
   </view>
-
+  <view>
+    <waterFall name="waterfall" bind:waterFallResh="waterFallResh" dataFall="{{goods_list}}"></waterFall>
+  </view>
   <view style="background-color: #fff;">
-      <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
-      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}"><text>{{loadEnd}}</text></view>
-      <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loadError}}"><text bindtap="getGoodsList">{{loadErrorTxt}}</text></view>
+    <mp-loading type="circle" show="{{loading === 'loading'}}"></mp-loading>
+    <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loading === 'noMore'}}">
+      <text>{{loadEnd}}</text>
     </view>
-
+    <view style="text-align: center;color: #8e8e8e;padding: 16rpx;" wx:if="{{loadError}}">
+      <text bindtap="getGoodsList">{{loadErrorTxt}}</text>
+    </view>
+  </view>
 </view>

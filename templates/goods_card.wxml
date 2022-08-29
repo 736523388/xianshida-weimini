@@ -1,7 +1,7 @@
 <template name="goods_card">
   <view class="goods-card">
     <view class="goods-card-image">
-      <image mode="widthFix" src="{{item.goods_logo}}"></image>
+      <image lazy-load mode="widthFix" src="{{item.goods_logo}}"></image>
     </view>
     <view class="goods-card-title"><text>{{item.goods_title}}</text></view>
     <view class="goods-card-price">

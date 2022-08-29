@@ -1,4 +1,7 @@
 {
+  "usingComponents": {
+    "waterFall": "../../../component/waterFall"
+  },
   "navigationBarBackgroundColor": "#f5f5f5",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "商品分类",

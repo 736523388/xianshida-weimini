@@ -1,0 +1,45 @@
+<view class="waterfall clear">
+  <view class="leftfall left" id="leftfall">
+    <block wx:for="{{ leftfall }}" wx:key="left">
+      <template is="goods_card" data="{{...item}}"></template>
+    </block>
+  </view>
+  <view class="rightfall right" id="rightfall">
+    <block wx:for="{{ rightfall }}" wx:key="right">
+      <template is="goods_card" data="{{...item}}"></template>
+      <!-- <template is="item" data="{{...item}}"></template> -->
+    </block>
+  </view>
+</view>
+<template name="goods_card">
+  <view class="goods-card">
+    <view class="goods-card-image">
+      <image lazy-load="{{true}}" bindload="waterfall" mode="widthFix" src="{{goods_logo}}"></image>
+    </view>
+    <view class="goods-card-title">
+      <text>{{goods_title}}</text>
+    </view>
+    <view class="goods-card-price">
+      <view>
+        <view>
+          <text class="goods-card-price-striking" style="font-size: 26rpx;">¥</text>
+          <text class="goods-card-price-striking">{{market_price}}</text>
+        </view>
+        <!-- <view class="goods-card-price-line"><text>{{item.huaxian_price}}</text></view> -->
+      </view>
+      <view style="height: 44rpx;width: 44rpx;">
+        <image style="height: 100%;width: 100%;" src="../images/cart_curr.png" />
+      </view>
+    </view>
+  </view>
+</template>
+<!-- <template name="item">
+  <view class="img-item">
+    <image src="{{ goods_logo }}" lazy-load="{{ true }}" mode="widthFix" bindload="waterfall"></image>
+    <text class='recom'>{{ goods_title }}</text>
+    <view class="info clear">
+      <image class='handimg' mode="widthFix"></image>
+      <text class='dollar'>￥ {{market_price}}</text>
+    </view>
+  </view>
+</template> -->

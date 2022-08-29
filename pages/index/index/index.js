@@ -145,7 +145,7 @@ Page({
     })
     wx.request({
       url: app.globalData.urlhost + '/api/store.goods/allgoods',
-      params: {
+      data: {
         page: this.page,
       },
       success: res => {

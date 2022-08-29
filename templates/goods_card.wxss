@@ -3,7 +3,8 @@
   height: auto;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  /* margin: 10rpx 0; */
+  /* margin: 10rpx 10rpx 10rpx 0; */
+  margin-bottom: 20rpx;
   font-size: 24rpx;
   color: #333;
   border-radius: 2%;

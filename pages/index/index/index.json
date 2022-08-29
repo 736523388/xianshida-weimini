@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "mp-loading": "weui-miniprogram/loading/loading",
-    "mp-icon": "weui-miniprogram/icon/icon"
+    "mp-icon": "weui-miniprogram/icon/icon",
+    "waterFall": "../../../component/waterFall"
   },
   "enablePullDownRefresh": true,
   "navigationStyle": "custom",
