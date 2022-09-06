@@ -66,7 +66,7 @@
               </block> -->
 
               <block wx:if="{{item.status == 3}}">
-                <text data-order_no="{{item.order_no}}" data-way="{{item.express.way}}" data-order_index="{{groupind}}" bindtap='skip_logistic'>{{item.express.way==1?'查看物流':'到店自取'}}</text>
+                <text data-order_no="{{item.order_no}}" data-way="{{item.express.way}}" data-order_index="{{groupind}}" bindtap='skip_logistic'>{{item.express.way==1?'查看物流':'货到付款'}}</text>
                 <text style='background:#fb670f;color:#fff' data-orderid="{{item.id}}" bindtap='receive'>确认收货</text>
               </block>
 
@@ -75,7 +75,7 @@
               </block>
               
               <block wx:if="{{(item.status == 2 && (item.type == 1 || (item.type == 2 && item.success_time != 0) || item.type == 3)) || item.status ==3 || item.status ==4 }}">
-                <text data-order_num="{{item.order_no}}" data-order_id="{{item.id}}" bindtap='refund'>申请退款</text>
+                <text data-order_num="{{item.order_no}}" data-order_id="{{item.id}}" bindtap='refund' wx:if="{{item.pay_on_arrival <1}}">申请退款</text>
               </block>
             </view>
           </view>

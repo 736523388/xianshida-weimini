@@ -33,6 +33,8 @@ Page({
     coupon_name: [],
     coupon_id:"",
     sel_coupon: '请选择优惠券',
+    paytype_index: 0,
+    paytype:['在线支付','货到付款'],
     use_integral: 0,
     use_integral_data: 0,
     real_price: "",
@@ -43,6 +45,7 @@ Page({
     pay_amount: ""
   },
   change_coupon: function(e) {
+    console.log(this.data.coupon[e.detail.value].id)
     this.setData({
       sel_coupon: this.data.coupon_name[e.detail.value],
       coupon_id: this.data.coupon[e.detail.value].id
@@ -122,7 +125,7 @@ Page({
         token: wc.get('token'),
         data: that.data.ans_list,
         use_integral: that.data.use_integral_data,
-        coupon_id:"",
+        coupon_id:that.data.coupon_id,
       },
       header: {
         "content-type": "application/x-www-form-urlencoded"
@@ -261,6 +264,12 @@ Page({
       },
     })
   },
+  change_paytype(e){
+    console.log(e.detail.value)
+    this.setData({
+      paytype_index: e.detail.value
+    })
+  },
   // 创建订单+支付接口
   pay: function() {
     var that = this
@@ -285,6 +294,7 @@ Page({
         address_id: that.data.address_id,
         authentication_id: that.data.id_card_id,
         order_desc: that.data.order_tips,
+        paytype: that.data.paytype_index
       },
       header: {
         "content-type": "application/x-www-form-urlencoded"
@@ -295,71 +305,85 @@ Page({
           disabled: 0
         })
         if (res.data.code == 1) {
-          if (res.data.is_pay == 1) {
+          if(res.data.pay_on_arrival > 0){
             wx.showToast({
-              title: "支付成功",
-              icon: "success",
+              title: "下单成功",
+              icon: "none",
               duration: 3000,
               success: function(res) {
                 setTimeout(function() {
                   wx.navigateTo({
                     url: '/pages/my/my_order/my_order',
                   })
-                }, 3000)
+                }, 1000)
               },
             })
-          } else {
-            wx.request({
-              url: app.globalData.urlhost + '/api/store.order/createGoodsParams',
-              data: {
-                token: wc.get('token'),
-                order_no: res.data.order_no
-              },
-              header: {
-                "content-type": "application/x-www-form-urlencoded"
-              },
-              method: 'POST',
+            return false
+          }
+          if (res.data.is_pay == 1) {
+            wx.showToast({
+              title: "支付成功",
+              icon: "success",
+              duration: 1500,
               success: function(res) {
-                if (res.data.code == 1) {
-                  wx.requestPayment({
-                    timeStamp: res.data.data.timeStamp,
-                    nonceStr: res.data.data.nonceStr,
-                    package: res.data.data.package,
-                    signType: res.data.data.signType,
-                    paySign: res.data.data.paySign,
-                    success: function(res) {
-                      console.log(res)
-                      wx.redirectTo({
-                        url: '/pages/my/my_order/my_order',
-                      })
-                      // if (res.errMsg == "requestPayment:ok") {
-                      //   wx.navigateTo({
-                      //     url: '/pages/my/my_order/my_order',
-                      //   })
-                      // }
-                    },
-                    fail: error => {
-                      wx.redirectTo({
-                        url: '/pages/my/my_order/my_order',
-                      })
-                    }
+                setTimeout(function() {
+                  wx.navigateTo({
+                    url: '/pages/my/my_order/my_order',
                   })
-                } else {
-                  wx.showToast({
-                    title: res.data.msg,
-                    icon: 'none',
-                    duration: 3000,
-                  })
-                  setTimeout(function () {
-                    wx.navigateTo({
+                }, 1500)
+              },
+            })
+            return false
+          }
+          wx.request({
+            url: app.globalData.urlhost + '/api/store.order/createGoodsParams',
+            data: {
+              token: wc.get('token'),
+              order_no: res.data.order_no
+            },
+            header: {
+              "content-type": "application/x-www-form-urlencoded"
+            },
+            method: 'POST',
+            success: function(res) {
+              if (res.data.code == 1) {
+                wx.requestPayment({
+                  timeStamp: res.data.data.timeStamp,
+                  nonceStr: res.data.data.nonceStr,
+                  package: res.data.data.package,
+                  signType: res.data.data.signType,
+                  paySign: res.data.data.paySign,
+                  success: function(res) {
+                    console.log(res)
+                    wx.redirectTo({
                       url: '/pages/my/my_order/my_order',
                     })
-                  }, 3000)
-                }
-              },
-            })
-
-          }
+                    // if (res.errMsg == "requestPayment:ok") {
+                    //   wx.navigateTo({
+                    //     url: '/pages/my/my_order/my_order',
+                    //   })
+                    // }
+                  },
+                  fail: error => {
+                    wx.redirectTo({
+                      url: '/pages/my/my_order/my_order',
+                    })
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: 'none',
+                  duration: 3000,
+                })
+                setTimeout(function () {
+                  wx.navigateTo({
+                    url: '/pages/my/my_order/my_order',
+                  })
+                }, 3000)
+              }
+            },
+          })
         } else {
           wx.showToast({
             title: res.data.msg,

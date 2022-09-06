@@ -106,6 +106,15 @@
       <view class='messages-left'>{{all_pay_msg.manjian.activity_name}}</view>
       <view class='messages-right'>-￥{{all_pay_msg.manjian.discount}}</view>
     </view>
+    <view class='cont2'>
+      <view class='afleft'>支付方式</view>
+      <picker class='afright' bindchange="change_paytype" range="{{paytype}}">
+        <view>
+          <view class='cont2-text1'>{{paytype[paytype_index]}}</view>
+        </view>
+      </picker>
+       <image src='/images/settlement-icon4.png'></image>
+    </view>
 
     <!-- <view class='cont6 clearboth'>
       <view class='afleft'>
@@ -152,7 +161,7 @@
           <text class='payment-text2'>¥{{real_price}}</text>
           <text class='payment-text3'>共{{pay_amount}}件商品</text>
         </view>
-        <button class='payment-btn' disabled='{{disabled}}' bindtap='pay'>付款</button>
+        <button class='payment-btn' disabled='{{disabled}}' bindtap='pay'>{{paytype_index==0?'付款':'下单'}}</button>
       </view>
     </view>
   </form>
