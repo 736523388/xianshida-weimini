@@ -328,6 +328,9 @@ Page({
 
   onLoad: function(options) {
     $init(this)
+    // isLogin(() => {
+    //   this.load()
+    // })
   },
   //加载购物车数据
   load: function () {

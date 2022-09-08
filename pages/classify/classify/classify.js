@@ -117,6 +117,8 @@ Page({
         if (res.statusCode !== 200 || res.data.code !== 1) {
           return
         }
+        console.log(this.data.num)
+        console.log(res.data.data[this.data.num])
         console.log(res.data.data[this.data.num].id)
         this.setData({
           aleft: res.data.data,
@@ -140,9 +142,12 @@ Page({
     console.log('on show', options, this.data.num)
     let cate_index = wx.getStorageSync('cate_index')
     console.log('cate_index', cate_index)
-    this.setData({
-      num: cate_index
-    })
+    if(cate_index){
+      this.setData({
+        num: cate_index
+      })
+    }
+    
     this._freshing = true
     this.getCate()
     

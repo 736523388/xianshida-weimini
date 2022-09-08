@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "授权登录"
+  "usingComponents": {
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell"
+  },
+  "navigationBarTitleText": "注册"
 }

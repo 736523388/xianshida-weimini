@@ -37,9 +37,12 @@ function login(callback) {
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
           success: res => {
+            console.log('wx_login',res.data.data)
             wx.hideLoading()
             if (res.statusCode === 200 && res.data.code === successcode) {
+              
               setStorage('token', res.data.data.token.token, res.data.data.token.exp)
+              setStorage('userInfo', res.data.data)
               callback && callback()
             } else {
               showToast()
@@ -147,9 +150,19 @@ function showToast(content = '登录失败，请稍后再试') {
  */
 function isLogin(callback) {
   let token = getStorage('token', '');
+  let userInfo = wx.getStorageSync('userInfo')
+  console.log('isLogin', userInfo)
   if (token) {
     // 如果有全局存储的登录态，暂时认为他是登录状态
-    callback && callback()
+    console.log(userInfo.phone)
+    if(userInfo.phone){
+      callback && callback()
+    } else {
+      wx.navigateTo({
+        url: '/pages/my/login/index',
+      })
+    }
+    
   } else {
     // 如果没有登录态，弹窗提示一键登录
     login(callback)

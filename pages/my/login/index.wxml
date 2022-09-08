@@ -1,15 +1,14 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-  <view class='login-logo'>
-    <image  src="{{web_logo}}" mode='widthFix'></image>
-  </view>
-    <view class='login-fonts'>
-      <view class='login-title'>授权登录，获得更多体验</view>
-      <view class='login-text'>
-        <text>• </text><text>获取你的公开信息（昵称、头像等）</text>
-      </view>
-    </view>
-    <button class='login-btn' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登录 </button>
-  </view>
-</view>
+<form catchsubmit="formSubmit">
+    <mp-cells>
+      <mp-cell title="店铺名称：">
+        <input type="text" auto-focus="{{true}}" name="store_name" class="weui-input" placeholder="请输入店铺名称"/>
+      </mp-cell>
+      <mp-cell title="联 系 人：">
+        <input type="text" name="contact_name" class="weui-input" placeholder="请输入联系人"/>
+      </mp-cell>
+      <mp-cell title="联系电话：">
+        <input type="number" name="phone" class="weui-input" placeholder="请输入联系电话"/>
+      </mp-cell>
+      <button style="margin: 30rpx" type="primary" formType="submit">提交</button>
+    </mp-cells>
+  </form>
