@@ -300,7 +300,15 @@ Page({
   onShareAppMessage: function (options) {
     // 设置转发内容
     return {
-      title: "鲜食达",
+      title: "新鲜食材 每日必达",
+      path: '', // 默认是当前页面，必须是以‘/’开头的完整路径
+      imgUrl: '', //转发时显示的图片路径，支持网络和本地，不传则使用当前页默认截图。
+    };
+  },
+  onShareTimeline: function (options) {
+    // 设置转发内容
+    return {
+      title: "新鲜食材 每日必达",
       path: '', // 默认是当前页面，必须是以‘/’开头的完整路径
       imgUrl: '', //转发时显示的图片路径，支持网络和本地，不传则使用当前页默认截图。
     };
